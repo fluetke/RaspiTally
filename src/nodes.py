@@ -3,9 +3,8 @@ Created on 06.01.2015
 
 @author: Florian
 '''
-from PyQt4.QtCore import QObject, qDebug
+from PyQt4.QtCore import QObject, qDebug, QMutex
 from PyQt4.QtNetwork import QTcpSocket, QHostAddress
-import pickle
 import json
 
 class TallyNode(QObject):
@@ -17,32 +16,71 @@ class TallyNode(QObject):
     id = "default"
     ip = ""
     port = 0
+    nodeConnection = None
+    mutex = None
     
-    def __init__(self, ip, port):
+    def __init__(self, ip, port, parent=None):
+        super(TallyNode, self).__init__(parent)
         self.ip = ip
         self.port = port
-        pass
+        self.nodeConnection = QTcpSocket()
+        self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
+        self.mutex = QMutex()
         
+    #  connect to remote host and catch as many exceptions as possible
+    def openConnection(self):
+        try:
+            self.nodeConnection.connectToHost(self.ip,self.port)
+        
+        except QTcpSocket.HostNotFoundError:
+            qDebug("Remote Host " + str(self.ip) + ":" + str(self.port) + " not found")
+        except QTcpSocket.ConnectionRefusedError:
+            qDebug("Connection refused by Host")
+        except QTcpSocket.NetworkError:
+            qDebug("Connection closed: Network error")
+        except QTcpSocket.RemoteHostClosedError:
+            qDebug("Connection closed by remote Host")
+        except QTcpSocket.SocketAccessError:
+            qDebug("Error could not AccessSocket -> Socket Access Error")
+        except QTcpSocket.SocketAddressNotAvailableError:
+            qDebug("ERROR: Socket Address Not Available")
+        except QTcpSocket.SocketTimeoutError:
+            qDebug("ERROR: Socket Timed out")
+        except QTcpSocket.UnfinishedSocketOperationError:
+            qDebug("Error blocked by unfinished socket operation")
+        finally:
+            qDebug("ERROR::" + self.nodeConnection.errorString())
+            
+        if self.nodeConnection.waitForConnected():
+            qDebug("SUCCESS: Connection Established")
+            return True
+    
     # default request sending method inherited by all classes in node
     def sendRequest(self, byteRequest):
-        nodeConnection = QTcpSocket()
         try: 
-            nodeConnection.connectToHost(self.ip,self.port)
-            if(nodeConnection.waitForConnected()):
-                qDebug("NODES::CONNECTION ESTABLISHED")
-            else:
-                qDebug("NODES::CONNECTION TO " + self.ip + " FAILED BECAUSE OF " + nodeConnection.errorString())
-            nodeConnection.write(byteRequest)
-            nodeConnection.waitForBytesWritten()
-            nodeConnection.disconnected.connect(nodeConnection.deleteLater)
-            nodeConnection.disconnectFromHost()
-            #nodeConnection.waitForDisconnected(100)
-        except:
-            qDebug("SocketError - Something in Nodes.py went terribly wrong")
-            
+            self.mutex.lock()
+            self.nodeConnection.write(byteRequest)
+            self.nodeConnection.waitForBytesWritten()
+            self.mutex.unlock()
+        except QTcpSocket.DatagramTooLargeError:
+            qDebug("ERROR: Datagramm is too large, try something smaller")
+        except QTcpSocket.NetworkError:
+            qDebug("ERROR: Network error during transfer")
+        except QTcpSocket.RemoteHostClosedError:
+            qDebug("ERROR: Remote host closed the connection")
+            self.nodeConnection.disconnectFromHost()
+            self.nodeConnection.close()
+        except QTcpSocket.SocketTimeoutError:
+            qDebug("ERROR: Connection timed out")
+        except QTcpSocket.UnfinishedSocketOperationError:
+            qDebug("ERROR: Socket Operation in progress, please wait and try again")
         finally:
-            nodeConnection.close()
             qDebug("NODE::REQUEST SEND TO " + str(self.ip) + ":" + str(self.port))
+            
+    def closeConnection(self):
+        self.nodeConnection.disconnectFromHost()
+        self.nodeConnection.waitForDisconnected()
+        self.nodeConnection.close()
         
 class TallyClient(TallyNode):
     
@@ -57,9 +95,14 @@ class TallyClient(TallyNode):
         self.port = port
         
     #network requests here
-    def startConfigurationMode(self, url, los):
-        request = "CONFIG_STARTED:" + str(url) + ":" + str(los)
+    def startConfigurationMode(self):
+        request = "CONFIG_STARTED"
         self.sendRequest(bytes(request,'UTF-8'))
+        
+    def storeSourceList(self, sourceList): #TODO: implement request handling for this 
+        sourceString = json.dumps(sourceList)
+        request = "STORE_SOURCELIST:" + sourceString
+        self.sendRequest(bytes(request, 'UTF-8'))
     
     def endConfigurationMode(self, clientId):
         request = "CONFIG_DONE:" + clientId
@@ -70,12 +113,12 @@ class TallyClient(TallyNode):
         self.sendRequest(bytes(request, 'UTF-8'))
     
     def updateClientList(self, clientList):
-        request = "UPDATE_CLIENTLIST"
+        request = "UPDATE_CLIENTLIST:"
         clist = json.dumps(clientList)
         self.sendRequest(bytes(request, 'UTF-8')+clist)
         
     def updateShotList(self, shotList):
-        request = "UPDATE_SHOTLIST"
+        request = "UPDATE_SHOTLIST:"
         slist = json.dumps(shotList)
         self.sendRequest(bytes(request, 'UTF-8')+slist)
         
@@ -108,7 +151,7 @@ class TallyServer(TallyNode):
         self.sendRequest(bytes(request, 'UTF-8'))
     
     # orders the server to set a specific video src to a certain status(client orders)
-    def setVideoSrcToStatus(self, clientId, status):
+    def setVideoSrcToStatus(self, clientId, status="LIVE"):
         request = "SET_SOURCE:" + clientId + ":" + status
         self.sendRequest(bytes(request, 'UTF-8'))
     

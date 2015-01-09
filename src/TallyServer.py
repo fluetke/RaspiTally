@@ -21,17 +21,16 @@ from storage import Container
 threadList = list()
 clientList = list()
 shotList = list()
-sourceList = list()
+sourceList = Container()
 
-
-streamUrl = None# contains the URL of the broadcast videostream
+streamUrl = Container()
 
 #signals for the tally server
 clientUpdateReady = pyqtSignal()
 shotUpdateReady = pyqtSignal()
 
 #vars for configuration
-configMode = False
+configMode = Container()
 configWaitinglist = list()
 
 def initHandling():
@@ -104,19 +103,22 @@ def registerClient(clientId, clientType, clientAddress):
         newClient.id = "CAMERA_" + str(len(clientList)+1) #FIXME: if client registration requests pile up, the id for all clients will be the same, as the listlength does not change
         qDebug("STORING NEW CLIENT WITH ID " + str(newClient.id)) 
         #poke client to start configuration, but only if its a camera, as the director has no video input
-        if configClient.isEmpty(): #if configuration is not already preparing a client
-            newClient.startConfigurationMode(streamUrl, generateConfigSourceList())
-            configClient.store(newClient)
-        else:
-            qDebug("SERVER::CONFIG OF ANOTHER CLIENT IN PROGRESS - ADDING REQUEST TO WAITING LIST")
-            configWaitinglist.append(newClient)
+        #if configClient.isEmpty(): #if configuration is not already preparing a client
+        newClient.setStreamUrl(streamUrl.load())
+        newClient.storeSourceList(generateConfigSourceList())
+        newClient.startConfigurationMode()
+        configClient.store(newClient)
+        #else:
+        #    qDebug("SERVER::CONFIG OF ANOTHER CLIENT IN PROGRESS - ADDING REQUEST TO WAITING LIST")
+        #    configWaitinglist.append(newClient)
         
         return
                 
 def generateConfigSourceList():
     configSourceList = list()
-    for source in sourceList:
+    for source in sourceList.load():
         configSourceList.append(source[0])
+        
     return configSourceList
 
 # updates clients in list and sends the new clientList    
@@ -125,7 +127,7 @@ def updateClients():
         client.updateClientList(clientList)
                                 
 def setConfigMode(empty):
-    configMode = True # set configmode, so no tally request from other clients are accepted
+    configMode.store(True) # set configmode, so no tally request from other clients are accepted)
     
     
 def unsetConfigMode(clientId):
@@ -139,14 +141,16 @@ def unsetConfigMode(clientId):
         configClient.store(configWaitinglist.pop())
         configClient.load().startConfigurationMode(streamUrl, generateConfigSourceList())
     else:
-        configMode = False
+        configMode.store(False)
         
 # instruct videoswitcher to switch videosource to status
 def switchSource(clientId, status):
-    assert videoSwitcher != None # the videoswitcher should not be empty at this point
-    if configMode:
+    assert videoSwitcher.isEmpty() == False # the videoswitcher should not be empty at this point
+    qDebug("CONFIG MODE IS " + configMode.load())
+    if configMode.load():
         videoSwitcher.setSourceToStatus(clientId, status)
         return
+    
     for client in clientList:
         if client.id == clientId:
             videoSwitcher.setSourceToStatus(client.source, status)
@@ -157,7 +161,7 @@ def switchSource(clientId, status):
 
 # instruct client to switch to status and turn tally light on if existent
 def switchTally(sourceId, status):
-    if configMode:
+    if configMode.load():
         return
     for client in clientList:
         if client.source == sourceId:
@@ -186,11 +190,15 @@ def getStreamUrl():
 
 def saveStreamUrl(url):
     qDebug("SERVER::SAVING STREAM_URL")
-    streamUrl = url
-    
+    if not streamUrl.isList():
+        streamUrl.store(url)
+        qDebug("SERVER::STREAMURL STORED AS " + url)
+    else:
+        qDebug("SERVER::STREAMURL IS LIST - SOMETHING IS WRONG HERE")
+        
 def storeSourcelist(srcList):
     qDebug("STORING SOURCELIST IN MEMORY - " + str(srcList))
-    sourceList = srcList
+    sourceList.store(srcList) 
     
 def deregisterClient(clientId):
     pass

@@ -4,14 +4,13 @@ Created on 04.01.2015
 @author: Florian
 '''
 from PyQt4.QtCore import pyqtSignal, QThread, QByteArray, QDataStream, QIODevice,\
-    qDebug
+    qDebug, QMutex
 from PyQt4.QtNetwork import QTcpSocket, QNetworkAddressEntry
 
 class ConnectionHandlerThread(QThread):
     '''
     classdocs
     '''
-
     finished = pyqtSignal()
     error = pyqtSignal(QTcpSocket.SocketError)
     dataReceived = pyqtSignal(object)
@@ -22,7 +21,8 @@ class ConnectionHandlerThread(QThread):
         Constructor
         '''
         super(ConnectionHandlerThread, self).__init__(parent)
-        self.connectionDescriptor = connDesc
+        self.networkSocket = connDesc
+        self.networkMutex = QMutex()
         
         
         
@@ -33,20 +33,16 @@ class ConnectionHandlerThread(QThread):
         it to the datahandler class for further processing 
         '''
         qDebug("CONNECTION_HANDLER:: NEW CONNECTION")
-        #networkSocket = QTcpSocket() #TODO: remove if unused
         
-        # throw error if socket connection fails
-#         if not networkSocket.setSocketDescriptor(self.connectionDescriptor):
-#             self.error.emit(networkSocket.error())
-#             return
-    
         # receive data and pack into data_received for further processing
-        networkSocket = self.connectionDescriptor
-        networkSocket.waitForReadyRead(1000)
-        data_size = networkSocket.bytesAvailable()
+        self.networkSocket.waitForReadyRead(1000)
+        self.networkMutex.lock()
+        data_size = self.networkSocket.bytesAvailable()
         qDebug(str(data_size))
-        data_received = networkSocket.readAll()
-        
+        data_received = self.networkSocket.readAll()
+        self.networkMutex.unlock()
+        if len(data_received) < data_size:
+            qDebug("ERROR_ DATA RECEIVED TOO SHORT")
         qDebug(data_received)
         qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
         #print(data_received)
@@ -60,8 +56,8 @@ class ConnectionHandlerThread(QThread):
         #networkSocket.write("OK..."+ data_received)
         #networkSocket.waitForBytesWritten(msecs=100)
             
-        networkSocket.disconnectFromHost()
-        #networkSocket.waitForDisconnected()
+        self.networkSocket.disconnectFromHost()
+        self.networkSocket.waitForDisconnected()
         qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL FINISHED")
         self.finished.emit()
         

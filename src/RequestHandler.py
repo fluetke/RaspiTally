@@ -5,7 +5,8 @@ Created on 05.01.2015
 '''
 from PyQt4.QtCore import pyqtSignal, QObject, qDebug
 import json
-import json
+
+
 
 class RequestHandler(QObject):
     '''
@@ -17,7 +18,7 @@ class RequestHandler(QObject):
     dataProcessed = pyqtSignal()
     regClient = pyqtSignal(object,object,object)
     deregClient = pyqtSignal(object)
-    configStart = pyqtSignal(object)
+    configStart = pyqtSignal()
     configEnd = pyqtSignal(object)
     stateRequest = pyqtSignal(object,object)
     tallyRequest = pyqtSignal(object,object)
@@ -74,11 +75,12 @@ class RequestHandler(QObject):
             self.deregClient.emit(clientId)
             
         elif data_ordered[0] == "CONFIG_STARTED":
-            streamUrl = None
-            if len(data_ordered) == 2:
-                streamUrl = data_ordered[1]
-                
-            self.configStart.emit(streamUrl)
+            qDebug("REQUEST_HANDLER::CONFIG STARTED")
+            qDebug("ARGUMENT_LENGTH = " + str(len(data_ordered)))
+            
+            self.configStart.emit()
+            
+            
             
         elif data_ordered[0] == "CONFIG_DONE":
             clientId = None
@@ -87,9 +89,9 @@ class RequestHandler(QObject):
             
             self.configEnd.emit(clientId)
             
-        elif data_ordered[0] == "SET_STATUS":
+        elif data_ordered[0] == "SET_SOURCE":
             if len(data_ordered) < 3:
-                qDebug("MALFORMED REQUEST - CLIENTID AND/OR STATUS MISSING")
+                qDebug("MALFORMED REQUEST - SOURCEID AND/OR STATUS MISSING")
                 return
             
             clientId = data_ordered[1]
@@ -181,6 +183,15 @@ class RequestHandler(QObject):
             
             self.movShot.emit(shotId, newShotPos)
     
+        elif data_ordered[0] == "STORE_SOURCELIST":
+            if len(data_ordered) > 2:
+                qDebug("REQUEST_HNDL:: MALFORMED REQUEST - LENGTH")
+            sourceJson = data_ordered[1]
+            sourceList = json.loads(sourceJson)
+            
+            qDebug("REQUEST_HNDL::EMITTING STORE_SOURCELIST SIGNAL")
+            self.newSourcelist.emit(sourceList)
+    
         elif data_ordered[0] == "GET_STREAM_URL":
             qDebug("REQUEST_HNDL::STREAM_URL REQUEST WITH LENGTH " + str(len(data_ordered)) + " RECEIVED")
             if len(data_ordered) != 2:
@@ -199,6 +210,7 @@ class RequestHandler(QObject):
                 return
             else:
                 print(data[len(data_ordered[0])+1:])
+                streamUrl=data[len(data_ordered[0])+1:]
 #           
             self.streamAnswer.emit(streamUrl)
             

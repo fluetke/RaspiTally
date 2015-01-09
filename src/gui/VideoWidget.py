@@ -3,7 +3,7 @@ Created on 09.01.2015
 
 @author: Florian
 '''
-from PyQt4.QtGui import QWidget
+from PyQt4.QtGui import QWidget, QPalette
 
 
 class VideoWidget(QWidget):
@@ -12,8 +12,11 @@ class VideoWidget(QWidget):
     '''
 
 
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         '''
         Constructor
         '''
         super(VideoWidget, self).__init__(parent)
+        self.setFixedSize(400,300)
+        self.setAutoFillBackground(True)
+        self.setStyleSheet("background-color:black;")
