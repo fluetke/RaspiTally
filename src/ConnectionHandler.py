@@ -12,7 +12,7 @@ class ConnectionHandlerThread(QThread):
     classdocs
     '''
     finished = pyqtSignal()
-    error = pyqtSignal(QTcpSocket.SocketError)
+    error = pyqtSignal(int, str)
     dataReceived = pyqtSignal(object)
     
     
@@ -23,39 +23,57 @@ class ConnectionHandlerThread(QThread):
         super(ConnectionHandlerThread, self).__init__(parent)
         self.networkSocket = connDesc
         self.networkMutex = QMutex()
+        self.quit = False
         
-        
+    def __del__(self):
+        qDebug("DESTRUCTOR CALLED")
+        self.networkMutex.lock()
+        self.quit = True
+        self.networkMutex.unlock()
+        self.wait()
         
     def run(self):
         '''
         This handles incoming connections, one at a time 
         in this case, it collects incoming data and pipes 
-        it to the datahandler class for further processing 
+        it to the datahandler class for further processing
+        connection pattern mainly taken from QT-blockingfortuneclient 
+        example and adjusted to fit the current project
         '''
         qDebug("CONNECTION_HANDLER:: NEW CONNECTION")
-        
+        timeout = 4000
         # receive data and pack into data_received for further processing
-        self.networkSocket.waitForReadyRead(1000)
-        self.networkMutex.lock()
-        data_size = self.networkSocket.bytesAvailable()
-        qDebug(str(data_size))
-        data_received = self.networkSocket.readAll()
-        self.networkMutex.unlock()
-        if len(data_received) < data_size:
-            qDebug("ERROR_ DATA RECEIVED TOO SHORT")
-        qDebug(data_received)
-        qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
-        #print(data_received)
-        #print(data_received.data())
-        data_received_str = data_received.data().decode('UTF-8') # convert data to string for further processing
-        #print(data_received_str)
-        qDebug("DATA IS::" + data_received_str)
-        self.dataReceived.emit(data_received_str) #emit converted data
-        #qDebug(networkSocket.peerAddress().toString() + ":" + str(networkSocket.peerPort()))
-        #FIXME: Warnings/Errors about thread safety when writing to the socket here 
-        #networkSocket.write("OK..."+ data_received)
-        #networkSocket.waitForBytesWritten(msecs=100)
+        while not self.quit:
+#             
+            # wait for the first 2 bytes to arrive
+            while self.networkSocket.bytesAvailable() < 2:
+                if not self.networkSocket.waitForReadyRead(timeout):
+                    self.error.emit(self.networkSocket.error(), self.networkSocket.errorString())
+                    return 
+                
+            inpStream = QDataStream(self.networkSocket) #create inputStream from socketConnection
+            inpStream.setVersion(QDataStream.Qt_4_0)
+            blockSize = inpStream.readUInt16() # read first two bytes where message size is stored
             
+            while self.networkSocket.bytesAvailable() < blockSize:
+                if not self.networkSocket.waitForReadyRead(timeout):
+                    self.error.emit(self.networkSocket.error(), self.networkSocket.errorString())
+                    return
+                
+            self.networkMutex.lock()
+            data = inpStream.readString()
+            
+            try:
+                data = str(data, "UTF-8")
+                qDebug("DATA IS::" + data)
+            
+            except TypeError:
+                # Python v2.
+                pass    
+            
+            qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
+            self.dataReceived.emit(data) #emit converted data 
+        
         self.networkSocket.disconnectFromHost()
         self.networkSocket.waitForDisconnected()
         qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL FINISHED")

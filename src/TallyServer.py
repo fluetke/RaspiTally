@@ -34,6 +34,7 @@ configMode = Container()
 configWaitinglist = list()
 
 def initHandling():
+    qDebug("Threadlist size is: " + str(len(threadList)))
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
@@ -67,6 +68,7 @@ def registerClient(clientId, clientType, clientAddress):
         if videoSwitcher.isEmpty():
             tempSwitcher = TallySwitcher(ipAddress, port)
             tempSwitcher.id = "TVID130"
+            tempSwitcher.openConnection()
             tempSwitcher.getStreamUrl()
             tempSwitcher.getSourceList()
             videoSwitcher.store(tempSwitcher)

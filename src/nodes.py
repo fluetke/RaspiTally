@@ -3,7 +3,8 @@ Created on 06.01.2015
 
 @author: Florian
 '''
-from PyQt4.QtCore import QObject, qDebug, QMutex
+from PyQt4.QtCore import QObject, qDebug, QMutex, QByteArray, QDataStream,\
+    QIODevice
 from PyQt4.QtNetwork import QTcpSocket, QHostAddress
 import json
 
@@ -48,34 +49,42 @@ class TallyNode(QObject):
             qDebug("ERROR: Socket Timed out")
         except QTcpSocket.UnfinishedSocketOperationError:
             qDebug("Error blocked by unfinished socket operation")
-        finally:
-            qDebug("ERROR::" + self.nodeConnection.errorString())
-            
+        
         if self.nodeConnection.waitForConnected():
             qDebug("SUCCESS: Connection Established")
             return True
     
     # default request sending method inherited by all classes in node
-    def sendRequest(self, byteRequest):
-        try: 
-            self.mutex.lock()
-            self.nodeConnection.write(byteRequest)
-            self.nodeConnection.waitForBytesWritten()
-            self.mutex.unlock()
-        except QTcpSocket.DatagramTooLargeError:
-            qDebug("ERROR: Datagramm is too large, try something smaller")
-        except QTcpSocket.NetworkError:
-            qDebug("ERROR: Network error during transfer")
-        except QTcpSocket.RemoteHostClosedError:
-            qDebug("ERROR: Remote host closed the connection")
-            self.nodeConnection.disconnectFromHost()
-            self.nodeConnection.close()
-        except QTcpSocket.SocketTimeoutError:
-            qDebug("ERROR: Connection timed out")
-        except QTcpSocket.UnfinishedSocketOperationError:
-            qDebug("ERROR: Socket Operation in progress, please wait and try again")
-        finally:
-            qDebug("NODE::REQUEST SEND TO " + str(self.ip) + ":" + str(self.port))
+    def sendRequest(self, request):
+        
+        timeout = 4000
+        block = QByteArray()
+        out = QDataStream(block, QIODevice.WriteOnly)
+        out.setVersion(QDataStream.Qt_4_0)
+        out.writeUInt16(0)
+
+        try:
+            # Python v3.
+            request = bytes(request, encoding='UTF-8')
+        except:
+            # Python v2.
+            pass
+
+        out.writeString(request)
+        out.device().seek(0)
+        out.writeUInt16(block.size() - 2)
+        
+        self.mutex.lock()
+        self.nodeConnection.write(block) # write stuff to socket
+        
+        if self.nodeConnection.state() is QTcpSocket.ConnectedState:
+            self.nodeConnection.waitForBytesWritten(timeout)
+        else:
+            qDebug("REMOTE HOST ABRUPTLY CLOSED THE CONNECTION")
+            qDebug(str(self.nodeConnection.state()))
+        self.mutex.unlock()
+        
+        qDebug("NODE::REQUEST SENT TO " + str(self.ip) + ":" + str(self.port))
             
     def closeConnection(self):
         self.nodeConnection.disconnectFromHost()
@@ -97,34 +106,34 @@ class TallyClient(TallyNode):
     #network requests here
     def startConfigurationMode(self):
         request = "CONFIG_STARTED"
-        self.sendRequest(bytes(request,'UTF-8'))
+        self.sendRequest(request)
         
     def storeSourceList(self, sourceList): #TODO: implement request handling for this 
         sourceString = json.dumps(sourceList)
         request = "STORE_SOURCELIST:" + sourceString
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def endConfigurationMode(self, clientId):
         request = "CONFIG_DONE:" + clientId
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
             
     def setTally(self, status):
         request = "SET_TALLY:" + status
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def updateClientList(self, clientList):
         request = "UPDATE_CLIENTLIST:"
-        clist = json.dumps(clientList)
-        self.sendRequest(bytes(request, 'UTF-8')+clist)
+        request += json.dumps(clientList)
+        self.sendRequest(request)
         
     def updateShotList(self, shotList):
         request = "UPDATE_SHOTLIST:"
-        slist = json.dumps(shotList)
-        self.sendRequest(bytes(request, 'UTF-8')+slist)
+        request += json.dumps(shotList)
+        self.sendRequest(request)
         
     def setStreamUrl(self, url):
         request = "SET_STREAM_URL:" + url
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
         
 class TallyServer(TallyNode):
     
@@ -136,55 +145,54 @@ class TallyServer(TallyNode):
     #Network Handling code here
     def registerClient(self, clientID, clientType, clientAddress):
         request = "REGISTER:" + str(clientID) + ":" + str(clientType) + ":" + str(clientAddress[0]) + ":" + str(clientAddress[1])
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def deregisterClient(self, clientID):
         request = "DEREGISTER:" + str(clientID)
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def configurationReady(self):
         request = "CONFIG_STARTED"
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def configurationDone(self):
         request = "CONFIG_DONE"
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     # orders the server to set a specific video src to a certain status(client orders)
     def setVideoSrcToStatus(self, clientId, status="LIVE"):
         request = "SET_SOURCE:" + clientId + ":" + status
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     # order the server to set a specific tally client to a certain status(videoMixer orders)
     def setTallyToStatus(self, sourceId, status):
         request = "SET_TALLY:" + sourceId + ":" + status
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def addShot(self, source, image, pos):
         request = "ADD_SHOT:" +source + ":" + image + ":" + pos
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def delShot(self, pos):
         request = "DEL_SHOT:" + pos
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def movShot(self, fRom, to):
         request = "MOVE_SHOT:" + fRom + ":" + to
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def getStreamUrl(self, clientId):
         request = "GET_STREAM_URL:" + clientId
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def setStreamUrl(self, url):
         request = "SET_STREAM_URL:" + url
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def updateSourceList(self, sourcelist):
         sourceString = json.dumps(sourcelist)
-        #print(sourceString)
         request = "UPDATE_SOURCELIST:" + sourceString
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
 class TallySwitcher(TallyNode):
     
@@ -193,12 +201,12 @@ class TallySwitcher(TallyNode):
      
     def setSourceToStatus(self, sourceId, status):
         request = "SET_SOURCE:" + sourceId + ":" + status
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def getStreamUrl(self):
         request = "GET_STREAM_URL:N U L L" 
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)
     
     def getSourceList(self):
         request = "GET_SOURCELIST"
-        self.sendRequest(bytes(request, 'UTF-8'))
+        self.sendRequest(request)

@@ -66,6 +66,7 @@ if __name__ == '__main__':
     getSourcesFromWirecast()
     qDebug("VIDEOSWITCHER::HELLO - REGISTERING WITH SERVER")
     serverInterface = TallyServer("127.0.0.1", 3771 )
+    serverInterface.openConnection()
     serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
     
 
