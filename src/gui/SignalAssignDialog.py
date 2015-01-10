@@ -68,6 +68,8 @@ class SignalAssignDialog(QDialog):
     # connect the signals to their respective slots
     def connectSignals(self):
         self.sourceBtnGrp.buttonClicked.connect(self.resolveIdToSource)
+        self.okBtn.clicked.connect(self.close)
+        self.cancelBtn.clicked.connect(self.close)
         pass
         
     # add sources received from server to dialog for config
@@ -84,6 +86,7 @@ class SignalAssignDialog(QDialog):
             
     # resolve the button id returned from our buttongroup to a sourceid stored in sourcelist
     def resolveIdToSource(self, id):
-        qDebug("ASSIGNDIALOG::BUTTON" + str(self.sourceBtnGrp.checkedId()))
-        self.videoSourceSelected.emit(self.sourceList[self.sourceBtnGrp.checkedId()])
+        qDebug("ASSIGNDIALOG::BUTTON" + self.sourceList[(self.sourceBtnGrp.checkedId()+2)*-1])
+        qDebug("EMITTING SOURCE SELECTED SIGNAL")
+        self.videoSourceSelected.emit(self.sourceList[(self.sourceBtnGrp.checkedId()+2)*-1]) #map the negative id to a positive list index
         

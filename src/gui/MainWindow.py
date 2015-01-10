@@ -18,16 +18,16 @@ class MainWindow(QWidget):
         
         ##setup all Widgets
         # display area
-        tallyState = StatusBarWidget()
-        liveMonitor = QWidget()
-        sourceList = QListWidget()
-        quitBtn = QPushButton("&Quit")
+        self.tallyState = StatusBarWidget()
+        self.liveMonitor = QWidget()
+        self.sourceList = QListWidget()
+        self.quitBtn = QPushButton("&Quit")
         
         # interaction area
-        shotlist = QListWidget()
-        emergencyBtn = QPushButton("&EMERGENCY")
-        goLiveBtn = QPushButton("GO &LIVE")
-        nextBtn = QPushButton("&NEXT")
+        self.shotlist = QListWidget()
+        self.emergencyBtn = QPushButton("&EMERGENCY")
+        self.goLiveBtn = QPushButton("GO &LIVE")
+        self.nextBtn = QPushButton("&NEXT")
         
         #layout definition
         mainLayout = QVBoxLayout()
@@ -36,34 +36,35 @@ class MainWindow(QWidget):
         actionBarLayout = QHBoxLayout()
         
         # fill layouts 
-        statusLayout.addWidget(tallyState)
-        statusLayout.addWidget(quitBtn)
-        previewLayout.addWidget(liveMonitor)
-        previewLayout.addWidget(sourceList)
-        actionBarLayout.addWidget(emergencyBtn)
-        actionBarLayout.addWidget(goLiveBtn)
-        actionBarLayout.addWidget(nextBtn)
+        statusLayout.addWidget(self.tallyState)
+        statusLayout.addWidget(self.quitBtn)
+        previewLayout.addWidget(self.liveMonitor)
+        previewLayout.addWidget(self.sourceList)
+        actionBarLayout.addWidget(self.emergencyBtn)
+        actionBarLayout.addWidget(self.goLiveBtn)
+        actionBarLayout.addWidget(self.nextBtn)
         
         mainLayout.addLayout(statusLayout)
         mainLayout.addLayout(previewLayout)
-        mainLayout.addWidget(shotlist)
+        mainLayout.addWidget(self.shotlist)
         mainLayout.addLayout(actionBarLayout)
         
         #set mainlayout for window
         self.setLayout(mainLayout)
         
         # fill lists for preview
-        sourceList.addItem("CAM 1")
-        sourceList.addItem("CAM 2")
-        sourceList.addItem("CAM 3")
-        shotitem = ShotlistItem()
-        shotlist.addItem("TEST")
+        self.shotitem = ShotlistItem()
+        self.shotlist.addItem("TEST")
         #shotlist.addItem()
         
         # setup Window details
         self.setWindowTitle("TV Tally")
         self.resize(1024,600)
         
+    def updateSourceList(self, sources):
+        for source in sources:
+            self.sourceList.addItem(source[0] + ":" + source[1])
+             
     # def fullscreenToggle(self):
         # if self.isFullScreen():
             # self.showNormal()

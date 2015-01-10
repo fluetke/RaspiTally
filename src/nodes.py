@@ -4,8 +4,8 @@ Created on 06.01.2015
 @author: Florian
 '''
 from PyQt4.QtCore import QObject, qDebug, QMutex, QByteArray, QDataStream,\
-    QIODevice
-from PyQt4.QtNetwork import QTcpSocket, QHostAddress
+    QIODevice, QTimer
+from PyQt4.QtNetwork import QTcpSocket, QHostAddress, QAbstractSocket
 import json
 
 class TallyNode(QObject):
@@ -20,6 +20,8 @@ class TallyNode(QObject):
     nodeConnection = None
     mutex = None
     
+    
+    
     def __init__(self, ip, port, parent=None):
         super(TallyNode, self).__init__(parent)
         self.ip = ip
@@ -27,6 +29,9 @@ class TallyNode(QObject):
         self.nodeConnection = QTcpSocket()
         self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
         self.mutex = QMutex()
+        self.keepAliveTimer = QTimer(self)
+        self.keepAliveTimer.timeout.connect(self.keepAlive)
+        self.keepAliveTimer.start(10000)
         
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
@@ -77,7 +82,8 @@ class TallyNode(QObject):
         self.mutex.lock()
         self.nodeConnection.write(block) # write stuff to socket
         
-        if self.nodeConnection.state() is QTcpSocket.ConnectedState:
+        #FIXME: Determine reason for unexpected error message here and fix it
+        if self.nodeConnection.state() is QAbstractSocket.ConnectedState:
             self.nodeConnection.waitForBytesWritten(timeout)
         else:
             qDebug("REMOTE HOST ABRUPTLY CLOSED THE CONNECTION")
@@ -85,7 +91,10 @@ class TallyNode(QObject):
         self.mutex.unlock()
         
         qDebug("NODE::REQUEST SENT TO " + str(self.ip) + ":" + str(self.port))
-            
+           
+    def keepAlive(self):
+        self.sendRequest("KEEPALIVE") 
+        
     def closeConnection(self):
         self.nodeConnection.disconnectFromHost()
         self.nodeConnection.waitForDisconnected()
@@ -93,6 +102,7 @@ class TallyNode(QObject):
         
 class TallyClient(TallyNode):
     
+    id = "DEFAULT_CLIENT"
     c_type = "camera"
     source = None
     status = "OFF"
@@ -119,6 +129,7 @@ class TallyClient(TallyNode):
             
     def setTally(self, status):
         request = "SET_TALLY:" + status
+        self.status = status
         self.sendRequest(request)
     
     def updateClientList(self, clientList):
@@ -162,6 +173,7 @@ class TallyServer(TallyNode):
     # orders the server to set a specific video src to a certain status(client orders)
     def setVideoSrcToStatus(self, clientId, status="LIVE"):
         request = "SET_SOURCE:" + clientId + ":" + status
+        qDebug("REQUEST READY FOR SENDING:" + request)
         self.sendRequest(request)
     
     # order the server to set a specific tally client to a certain status(videoMixer orders)

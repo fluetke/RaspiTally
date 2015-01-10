@@ -42,26 +42,40 @@ class ConnectionHandlerThread(QThread):
         '''
         qDebug("CONNECTION_HANDLER:: NEW CONNECTION")
         timeout = 4000
+#         inpStream = QDataStream(self.networkSocket)
+#         inpStream.setVersion(QDataStream.Qt_4_0)
         # receive data and pack into data_received for further processing
         while not self.quit:
-#             
+#
+            qDebug("WAITING TO RECEIVE DATA")
             # wait for the first 2 bytes to arrive
             while self.networkSocket.bytesAvailable() < 2:
-                if not self.networkSocket.waitForReadyRead(timeout):
+                qDebug("WAITING FOR READY READ")
+                if not self.networkSocket.waitForReadyRead(): #TODO: implement keep alive method
                     self.error.emit(self.networkSocket.error(), self.networkSocket.errorString())
-                    return 
-                
+                    self.networkMutex.lock()
+                    self.quit = True
+                    self.networkMutex.unlock()
+                    break
+                    #return 
+#                 
             inpStream = QDataStream(self.networkSocket) #create inputStream from socketConnection
             inpStream.setVersion(QDataStream.Qt_4_0)
             blockSize = inpStream.readUInt16() # read first two bytes where message size is stored
-            
-            while self.networkSocket.bytesAvailable() < blockSize:
+            qDebug("BLOCKSIZE IS: " + str(blockSize))
+            while self.networkSocket.bytesAvailable() < blockSize and not self.quit:
+                qDebug("WAITING FOR DATA TO ARRIVE")
                 if not self.networkSocket.waitForReadyRead(timeout):
                     self.error.emit(self.networkSocket.error(), self.networkSocket.errorString())
+                    self.networkSocket.close()
                     return
                 
+            qDebug("LOCKING THE SOCKET FOR TRANSFER")
             self.networkMutex.lock()
             data = inpStream.readString()
+            qDebug("READING DATA")
+            self.networkMutex.unlock()
+            qDebug("UNLOCKING THE SOCKET")
             
             try:
                 data = str(data, "UTF-8")
@@ -74,6 +88,7 @@ class ConnectionHandlerThread(QThread):
             qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
             self.dataReceived.emit(data) #emit converted data 
         
+        qDebug("DISCONNECTING")
         self.networkSocket.disconnectFromHost()
         self.networkSocket.waitForDisconnected()
         qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL FINISHED")

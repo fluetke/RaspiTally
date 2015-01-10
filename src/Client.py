@@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
 from ConnectionHandler import ConnectionHandlerThread
 from os.path import sys
-from PyQt4.QtCore import qDebug, pyqtSignal, QSettings
+from PyQt4.QtCore import qDebug, pyqtSignal, QSettings, QTimer
 from RequestHandler import RequestHandler
 from nodes import TallyServer
 from src.gui.MainWindow import MainWindow
@@ -37,6 +37,19 @@ def storeSourceList(source):
 
 def startConfigMode():
     sigAssignWindow.show()
+    if not serverInterface.isEmpty() and not serverInterface.isList():
+        tempInterface = serverInterface.load()
+        tempInterface.configurationReady()
+
+def endConfigMode(newId):
+    settings.beginGroup("client")
+    settings.setValue("id", str(newId))
+    settings.endGroup()
+    settings.sync()
+    window.setWindowTitle("TV Tally: " + newId)
+
+def confirmSelectedSource():
+    serverInterface.load().configurationDone()
     
 def storeStreamUrl(url):
     qDebug("CLIENT::Storing streamurl in assign window")
@@ -47,13 +60,14 @@ def connectSignals():
     rqstHandler.configStart.connect(startConfigMode)
     rqstHandler.newSourcelist.connect(storeSourceList)
     rqstHandler.streamAnswer.connect(storeStreamUrl)
-#     rqstHandler.configEnd.connect()
+    rqstHandler.configEnd.connect(endConfigMode)
     rqstHandler.tallyRequest.connect(setTallyState)
 #     rqstHandler.streamAnswer.connect()
-#     rqstHandler.newClientlist.connect()
+    rqstHandler.newClientlist.connect(window.updateSourceList)
 #     rqstHandler.newShotlist.connect()
     configWindow.okBtn.clicked.connect(createServerInterface)
     sigAssignWindow.videoSourceSelected.connect(setConfSrcLive)
+    sigAssignWindow.okBtn.clicked.connect(confirmSelectedSource)
     pass
 
 def setTallyState(self, state):
@@ -71,6 +85,7 @@ def createServerInterface():
     srv_ip = settings.value("server/ip")
     port = settings.value("server/port", type=int)
     tempSrvInterface = TallyServer(srv_ip, port)
+    tempSrvInterface.openConnection()
     tempSrvInterface.registerClient("", settings.value("client/type"), (ip,CLIENT_PORT))
     serverInterface.store(tempSrvInterface)
     
@@ -87,7 +102,7 @@ if __name__ == '__main__':
     
     connectSignals()
     window.show()
-    
+
     #check if serverWasFound anywhere, if not show config
     if serverInterface.isEmpty:
         configWindow.show()

@@ -44,7 +44,9 @@ def printData(data):
     qDebug(data)
     
 def setToState(source, state):
-    pass
+    qDebug("SWITCHING " + str(source) + " TO STATE " + str(state))
+    return True
+    
   
 def getSourcesFromWirecast():
     testList = list() #list of sources for testing, no guarantee they will look like this coming from wirecast

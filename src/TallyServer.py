@@ -25,10 +25,6 @@ sourceList = Container()
 
 streamUrl = Container()
 
-#signals for the tally server
-clientUpdateReady = pyqtSignal()
-shotUpdateReady = pyqtSignal()
-
 #vars for configuration
 configMode = Container()
 configWaitinglist = list()
@@ -106,6 +102,7 @@ def registerClient(clientId, clientType, clientAddress):
         qDebug("STORING NEW CLIENT WITH ID " + str(newClient.id)) 
         #poke client to start configuration, but only if its a camera, as the director has no video input
         #if configClient.isEmpty(): #if configuration is not already preparing a client
+        newClient.openConnection()
         newClient.setStreamUrl(streamUrl.load())
         newClient.storeSourceList(generateConfigSourceList())
         newClient.startConfigurationMode()
@@ -125,10 +122,14 @@ def generateConfigSourceList():
 
 # updates clients in list and sends the new clientList    
 def updateClients():
+    tempClientList = list()
     for client in clientList:
-        client.updateClientList(clientList)
+        tempClientList.append((client.id,client.status))
+    for client in clientList:
+        client.updateClientList(tempClientList)
                                 
-def setConfigMode(empty):
+def setConfigMode():
+    qDebug("Setting config mode to True")
     configMode.store(True) # set configmode, so no tally request from other clients are accepted)
     
     
@@ -136,9 +137,9 @@ def unsetConfigMode(clientId):
     if not configClient.isEmpty():
         tempConfCli = configClient.load()
         tempConfCli.endConfigurationMode(tempConfCli.id)
-        tempConfCli.updateShotlist(shotList)
+        tempConfCli.updateShotList(shotList)
         clientList.append(tempConfCli)
-        clientUpdateReady.emit() # finally notify the others that new client update can be send now
+        updateClients() # finally notify the others that new client update can be send now #FIXME: replace with proper signal
     if len(configWaitinglist) > 0:
         configClient.store(configWaitinglist.pop())
         configClient.load().startConfigurationMode(streamUrl, generateConfigSourceList())
@@ -148,14 +149,19 @@ def unsetConfigMode(clientId):
 # instruct videoswitcher to switch videosource to status
 def switchSource(clientId, status):
     assert videoSwitcher.isEmpty() == False # the videoswitcher should not be empty at this point
-    qDebug("CONFIG MODE IS " + configMode.load())
+    assert configMode.isEmpty() == False # config mode should contain something right now
+    qDebug("CONFIG MODE IS " + str(configMode.load()))
+    tempSwitcher = videoSwitcher.load()
     if configMode.load():
-        videoSwitcher.setSourceToStatus(clientId, status)
+        # if config mode is true, it is usually safe to assume that clientid contains a direct source id
+        tempSwitcher.setSourceToStatus(clientId, status)
+        configClient.load().source = clientId # update source of config client each time a source is changed during config
         return
     
+    #iterate through list of clients to find the one submitted and hand its source id to the videoswitcher
     for client in clientList:
         if client.id == clientId:
-            videoSwitcher.setSourceToStatus(client.source, status)
+            tempSwitcher.setSourceToStatus(client.source, status)
             return
             
     qDebug("CLIENT NOT FOUND")
@@ -164,11 +170,13 @@ def switchSource(clientId, status):
 # instruct client to switch to status and turn tally light on if existent
 def switchTally(sourceId, status):
     if configMode.load():
-        return
+        return # ignore request in config mode as the source is not assigned to a client yet
     for client in clientList:
         if client.source == sourceId:
             client.setTally(status)
+            qDebug("CLIENT FOUND - PREPARING TALLY REQUEST")
             return
+        
     qDebug("SOURCE NOT FOUND")
     return
 
@@ -210,6 +218,7 @@ def printData(data):
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    configMode.store(False) # initially set configmode to false
     
     # packet containers of data, as workaround for pythons bitchyness with globals
     #store the director node info for the old school tally variant 

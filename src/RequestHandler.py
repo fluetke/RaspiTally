@@ -39,9 +39,11 @@ class RequestHandler(QObject):
         super(RequestHandler, self).__init__(parent)
         
     def processData(self, data):
-        
-        data_ordered = data.split(':')
-        
+        if data != None:
+            data_ordered = data.split(':')
+        else: 
+            qDebug("NO DATA RECEIVED, EXITING")
+            return
         
         #Server methods here
         #register a client
