@@ -17,6 +17,6 @@ class VideoWidget(QWidget):
         Constructor
         '''
         super(VideoWidget, self).__init__(parent)
-        self.setFixedSize(400,300)
+        self.setFixedSize(320,200)
         self.setAutoFillBackground(True)
         self.setStyleSheet("background-color:black;")

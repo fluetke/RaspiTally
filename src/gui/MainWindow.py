@@ -26,6 +26,7 @@ class MainWindow(QWidget):
         self.quitBtn = QPushButton("&Quit")
         self.quitBtn.setFixedSize(64,64)
         self.quitBtn.clicked.connect(QApplication.quit)
+        
         # interaction area
         self.shotlist = QListWidget()
         self.emergencyBtn = QPushButton("&EMERGENCY")
@@ -43,23 +44,42 @@ class MainWindow(QWidget):
         statusLayout.addWidget(self.tallyState)
         statusLayout.addStretch(128)
         statusLayout.addWidget(self.quitBtn)
+        
         previewLayout.addWidget(self.liveMonitor)
         previewLayout.addWidget(self.sourceList)
+        
+        actionBarLayout.addStretch()
         actionBarLayout.addWidget(self.emergencyBtn)
         actionBarLayout.addWidget(self.goLiveBtn)
         actionBarLayout.addWidget(self.nextBtn)
-        
+        actionBarLayout.addStretch()
+                
         mainLayout.addLayout(statusLayout)
         mainLayout.addLayout(previewLayout)
-        mainLayout.addWidget(self.shotlist)
+        
+        self.shotitem = ShotlistItem("medium")
+        self.shotitem2 = ShotlistItem("wide")
+        self.shotitem3 = ShotlistItem("overTheShoulder")
+        self.shotitem4 = ShotlistItem("Closeup")
+        self.sourceList.setFixedHeight(200)
+        shotListLayout = QHBoxLayout()
+        shotListLayout.addWidget(self.shotitem)
+        shotListLayout.addWidget(self.shotitem2)
+        shotListLayout.addWidget(self.shotitem3)
+        shotListLayout.addWidget(self.shotitem4)
+        mainLayout.addLayout(shotListLayout)
         mainLayout.addLayout(actionBarLayout)
         
         #set mainlayout for window
         self.setLayout(mainLayout)
         
+        #setup widgets
+        self.emergencyBtn.setFixedHeight(64)
+        self.nextBtn.setFixedHeight(64)
+        self.goLiveBtn.setFixedHeight(64)
         # fill lists for preview
-        self.shotitem = ShotlistItem()
-        self.shotlist.addItem("TEST")
+        
+        #self.shotlist.addItem(ShotlistItem(self.shotlist))
         #shotlist.addItem()
         
         # setup Window details
