@@ -14,7 +14,9 @@ from src.gui.MainWindow import MainWindow
 from src.gui.SettingsDialog import SettingsDialog
 import socket
 from src.gui.SignalAssignDialog import SignalAssignDialog
-from src.storage import Container
+from storage import Container
+from time import sleep
+from src.TallyHandler import TallyHandler
 
 
 threadList = list()
@@ -64,7 +66,7 @@ def connectSignals():
     rqstHandler.tallyRequest.connect(setTallyState)
 #     rqstHandler.streamAnswer.connect()
     rqstHandler.newClientlist.connect(window.updateSourceList)
-#     rqstHandler.newShotlist.connect()
+#     rqstHandler.newShotlist.connect() #TODO: implement handling of shotlist updates
     configWindow.okBtn.clicked.connect(createServerInterface)
     sigAssignWindow.videoSourceSelected.connect(setConfSrcLive)
     sigAssignWindow.okBtn.clicked.connect(confirmSelectedSource)
@@ -72,7 +74,12 @@ def connectSignals():
 
 def setTallyState(self, state):
     qDebug("CLIENT::CHANGING TALLY STATE")
-    pass
+    if window != None:
+        window.tallyState.changeStatus(state)
+    else:
+        qDebug("MainWindow not initialized ERROR")
+    if tallyLight != None:
+        tallyLight.setState(state)
 
 def setConfSrcLive(src):
     if not serverInterface.isEmpty():
@@ -95,6 +102,7 @@ def printData(data):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     settings = QSettings("TallyClient.ini", QSettings.IniFormat)
+    tallyLight = TallyHandler()
     configWindow = SettingsDialog(settings)
     sigAssignWindow = SignalAssignDialog()
     window = MainWindow()
@@ -107,10 +115,9 @@ if __name__ == '__main__':
     if serverInterface.isEmpty:
         configWindow.show()
     
-    
     #start tcp server and listen for requests
-    server = QTcpServer()
-    server.newConnection.connect(initHandling)
-    server.listen(QHostAddress.Any, CLIENT_PORT)
+    #server = QTcpServer()
+    #server.newConnection.connect(initHandling)
+    #server.listen(QHostAddress.Any, CLIENT_PORT)
     
     app.exec()

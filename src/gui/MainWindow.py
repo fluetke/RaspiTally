@@ -4,9 +4,10 @@ Created on 08.01.2015
 @author: Florian
 '''
 from PyQt4.QtGui import QWidget, QVBoxLayout, QHBoxLayout, QPushButton,\
-    QListWidget
+    QListWidget, QApplication
 from src.gui.StatusBarWidget import StatusBarWidget
 from src.gui.ShotlistItem import ShotlistItem
+from src.gui.VideoWidget import VideoWidget
 
 class MainWindow(QWidget):
     '''
@@ -19,10 +20,12 @@ class MainWindow(QWidget):
         ##setup all Widgets
         # display area
         self.tallyState = StatusBarWidget()
-        self.liveMonitor = QWidget()
+        self.tallyState.setFixedSize(384,64)
+        self.liveMonitor = VideoWidget()
         self.sourceList = QListWidget()
         self.quitBtn = QPushButton("&Quit")
-        
+        self.quitBtn.setFixedSize(64,64)
+        self.quitBtn.clicked.connect(QApplication.quit)
         # interaction area
         self.shotlist = QListWidget()
         self.emergencyBtn = QPushButton("&EMERGENCY")
@@ -36,7 +39,9 @@ class MainWindow(QWidget):
         actionBarLayout = QHBoxLayout()
         
         # fill layouts 
+        statusLayout.addStretch(192)
         statusLayout.addWidget(self.tallyState)
+        statusLayout.addStretch(128)
         statusLayout.addWidget(self.quitBtn)
         previewLayout.addWidget(self.liveMonitor)
         previewLayout.addWidget(self.sourceList)
@@ -64,6 +69,7 @@ class MainWindow(QWidget):
     def updateSourceList(self, sources):
         for source in sources:
             self.sourceList.addItem(source[0] + ":" + source[1])
+        
              
     # def fullscreenToggle(self):
         # if self.isFullScreen():
