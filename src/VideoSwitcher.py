@@ -12,11 +12,40 @@ from RequestHandler import RequestHandler
 from nodes import TallyServer
 from wsgiref.simple_server import ServerHandler
 from PyQt4.Qt import QByteArray
+from src.applescript import asrun, asquote
+
+
 
 threadList = list()
 sourceList = list()
 serverInterface = None
 streamUrl = "rtsp://media-us-2.soundreach.net/slcn_sports.sdp"
+sourceListScript = '''property currentDoc : "None"
+property sources : list
+property tempSources : list
+property tempSource : list
+
+tell application "Wirecast5"
+    set sources to {}
+    set currentDoc to last document
+    set currentLayer to the layer named "Master Layer 1" of currentDoc
+    set tempSources to every shot of currentLayer
+    repeat with source in tempSources
+        set tempSource to {}
+        copy id of source as text to the end of tempSource
+        copy name of source as text to the end of tempSource
+        if live of source then
+            copy "live" to the end of tempSource
+        else if preview of source then
+            copy "preview" to the end of tempSource
+        else
+            copy "off" to the end of tempSource
+        end if
+        copy tempSource to the end of sources
+    end repeat
+    return sources
+end tell
+'''
 
 def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
@@ -39,6 +68,7 @@ def returnStreamUrl():
     
 def returnSourceList():
     serverInterface.updateSourceList(sourceList)
+    
 
 def printData(data):
     qDebug(data)
@@ -49,14 +79,9 @@ def setToState(source, state):
     
   
 def getSourcesFromWirecast():
-    testList = list() #list of sources for testing, no guarantee they will look like this coming from wirecast
-    testList.append(("SOURCE1", "OFF"))
-    testList.append(("SOURCE2", "LIVE"))
-    testList.append(("SOURCE3", "PREVIEW"))
-    
-    for source in testList:
-        sourceList.append((source[0], source[1]))
-    return
+    appleScriptReturn = asrun(asquote())
+    print(str(appleScriptReturn))
+    return str(appleScriptReturn)
 
 def setToStateInWirecast(source, state):
     return True
@@ -71,7 +96,6 @@ if __name__ == '__main__':
     serverInterface.openConnection()
     serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
     
-
     server = QTcpServer()
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, 3117)
