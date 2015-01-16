@@ -5,9 +5,9 @@ Created on 08.01.2015
 '''
 from PyQt4.QtGui import QWidget, QVBoxLayout, QHBoxLayout, QPushButton,\
     QListWidget, QApplication
-from src.gui.StatusBarWidget import StatusBarWidget
-from src.gui.ShotlistItem import ShotlistItem
-from src.gui.VideoWidget import VideoWidget
+from gui.StatusBarWidget import StatusBarWidget
+from gui.ShotlistItem import ShotlistItem
+from gui.VideoWidget import VideoWidget
 
 class MainWindow(QWidget):
     '''

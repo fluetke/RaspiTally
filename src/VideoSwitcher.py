@@ -10,7 +10,6 @@ from os.path import sys
 from PyQt4.QtCore import qDebug
 from RequestHandler import RequestHandler
 from nodes import TallyServer
-from wsgiref.simple_server import ServerHandler
 from PyQt4.Qt import QByteArray
 from src.applescript import asrun, asquote
 

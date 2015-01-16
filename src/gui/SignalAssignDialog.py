@@ -6,7 +6,7 @@ Created on 09.01.2015
 from PyQt4.Qt import QDialog, qDebug
 from PyQt4.QtGui import QLabel, QPushButton, QWidget, QVBoxLayout, QHBoxLayout,\
     QButtonGroup
-from src.gui.VideoWidget import VideoWidget
+from gui.VideoWidget import VideoWidget
 from PyQt4.QtCore import pyqtSignal
 
 class SignalAssignDialog(QDialog):

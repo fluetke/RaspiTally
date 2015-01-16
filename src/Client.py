@@ -10,13 +10,13 @@ from os.path import sys
 from PyQt4.QtCore import qDebug, pyqtSignal, QSettings, QTimer
 from RequestHandler import RequestHandler
 from nodes import TallyServer
-from src.gui.MainWindow import MainWindow
-from src.gui.SettingsDialog import SettingsDialog
+from gui.MainWindow import MainWindow
+from gui.SettingsDialog import SettingsDialog
 import socket
-from src.gui.SignalAssignDialog import SignalAssignDialog
+from gui.SignalAssignDialog import SignalAssignDialog
 from storage import Container
 from time import sleep
-from src.TallyHandler import TallyHandler
+from TallyHandler import TallyHandler
 
 
 threadList = list()
