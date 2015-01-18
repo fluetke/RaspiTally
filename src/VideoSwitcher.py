@@ -51,7 +51,7 @@ def printData(data):
 def setToState(source, state):
     qDebug("SWITCHING " + str(source) + " TO STATE " + str(state))
     try:
-        setStatusScript.call("setShotStatus", source, state)
+        setStatusScript.call("setStatus", source, state)
         
     except ScriptError:
         qDebug("An error occured: ScriptError")
