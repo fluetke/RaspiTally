@@ -11,7 +11,7 @@ from PyQt4.QtCore import qDebug
 from RequestHandler import RequestHandler
 from nodes import TallyServer
 from PyQt4.Qt import QByteArray
-from src.applescript import asrun, asquote
+from applescript import AppleScript
 
 
 
@@ -19,32 +19,8 @@ threadList = list()
 sourceList = list()
 serverInterface = None
 streamUrl = "rtsp://media-us-2.soundreach.net/slcn_sports.sdp"
-sourceListScript = '''property currentDoc : "None"
-property sources : list
-property tempSources : list
-property tempSource : list
-
-tell application "Wirecast5"
-    set sources to {}
-    set currentDoc to last document
-    set currentLayer to the layer named "Master Layer 1" of currentDoc
-    set tempSources to every shot of currentLayer
-    repeat with source in tempSources
-        set tempSource to {}
-        copy id of source as text to the end of tempSource
-        copy name of source as text to the end of tempSource
-        if live of source then
-            copy "live" to the end of tempSource
-        else if preview of source then
-            copy "preview" to the end of tempSource
-        else
-            copy "off" to the end of tempSource
-        end if
-        copy tempSource to the end of sources
-    end repeat
-    return sources
-end tell
-'''
+sourceListScript = AppleScript("appleScript/getListOfSources.scpt")
+setStatusScript = AppleScript("appScript/setShotStatus.scpt")
 
 def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
@@ -66,24 +42,29 @@ def returnStreamUrl():
     serverInterface.setStreamUrl(streamUrl) #TODO: implement wirecast streamurl grabber here
     
 def returnSourceList():
+    sourceList = getSourcesFromWirecast()
     serverInterface.updateSourceList(sourceList)
-    
 
 def printData(data):
     qDebug(data)
     
 def setToState(source, state):
     qDebug("SWITCHING " + str(source) + " TO STATE " + str(state))
+    try:
+        setStatusScript.call("setShotStatus", source, state)
+        
+    except ScriptError:
+        qDebug("An error occured: ScriptError")
+        return False
     return True
     
-  
 def getSourcesFromWirecast():
-    appleScriptReturn = asrun(asquote())
-    print(str(appleScriptReturn))
-    return str(appleScriptReturn)
-
-def setToStateInWirecast(source, state):
-    return True
+    try:
+        sources = sourceListScript.run()
+        return sources
+    except ScriptError:
+        qDebug("Grabbing SourcesList returned an error: ScriptError")
+        return False
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
