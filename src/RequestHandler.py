@@ -27,10 +27,11 @@ class RequestHandler(QObject):
     newSourcelist = pyqtSignal(list)
     sourceListRequest = pyqtSignal()
     newShot = pyqtSignal(object,int)
-    delShot = pyqtSignal(object)
-    movShot = pyqtSignal(object, object)
+    delShot = pyqtSignal(int)
+    movShot = pyqtSignal(int, int)
     streamRequest = pyqtSignal(object)
     streamAnswer = pyqtSignal(object)
+    nextShotRequest = pyqtSignal()
 
     def __init__(self, parent=None):
         '''
@@ -42,7 +43,7 @@ class RequestHandler(QObject):
         if data != None:
             data_ordered = data.split(':')
         else: 
-            qDebug("NO DATA RECEIVED, EXITING")
+            #qDebug("NO DATA RECEIVED, EXITING")
             return
         
         #Server methods here
@@ -171,7 +172,7 @@ class RequestHandler(QObject):
                 qDebug("MALFORMED REQUEST - LENGTH")
                 return
             
-            shotId = data_ordered[1]
+            shotId = int(data_ordered[1])
             
             self.delShot.emit(shotId)
             
@@ -180,8 +181,8 @@ class RequestHandler(QObject):
                 qDebug("MALFORMED REQUEST - LENGTH")
                 return
             
-            shotId = data_ordered[1]
-            newShotPos = data_ordered[2]
+            shotId = int(data_ordered[1])
+            newShotPos = int(data_ordered[2])
             
             self.movShot.emit(shotId, newShotPos)
     
@@ -215,6 +216,9 @@ class RequestHandler(QObject):
                 streamUrl=data[len(data_ordered[0])+1:]
 #           
             self.streamAnswer.emit(streamUrl)
+            
+        elif data_ordered[0] == "NEXT_SHOT":
+            self.nextShotRequest.emit()
             
         else:
             qDebug("UNKNOWN REQUEST: " + str(data_ordered))

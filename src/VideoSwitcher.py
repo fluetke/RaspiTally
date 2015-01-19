@@ -12,6 +12,7 @@ from RequestHandler import RequestHandler
 from nodes import TallyServer
 from PyQt4.Qt import QByteArray
 from applescript import AppleScript
+import socket
 
 
 
@@ -72,7 +73,7 @@ if __name__ == '__main__':
     connectSignals()
     getSourcesFromWirecast()
     qDebug("VIDEOSWITCHER::HELLO - REGISTERING WITH SERVER")
-    serverInterface = TallyServer("127.0.0.1", 3771 )
+    serverInterface = TallyServer(socket.gethostbyname(socket.gethostname()), 3771 )
     serverInterface.openConnection()
     serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
     

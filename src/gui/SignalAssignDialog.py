@@ -68,7 +68,7 @@ class SignalAssignDialog(QDialog):
     # connect the signals to their respective slots
     def connectSignals(self):
         self.sourceBtnGrp.buttonClicked.connect(self.resolveIdToSource)
-        self.okBtn.clicked.connect(self.close)
+        self.okBtn.clicked.connect(self.close) #TODO: link this button to server-action
         self.cancelBtn.clicked.connect(self.close)
         pass
         

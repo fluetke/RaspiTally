@@ -4,8 +4,8 @@ Created on 11.01.2015
 @author: Florian
 '''
 from PyQt4.Qt import QDialog
-from PyQt4.QtGui import QPushButton, QPixmap, QVBoxLayout, QHBoxLayout, QLabel
-from PyQt4.uic.uiparser import ButtonGroup
+from PyQt4.QtGui import QPushButton, QPixmap, QVBoxLayout, QHBoxLayout, QLabel,\
+    QButtonGroup
 from PyQt4.QtCore import pyqtSignal
 
 class AddShotDialog(QDialog):
@@ -14,90 +14,103 @@ class AddShotDialog(QDialog):
     '''
 
     newShot = pyqtSignal(list)
+    shotPos=0
     
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         '''
         Constructor
         '''
         super(AddShotDialog, self).__init__(parent)
-        shotTypes = list("establisher", "master", "wide", "two", "overtheshoulder", "medium", "closeup", "xtrm_closeup")
-        okBtn = QPushButton()
-        cancelBtn = QPushButton()
+        self.shotTypes = ["establisher", "master", "wide", "two", "overtheshoulder", "medium", "closeup", "xtrm_closeup"]
+        self.okBtn = QPushButton()
+        self.cancelBtn = QPushButton()
         
-        shotSelector = ButtonGroup()
-        establisherBtn = QPushButton(QPixmap("img/establisher.png"))
-        masterBtn = QPushButton(QPixmap("img/master.png"))
-        wideBtn = QPushButton(QPixmap("img/wide.png"))
-        twoBtn = QPushButton(QPixmap("img/two.png"))
-        otsBtn = QPushButton(QPixmap("img/ots.png"))
-        mediumBtn = QPushButton(QPixmap("img/medium.png"))
-        closeUpBtn = QPushButton(QPixmap("img/closeup.png"))
-        xtrmCloseUpBtn = QPushButton(QPixmap("img/xtrm_closeup.png"))
-        shotSelector.add(establisherBtn)
-        shotSelector.add(masterBtn)
-        shotSelector.add(wideBtn)
-        shotSelector.add(twoBtn)
-        shotSelector.add(otsBtn)
-        shotSelector.add(mediumBtn)
-        shotSelector.add(closeUpBtn)
-        shotSelector.add(xtrmCloseUpBtn)
-        page1HeadingLbl = QLabel("Select Shot-Type")
-        page2HeadingLbl = QLabel("Select Camera")
-        page1CancelBtn = QPushButton("Cancel")
-        page1NextBtn = QPushButton("Next")
-        page2BackBtn = QPushButton("Back")
-        page2OkBtn = QPushButton("OK")
-        shotSelector.setExclusive(True)
-        page1SrcBtnFirstRow = QHBoxLayout()
-        page1SrcBtnSecondRow = QHBoxLayout()
-        page1SrcBtnFirstRow.addWidget(establisherBtn)
-        page1SrcBtnFirstRow.addWidget(masterBtn)
-        page1SrcBtnFirstRow.addWidget(wideBtn)
-        page1SrcBtnFirstRow.addWidget(twoBtn)
-        page1SrcBtnSecondRow.addWidget(otsBtn)
-        page1SrcBtnSecondRow.addWidget(mediumBtn)
-        page1SrcBtnSecondRow.addWidget(closeUpBtn)
-        page1SrcBtnSecondRow.addWidget(xtrmCloseUpBtn)
-        page1BtnLayout = QHBoxLayout()
-        page1BtnLayout.addWidget(page1CancelBtn)
-        page1BtnLayout.addStretch()
-        page1BtnLayout.addWidget(page1NextBtn)
-        page2BtnLayout = QHBoxLayout()
-        page2BtnLayout.addWidget(page2BackBtn)
-        page2BtnLayout.addStretch()
-        page2BtnLayout.addWidget(page2OkBtn)
-        camSelector = ButtonGroup()
-        camSelector.setExclusive(True)
-        camBtnLayout = QHBoxLayout()
-        page1mainLayout = QVBoxLayout()
-        page2mainLayout = QVBoxLayout()
+        self.shotSelector = QButtonGroup()
+        self.establisherBtn = QPushButton("Esta")
+        self.estaPicto = QPixmap("img/Closeup.png")
+        #establisherBtn.
+        self.masterBtn = QPushButton("Master")
+        self.masterPicto = QPixmap("img/medium.png")
+        self.wideBtn = QPushButton("Wide")
         
-        page1mainLayout.addWidget(page1HeadingLbl)
-        page1mainLayout.addSpacing(10)
-        page1mainLayout.addLayout(page1SrcBtnFirstRow)
-        page1mainLayout.addLayout(page1SrcBtnSecondRow)
-        page1mainLayout.addSpacing(10)
-        page1mainLayout.addLayout(page1BtnLayout)
+        self.twoBtn = QPushButton("Two")
+        self.otsBtn = QPushButton("OTS")
+        self.mediumBtn = QPushButton("Medium")
+        self.closeUpBtn = QPushButton("Close")
+        self.xtrmCloseUpBtn = QPushButton("XClose")
+        self.shotSelector.addButton(self.establisherBtn)
+        self.shotSelector.addButton(self.masterBtn)
+        self.shotSelector.addButton(self.wideBtn)
+        self.shotSelector.addButton(self.twoBtn)
+        self.shotSelector.addButton(self.otsBtn)
+        self.shotSelector.addButton(self.mediumBtn)
+        self.shotSelector.addButton(self.closeUpBtn)
+        self.shotSelector.addButton(self.xtrmCloseUpBtn)
+        self.page1HeadingLbl = QLabel("Select Shot-Type")
+        self.page2HeadingLbl = QLabel("Select Camera")
+        self.page1CancelBtn = QPushButton("Cancel")
+        self.page1NextBtn = QPushButton("Next")
+        self.page2BackBtn = QPushButton("Back")
+        self.page2OkBtn = QPushButton("OK")
+        self.shotSelector.setExclusive(True)
+        self.page1SrcBtnFirstRow = QHBoxLayout()
+        self.page1SrcBtnSecondRow = QHBoxLayout()
+        self.page1SrcBtnFirstRow.addWidget(self.establisherBtn)
+        self.page1SrcBtnFirstRow.addWidget(self.masterBtn)
+        self.page1SrcBtnFirstRow.addWidget(self.wideBtn)
+        self.page1SrcBtnFirstRow.addWidget(self.twoBtn)
+        self.page1SrcBtnSecondRow.addWidget(self.otsBtn)
+        self.page1SrcBtnSecondRow.addWidget(self.mediumBtn)
+        self.page1SrcBtnSecondRow.addWidget(self.closeUpBtn)
+        self.page1SrcBtnSecondRow.addWidget(self.xtrmCloseUpBtn)
+        self.page1BtnLayout = QHBoxLayout()
+        self.page1BtnLayout.addWidget(self.page1CancelBtn)
+        self.page1BtnLayout.addStretch()
+        self.page1BtnLayout.addWidget(self.page1NextBtn)
+        self.page2BtnLayout = QHBoxLayout()
+        self.page2BtnLayout.addWidget(self.page2BackBtn)
+        self.page2BtnLayout.addStretch()
+        self.page2BtnLayout.addWidget(self.page2OkBtn)
+        self.camSelector = QButtonGroup()
+        self.camSelector.setExclusive(True)
+        self.camBtnLayout = QHBoxLayout()
+        self.page1mainLayout = QVBoxLayout()
+        self.page2mainLayout = QVBoxLayout()
         
-        page2mainLayout.addWidget(page2HeadingLbl)
-        page2mainLayout.addSpacing(10)
-        page2mainLayout.addLayout(camBtnLayout)
-        page2mainLayout.addStretch()
-        page2mainLayout.addLayout(page2BtnLayout)
+        self.page1mainLayout.addWidget(self.page1HeadingLbl)
+        self.page1mainLayout.addSpacing(10)
+        self.page1mainLayout.addLayout(self.page1SrcBtnFirstRow)
+        self.page1mainLayout.addLayout(self.page1SrcBtnSecondRow)
+        self.page1mainLayout.addSpacing(10)
+        self.page1mainLayout.addLayout(self.page1BtnLayout)
         
-        self.setLayout(page1mainLayout)
+        self.page2mainLayout.addWidget(self.page2HeadingLbl)
+        self.page2mainLayout.addSpacing(10)
+        self.page2mainLayout.addLayout(self.camBtnLayout)
+        self.page2mainLayout.addStretch()
+        self.page2mainLayout.addLayout(self.page2BtnLayout)
         
-    def connectSignals(self):
-       pass #connect signals here
+        self.setLayout(self.page1mainLayout)
+        
+        #connect signals and slots
+        self.page1NextBtn.clicked.connect(self.nextPage)
+        self.page2BackBtn.clicked.connect(self.previousPage)
+        self.page1CancelBtn.clicked.connect(self.close)
+    
+    def storePos(self, pos):
+        self.shotPos = pos
     
     def setupCamselector(self, camlist):
         pass # fill camselector here
     
     def nextPage(self):
-        pass #add handling for next page here
+        self.setLayout(self.page2mainLayout)
     
     def previousPage(self):
-        pass # add handling for going to previous page here
+        self.setLayout(self.page1mainLayout)
+        
+    def getShotPos(self):
+        return self.shotPos
     
-    def confirmShot(self):
-        pass # emit okbtn clicked signal here for further processing of the shot
+    def getShot(self):
+        pass

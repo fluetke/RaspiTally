@@ -17,6 +17,7 @@ from gui.SignalAssignDialog import SignalAssignDialog
 from storage import Container
 from time import sleep
 from TallyHandler import TallyHandler
+from gui.AddShotDialog import AddShotDialog
 
 
 threadList = list()
@@ -66,11 +67,24 @@ def connectSignals():
     rqstHandler.tallyRequest.connect(setTallyState)
 #     rqstHandler.streamAnswer.connect()
     rqstHandler.newClientlist.connect(window.updateSourceList)
-#     rqstHandler.newShotlist.connect() #TODO: implement handling of shotlist updates
+    rqstHandler.newShotlist.connect(window.populateShotlist) 
     configWindow.okBtn.clicked.connect(createServerInterface)
     sigAssignWindow.videoSourceSelected.connect(setConfSrcLive)
     sigAssignWindow.okBtn.clicked.connect(confirmSelectedSource)
-    pass
+    
+    
+def mvShotDwnInServer(shotPos):
+    serverInterface.load().movShot(shotPos,shotPos+1)
+    
+def mvShotUpInServer(shotPos):
+    serverInterface.load().movShot(shotPos, shotPos-1)
+    
+# def updateShotlist(shotlist):
+#     shotList = shotlist
+#     window.populateShotlist(shotlist)
+
+def addShotInServer(shot,pos):
+    serverInterface.load().addShot(shot[0],shot[1],pos)
 
 def setTallyState(self, state):
     qDebug("CLIENT::CHANGING TALLY STATE")
@@ -91,10 +105,25 @@ def createServerInterface():
     ip = socket.gethostbyname(socket.gethostname())
     srv_ip = settings.value("server/ip")
     port = settings.value("server/port", type=int)
+    qDebug("ServerIP from Config:" + srv_ip)
+    qDebug("ServerPort from config: " + str(port))
     tempSrvInterface = TallyServer(srv_ip, port)
     tempSrvInterface.openConnection()
     tempSrvInterface.registerClient("", settings.value("client/type"), (ip,CLIENT_PORT))
     serverInterface.store(tempSrvInterface)
+    
+    #connect ServerInterface Signals
+    window.addShotAtPos.connect(addShotInServer)
+    window.delShotAtPos.connect(serverInterface.load().delShot)
+    window.movShotDown.connect(mvShotDwnInServer)
+    window.movShotDown.connect(mvShotUpInServer)
+    window.nextBtn.clicked.connect(serverInterface.load().moveToNextShot)
+    window.goLiveBtn.clicked.connect(goLive)
+    
+def goLive():
+    myID = settings.value("client/id", None , str)
+    if myID != None:
+        serverInterface.load().setVideoSrcToStatus(myID, "LIVE")
     
 def printData(data):
     qDebug(data)
@@ -107,7 +136,7 @@ if __name__ == '__main__':
     sigAssignWindow = SignalAssignDialog()
     window = MainWindow()
     rqstHandler = RequestHandler()
-    
+  
     connectSignals()
     window.show()
 
@@ -116,8 +145,8 @@ if __name__ == '__main__':
         configWindow.show()
     
     #start tcp server and listen for requests
-    #server = QTcpServer()
-    #server.newConnection.connect(initHandling)
-    #server.listen(QHostAddress.Any, CLIENT_PORT)
+    server = QTcpServer()
+    server.newConnection.connect(initHandling)
+    server.listen(QHostAddress.Any, CLIENT_PORT)
     
     app.exec()

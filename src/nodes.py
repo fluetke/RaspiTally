@@ -31,33 +31,35 @@ class TallyNode(QObject):
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
-        self.keepAliveTimer.start(10000)
+        self.keepAliveTimer.start(25000)
         
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
-        try:
-            self.nodeConnection.connectToHost(self.ip,self.port)
+        #try:
+        self.nodeConnection.connectToHost(self.ip,self.port)
         
-        except QTcpSocket.HostNotFoundError:
-            qDebug("Remote Host " + str(self.ip) + ":" + str(self.port) + " not found")
-        except QTcpSocket.ConnectionRefusedError:
-            qDebug("Connection refused by Host")
-        except QTcpSocket.NetworkError:
-            qDebug("Connection closed: Network error")
-        except QTcpSocket.RemoteHostClosedError:
-            qDebug("Connection closed by remote Host")
-        except QTcpSocket.SocketAccessError:
-            qDebug("Error could not AccessSocket -> Socket Access Error")
-        except QTcpSocket.SocketAddressNotAvailableError:
-            qDebug("ERROR: Socket Address Not Available")
-        except QTcpSocket.SocketTimeoutError:
-            qDebug("ERROR: Socket Timed out")
-        except QTcpSocket.UnfinishedSocketOperationError:
-            qDebug("Error blocked by unfinished socket operation")
+#         except QTcpSocket.HostNotFoundError:
+#             qDebug("Remote Host " + str(self.ip) + ":" + str(self.port) + " not found")
+#         except QTcpSocket.ConnectionRefusedError:
+#             qDebug("Connection refused by Host")
+#         except QTcpSocket.NetworkError:
+#             qDebug("Connection closed: Network error")
+#         except QTcpSocket.RemoteHostClosedError:
+#             qDebug("Connection closed by remote Host")
+#         except QTcpSocket.SocketAccessError:
+#             qDebug("Error could not AccessSocket -> Socket Access Error")
+#         except QTcpSocket.SocketAddressNotAvailableError:
+#             qDebug("ERROR: Socket Address Not Available")
+#         except QTcpSocket.SocketTimeoutError:
+#             qDebug("ERROR: Socket Timed out")
+#         except QTcpSocket.UnfinishedSocketOperationError:
+#             qDebug("Error blocked by unfinished socket operation")
         
-        if self.nodeConnection.waitForConnected():
+        if self.nodeConnection.waitForConnected(4000):
             qDebug("SUCCESS: Connection Established")
             return True
+        else:
+            qDebug("FAIL: Connection could not be established")
     
     # default request sending method inherited by all classes in node
     def sendRequest(self, request):
@@ -142,7 +144,7 @@ class TallyClient(TallyNode):
         request += json.dumps(shotList)
         self.sendRequest(request)
         
-    def setStreamUrl(self, url):
+    def setStreamUrl(self, url="NOURL"):
         request = "SET_STREAM_URL:" + url
         self.sendRequest(request)
         
@@ -182,15 +184,15 @@ class TallyServer(TallyNode):
         self.sendRequest(request)
     
     def addShot(self, source, image, pos):
-        request = "ADD_SHOT:" +source + ":" + image + ":" + pos
+        request = "ADD_SHOT:" +source + ":" + image + ":" + str(pos)
         self.sendRequest(request)
     
     def delShot(self, pos):
-        request = "DEL_SHOT:" + pos
+        request = "DEL_SHOT:" + str(pos)
         self.sendRequest(request)
     
     def movShot(self, fRom, to):
-        request = "MOVE_SHOT:" + fRom + ":" + to
+        request = "MOVE_SHOT:" + str(fRom) + ":" + str(to)
         self.sendRequest(request)
     
     def getStreamUrl(self, clientId):
@@ -204,6 +206,10 @@ class TallyServer(TallyNode):
     def updateSourceList(self, sourcelist):
         sourceString = json.dumps(sourcelist)
         request = "UPDATE_SOURCELIST:" + sourceString
+        self.sendRequest(request)
+        
+    def moveToNextShot(self):
+        request = "NEXT_SHOT"
         self.sendRequest(request)
     
 class TallySwitcher(TallyNode):

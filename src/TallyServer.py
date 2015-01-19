@@ -51,8 +51,14 @@ def connectSignals():
     rqstHandler.delShot.connect(delShot)
     rqstHandler.streamAnswer.connect(saveStreamUrl)
     rqstHandler.deregClient.connect(deregisterClient)
+    rqstHandler.nextShotRequest.connect(continueWithNext)
     qDebug("MAIN:: DONE CONNECTING SIGNALS AND SLOTS")
 
+def continueWithNext():
+    if not configMode.load():
+        if len(shotList) > 1:
+            switchSource(shotList[1][0], "LIVE")
+    
 #registers a client with the server
 def registerClient(clientId, clientType, clientAddress):
     # take the clientAddress, which should be delivered as qByteArray and turn it into string and int respectively
@@ -115,10 +121,13 @@ def registerClient(clientId, clientType, clientAddress):
                 
 def generateConfigSourceList():
     configSourceList = list()
-    for source in sourceList.load():
-        configSourceList.append(source[0])
+    if not sourceList.isEmpty():
+        for source in sourceList.load():
+            configSourceList.append(source[0])
         
-    return configSourceList
+        return configSourceList
+    else:
+        return ["TEST1","TEST2"] # return dummy list 
 
 # updates clients in list and sends the new clientList    
 def updateClients():
@@ -151,6 +160,7 @@ def switchSource(clientId, status):
     assert videoSwitcher.isEmpty() == False # the videoswitcher should not be empty at this point
     assert configMode.isEmpty() == False # config mode should contain something right now
     qDebug("CONFIG MODE IS " + str(configMode.load()))
+    
     tempSwitcher = videoSwitcher.load()
     if configMode.load():
         # if config mode is true, it is usually safe to assume that clientid contains a direct source id
@@ -162,8 +172,15 @@ def switchSource(clientId, status):
     for client in clientList:
         if client.id == clientId:
             tempSwitcher.setSourceToStatus(client.source, status)
-            return
-            
+            if status == "LIVE":
+                if len(shotList) > 1:
+                    shotList.pop(0) 
+                if shotList[0][0] != clientId: # pruefen ob client id die naechste id in sourcelist ist, wenn ja - pop(0) auf der sourcelist
+                    if shotList[0][1] == "UNDEFINED":
+                        shotList.pop(0) 
+                    shotList.insert(0, (clientId, "UNDEFINED"))
+                if len(shotList) > 1:
+                    switchSource(shotList[1][0], "PREVIEW")        
     qDebug("CLIENT NOT FOUND")
     return
 
@@ -172,26 +189,32 @@ def switchTally(sourceId, status):
     if configMode.load():
         return # ignore request in config mode as the source is not assigned to a client yet
     for client in clientList:
+        if client.status == status and client.source != sourceId:
+            client.setTally("OFF")
+            
         if client.source == sourceId:
             client.setTally(status)
             qDebug("CLIENT FOUND - PREPARING TALLY REQUEST")
-            return
-        
+            
+    updateClients()
     qDebug("SOURCE NOT FOUND")
     return
 
-def updateRemoteShotlists():
+def updateRemoteShotlists(): 
     for client in clientList:
         client.updateShotList(shotList)
         
-def addShot():
-    pass
+def addShot(indx, shot): 
+    shotList.insert(indx, shot)
+    updateRemoteShotlists()
+    
+def delShot(indx):
+    shotList.pop(indx)
+    updateRemoteShotlists()
 
-def delShot():
-    pass
-
-def moveShot():
-    pass 
+def moveShot(posa, posb):
+    shotList.insert(posb, shotList.pop(posa))
+    updateRemoteShotlists()
 
 def getStreamUrl():
     assert videoSwitcher != None
@@ -210,7 +233,7 @@ def storeSourcelist(srcList):
     qDebug("STORING SOURCELIST IN MEMORY - " + str(srcList))
     sourceList.store(srcList) 
     
-def deregisterClient(clientId):
+def deregisterClient(clientId):#TODO: implement
     pass
     
 def printData(data):
@@ -225,6 +248,8 @@ if __name__ == '__main__':
     directorNode = Container()
     videoSwitcher = Container()
     configClient = Container()
+    shotList.append(("BLANK","UNDEFINED"))
+    streamUrl.store("localhost")
         
     rqstHandler = RequestHandler()
 
@@ -232,6 +257,10 @@ if __name__ == '__main__':
 
     server = QTcpServer()
     server.newConnection.connect(initHandling)
-    server.listen(QHostAddress.Any, 3771)
+    if not server.listen(QHostAddress.Any, 3771):
+        qDebug("SERVER FAILED")
+    else: 
+        qDebug("Server listening on port: " + str(server.serverPort()))
+    
     
     app.exec()
