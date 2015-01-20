@@ -3,26 +3,30 @@ Created on 04.01.2015
 
 @author: Florian
 '''
+# system libraries
+import socket
+from os.path import sys
+#framework libraries
+#from PyQt4.Qt import QByteArray
+#from PyQt4.QtCore import qDebug
 from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
+
+# project libraries
 from ConnectionHandler import ConnectionHandlerThread
-from os.path import sys
-from PyQt4.QtCore import qDebug
 from RequestHandler import RequestHandler
 from nodes import TallyServer
-from PyQt4.Qt import QByteArray
-from applescript import AppleScript, ScriptError
-import socket
+from Wirecast import WirecastConnector
 
 
+#Globals
 SERVER_IP = "192.168.178.32"
-threadList = list()
-sourceList = list()
-serverInterface = None
+SERVER_PORT = 3771
+SWITCHER_PORT = 3117
 streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
-sourceListScript = AppleScript("appleScript/getListOfSources.scpt")
-setStatusScript = AppleScript("appleScript/setShotStatus.scpt")
 
+
+# start new thread for each new connection
 def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
@@ -30,55 +34,41 @@ def initHandling():
     connHndl.start()
     threadList.append(connHndl)
     
+# connect signals to slots
 def connectSignals():
-    rqstHandler.stateRequest.connect(setSourceState)
     rqstHandler.streamRequest.connect(returnStreamUrl)
-    rqstHandler.sourceListRequest.connect(returnSourceList)
+    rqstHandler.stateRequest.connect(wirecast.setSource)
+    rqstHandler.sourceListRequest.connect(wirecast.getSources)
+    wirecast.sourcesReady.connect(serverInterface.updateSourceList)
+    wirecast.sourceSet.connect(serverInterface.setTallyToStatus)
 
-def setSourceState(source, state):
-    if setToState(source, state): # TODO: Implement setting sources with wirecast here
-        serverInterface.setTallyToStatus(source,state)
-
+# return streamurl to server 
 def returnStreamUrl():
-    serverInterface.setStreamUrl(streamUrl) #TODO: implement wirecast streamurl grabber here
-    
-def returnSourceList():
-    sourceList = getSourcesFromWirecast()
-    serverInterface.updateSourceList(sourceList)
+    serverInterface.setStreamUrl(streamUrl) 
 
-def printData(data):
-    qDebug(data)
-    
-def setToState(source, state):
-    qDebug("SWITCHING " + str(source) + " TO STATE " + str(state))
-    try:
-        setStatusScript.call("setStatus", source, state)
-        
-    except ScriptError:
-        qDebug("An error occured: ScriptError")
-        return False
-    return True
-    
-def getSourcesFromWirecast():
-    try:
-        sources = sourceListScript.run()
-        return sources
-    except ScriptError:
-        qDebug("Grabbing SourcesList returned an error: ScriptError")
-        return False
-    
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    
+    #init vars for 
     rqstHandler = RequestHandler()
-    connectSignals()
-    getSourcesFromWirecast()
-    qDebug("VIDEOSWITCHER::HELLO - REGISTERING WITH SERVER")
-    serverInterface = TallyServer( SERVER_IP , 3771 )
+    serverInterface = TallyServer( SERVER_IP , SERVER_PORT )
     serverInterface.openConnection()
+    wirecast = WirecastConnector()
+    threadList = list()
+    
+    #connect signals and slots
+    connectSignals()
+    
     serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
     
     server = QTcpServer()
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, 3117)
     
-    app.exec_()
+    #check if server is running and return state
+    if server.isListening():
+        print("Switching Server is listening on: " + socket.gethostbyname(socket.gethostname()) + ":" + str(SWITCHER_PORT))
+        
+    sys.exit(app.exec_())
