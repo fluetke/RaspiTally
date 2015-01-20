@@ -12,10 +12,10 @@ from gui.addShotPageTwoWidget import PageTwoWidget
 
 class AddShotDialog(QDialog):
     '''
-    classdocs
+    This dialog takes care of the selection of shots to be added to the shotlist
     '''
-
-    newShot = pyqtSignal(list)
+    
+    newShotAtPos = pyqtSignal(list,int)
     shotPos=0
     
     def __init__(self, parent=None):
@@ -46,17 +46,24 @@ class AddShotDialog(QDialog):
         self.mainLayout.addLayout(self.buttonLayout)
         
         self.setLayout(self.mainLayout)
-        #self.setDialogTitle("ADD SHOT")
+        self.connectSignals()
         
-    def storePos(self, pos):
+    def connectSignals(self):
+        self.okBtn.clicked.connect(self.onOkClicked)
+        self.cancelBtn.clicked.connect(self.hide)
+        
+    def onOkClicked(self):
+        shot = self.getShot()
+        self.newShotAtPos.emit(shot, self.shotPos)
+        self.hide()
+        
+    def showWithPos(self,pos):
         self.shotPos = pos
-    
+        self.show()
+        
     def setupCamselector(self, camlist):
         self.pageTwo.populateCameras(camlist)
         self.cameras = camlist
-    
-    def getShotPos(self):
-        return self.shotPos
     
     def getShot(self):
         print("SELECTED SHOT TYPE: " + str(self.pageTwo.checkableButtonGroup.checkedId()) )

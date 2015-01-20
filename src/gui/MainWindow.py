@@ -3,23 +3,25 @@ Created on 08.01.2015
 
 @author: Florian
 '''
+# qt framework imports
+from PyQt4.QtCore import pyqtSignal
 from PyQt4.QtGui import QWidget, QVBoxLayout, QHBoxLayout, QPushButton,\
-    QListWidget, QApplication, QGridLayout
+    QListWidget, QApplication
+from PyQt4 import QtCore
+
+# own import
 from gui.StatusBarWidget import StatusBarWidget
 from gui.ShotlistItem import ShotlistItem
 from gui.VideoWidget import VideoWidget
-from PyQt4.QtCore import pyqtSignal
-from PyQt4 import QtCore
 from gui.AddShotDialog import AddShotDialog
-from PyQt4.Qt import qDebug
-
 
 class MainWindow(QWidget):
     '''
     classdocs
     '''
-        
-    addShotAtPos = pyqtSignal(object, int)
+    
+    # init signals   
+    addShotAtPos = pyqtSignal(list, int)
     delShotAtPos = pyqtSignal(int)
     movShotUp = pyqtSignal(int)
     movShotDown = pyqtSignal(int)
@@ -31,74 +33,60 @@ class MainWindow(QWidget):
         ##setup all Widgets
         # display area
         self.tallyState = StatusBarWidget()
-        self.tallyState.setFixedSize(384,64)
         self.liveMonitor = VideoWidget()
         self.sourceList = QListWidget()
         self.quitBtn = QPushButton("&Quit")
-        self.quitBtn.setFixedSize(64,64)
-        self.quitBtn.clicked.connect(QApplication.quit)
-        
         # interaction area
         self.shotlist = QListWidget()
         self.emergencyBtn = QPushButton("&EMERGENCY")
         self.goLiveBtn = QPushButton("GO &LIVE")
         self.nextBtn = QPushButton("&NEXT")
+        self.addShotDiag = AddShotDialog(self)
+        
+        # init components
+        self.tallyState.setFixedSize(384,64)
+        self.quitBtn.setFixedSize(64,64)
+        self.sourceList.setFixedHeight(200)
+        self.emergencyBtn.setFixedHeight(64)
+        self.nextBtn.setFixedHeight(64)
+        self.goLiveBtn.setFixedHeight(64)
         
         #layout definition
         mainLayout = QVBoxLayout()
         statusLayout = QHBoxLayout()
         previewLayout = QHBoxLayout()
         actionBarLayout = QHBoxLayout()
+        self.shotListLayout = QHBoxLayout()
         
         # fill layouts 
         statusLayout.addStretch(192)
         statusLayout.addWidget(self.tallyState)
         statusLayout.addStretch(128)
         statusLayout.addWidget(self.quitBtn)
-        
         previewLayout.addWidget(self.liveMonitor)
         previewLayout.addWidget(self.sourceList)
-        
         actionBarLayout.addStretch()
         actionBarLayout.addWidget(self.emergencyBtn)
         actionBarLayout.addWidget(self.goLiveBtn)
         actionBarLayout.addWidget(self.nextBtn)
         actionBarLayout.addStretch()
-                
+        self.shotListLayout.setSpacing(0)
         mainLayout.addLayout(statusLayout)
         mainLayout.addLayout(previewLayout)
-       
-        self.sourceList.setFixedHeight(200)
-        self.shotListLayout = QHBoxLayout()
-        
-
         mainLayout.addLayout(self.shotListLayout)
         mainLayout.addLayout(actionBarLayout)
         
         #set mainlayout for window
-        self.setLayout(mainLayout)
-        
-        
-        #setup widgets
-        self.emergencyBtn.setFixedHeight(64)
-        self.nextBtn.setFixedHeight(64)
-        self.goLiveBtn.setFixedHeight(64)
-        # fill lists for preview
-        
-        #self.shotlist.addItem(ShotlistItem(self.shotlist))
-        #shotlist.addItem()
+        self.setLayout(mainLayout) 
         
         # setup Window details
         self.setWindowTitle("TV Tally")
         self.resize(1024,600)
-        
-        
-        self.addShotDiag = AddShotDialog(self)
         self.connectSignals()
         
         
     def populateShotlist(self, shotList):
-        #qDebug("TESTSHOTLISTUPDATE") # thanks to this guy: http://stackoverflow.com/a/13103617, last-checked 19.01.2015
+        # thanks to this guy: http://stackoverflow.com/a/13103617, last-checked 19.01.2015
         for i in reversed(range(self.shotListLayout.count())):
             widget = self.shotListLayout.itemAt(i).widget()
             self.shotListLayout.removeWidget(widget)
@@ -109,47 +97,45 @@ class MainWindow(QWidget):
         for item in shotList:
             newItem = ShotlistItem(item[0], item[1], iteratr, self)
             self.shotListLayout.addWidget(newItem)
-            print("WIDTH OF ITEM: " + str(newItem.width()))
-            self.shotListLayout.setSpacing(0)
             self.shotListLayout.setAlignment(newItem, QtCore.Qt.AlignLeft)
             if  iteratr == len(shotList)-1:
                 newItem.moveToBackBtn.setDisabled(True)
-            newItem.addShotAtPos.connect(self.showAddShotDialog)
+            newItem.addShotAtPos.connect(self.addShotDiag.showWithPos)
             newItem.delShotAtPos.connect(self.delShotAtPos)
             newItem.movShotDown.connect(self.movShotDown)
             newItem.movShotUp.connect(self.movShotUp)
             iteratr += 1
             
     def connectSignals(self):
-        self.addShotDiag.okBtn.clicked.connect(self.addShotConfirmed)
+        self.quitBtn.clicked.connect(QApplication.quit)
+        self.addShotDiag.newShotAtPos.connect(self.addShotAtPos)
         
-    def showAddShotDialog(self, pos):
-        print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
-        self.addShotDiag.storePos(pos)
-        self.addShotDiag.show()
-        
+#     def showAddShotDialog(self, pos):
+#         print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
+#         self.addShotDiag.storePos(pos) #move this to signal generation within add Shot dialog
+#         self.addShotDiag.show()
         
     def updateSourceList(self, sources):
         self.sourceList.clear()
-        self.addShotDiag.setupCamselector(sources)
+        self.addShotDiag.setupCamselector(sources) # TODO: move this to signal connection
         for source in sources:
             self.sourceList.addItem(source[0] + ":" + source[1])
         
-    def movDown(self, listPos):
-        self.movShotDown.emit(self.listPos)
-    
-    def movUp(self, listPos):
-        self.movShotUp.emit(self.listPos)
+#     def movDown(self, listPos):
+#         self.movShotDown.emit(self.listPos)
+#     
+#     def movUp(self, listPos):
+#         self.movShotUp.emit(self.listPos)
         
-    def addShotConfirmed(self):
-        pos = self.addShotDiag.getShotPos()
-        shot = self.addShotDiag.getShot()
-        if shot != False:
-            self.addShotAtPos.emit(shot, pos)
-        self.addShotDiag.close()
+#     def addShotConfirmed(self):
+#         pos = self.addShotDiag.getShotPos()
+#         shot = self.addShotDiag.getShot()
+#         if shot != False:
+#             self.addShotAtPos.emit(shot, pos) # TODO: move this within addshotdialog
+#         self.addShotDiag.close()
         
-    def delShot(self,listPos):
-        self.delShotAtPos.emit(self.listPos)
+#     def delShot(self,listPos):
+#         self.delShotAtPos.emit(self.listPos)
             
          
     # def fullscreenToggle(self):
