@@ -30,18 +30,18 @@ class TallyHandler(QObject):
         #GPIO.setup(self.TALLY_PREVIEW_PIN, GPIO.OUT)
     
     
-    def setState(self,state="off"):
+    def setState(self,state="OFF"):
         pass
-#         if state == "preview":
+#         if state == "PREVIEW":
 #             GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
 #             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH)
-#         elif state == "live":
+#         elif state == "LIVE":
 #             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
 #             GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
-#         elif state == "off":
+#         elif state == "OFF":
 #             GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
 #             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
-#         elif state == "emergency":
+#         elif state == "EMERGENCY":
 #             GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
 #             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH) 
 #         return True

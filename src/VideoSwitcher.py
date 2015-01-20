@@ -11,17 +11,17 @@ from PyQt4.QtCore import qDebug
 from RequestHandler import RequestHandler
 from nodes import TallyServer
 from PyQt4.Qt import QByteArray
-from applescript import AppleScript
+from applescript import AppleScript, ScriptError
 import socket
 
 
-
+SERVER_IP = "192.168.178.32"
 threadList = list()
 sourceList = list()
 serverInterface = None
-streamUrl = "rtsp://media-us-2.soundreach.net/slcn_sports.sdp"
+streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
 sourceListScript = AppleScript("appleScript/getListOfSources.scpt")
-setStatusScript = AppleScript("appScript/setShotStatus.scpt")
+setStatusScript = AppleScript("appleScript/setShotStatus.scpt")
 
 def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
@@ -73,12 +73,12 @@ if __name__ == '__main__':
     connectSignals()
     getSourcesFromWirecast()
     qDebug("VIDEOSWITCHER::HELLO - REGISTERING WITH SERVER")
-    serverInterface = TallyServer(socket.gethostbyname(socket.gethostname()), 3771 )
+    serverInterface = TallyServer( SERVER_IP , 3771 )
     serverInterface.openConnection()
-    serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
+    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
     
     server = QTcpServer()
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, 3117)
     
-    app.exec()
+    app.exec_()

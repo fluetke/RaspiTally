@@ -116,7 +116,7 @@ def createServerInterface():
     window.addShotAtPos.connect(addShotInServer)
     window.delShotAtPos.connect(serverInterface.load().delShot)
     window.movShotDown.connect(mvShotDwnInServer)
-    window.movShotDown.connect(mvShotUpInServer)
+    window.movShotUp.connect(mvShotUpInServer)
     window.nextBtn.clicked.connect(serverInterface.load().moveToNextShot)
     window.goLiveBtn.clicked.connect(goLive)
     
@@ -124,6 +124,8 @@ def goLive():
     myID = settings.value("client/id", None , str)
     if myID != None:
         serverInterface.load().setVideoSrcToStatus(myID, "LIVE")
+    else:
+        print("SHIT MY ID IS EMPTY")
     
 def printData(data):
     qDebug(data)

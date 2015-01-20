@@ -69,9 +69,9 @@ class SettingsDialog(QDialog):
         
     def loadSettings(self):
         qDebug("SETTINGS_DIALOG::LOADING SETTINGS")
-        self.srvIpInput.setText(self.settings.value("server/ip", "127.0.0.1"))
+        self.srvIpInput.setText(self.settings.value("server/ip", "127.0.0.1", type=str))
         self.srvPortInput.setValue(self.settings.value("server/port", "7313", type=int))
-        self.cliTypeInput.setCurrentIndex(self.cliTypeInput.findText(self.settings.value("client/type","camera")))
+        self.cliTypeInput.setCurrentIndex(self.cliTypeInput.findText(self.settings.value("client/type","camera", type=str)))
         
     def storeSettings(self):
         self.settings.beginGroup("server")

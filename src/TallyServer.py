@@ -180,7 +180,8 @@ def switchSource(clientId, status):
                         shotList.pop(0) 
                     shotList.insert(0, (clientId, "UNDEFINED"))
                 if len(shotList) > 1:
-                    switchSource(shotList[1][0], "PREVIEW")        
+                    switchSource(shotList[1][0], "PREVIEW")
+    updateRemoteShotlists()        
     qDebug("CLIENT NOT FOUND")
     return
 
@@ -204,7 +205,7 @@ def updateRemoteShotlists():
     for client in clientList:
         client.updateShotList(shotList)
         
-def addShot(indx, shot): 
+def addShot(shot, indx): 
     shotList.insert(indx, shot)
     updateRemoteShotlists()
     

@@ -69,7 +69,7 @@ class MainWindow(QWidget):
         mainLayout.addLayout(previewLayout)
        
         self.sourceList.setFixedHeight(200)
-        self.shotListLayout = QGridLayout()
+        self.shotListLayout = QHBoxLayout()
         
 
         mainLayout.addLayout(self.shotListLayout)
@@ -92,22 +92,25 @@ class MainWindow(QWidget):
         self.setWindowTitle("TV Tally")
         self.resize(1024,600)
         
+        
         self.addShotDiag = AddShotDialog(self)
+        self.connectSignals()
         
         
     def populateShotlist(self, shotList):
-        qDebug("TESTSHOTLISTUPDATE")
-        for i in range(0,self.shotListLayout.count()):
+        #qDebug("TESTSHOTLISTUPDATE") # thanks to this guy: http://stackoverflow.com/a/13103617, last-checked 19.01.2015
+        for i in reversed(range(self.shotListLayout.count())):
             widget = self.shotListLayout.itemAt(i).widget()
-            qDebug(str(widget))
             self.shotListLayout.removeWidget(widget)
-            widget.deleteLater()
+            widget.setParent(None)
             
         #here all widgets will be added to the shotlist
         iteratr = 0
         for item in shotList:
             newItem = ShotlistItem(item[0], item[1], iteratr, self)
             self.shotListLayout.addWidget(newItem)
+            print("WIDTH OF ITEM: " + str(newItem.width()))
+            self.shotListLayout.setSpacing(0)
             self.shotListLayout.setAlignment(newItem, QtCore.Qt.AlignLeft)
             if  iteratr == len(shotList)-1:
                 newItem.moveToBackBtn.setDisabled(True)
@@ -115,7 +118,10 @@ class MainWindow(QWidget):
             newItem.delShotAtPos.connect(self.delShotAtPos)
             newItem.movShotDown.connect(self.movShotDown)
             newItem.movShotUp.connect(self.movShotUp)
+            iteratr += 1
             
+    def connectSignals(self):
+        self.addShotDiag.okBtn.clicked.connect(self.addShotConfirmed)
         
     def showAddShotDialog(self, pos):
         print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
@@ -125,6 +131,7 @@ class MainWindow(QWidget):
         
     def updateSourceList(self, sources):
         self.sourceList.clear()
+        self.addShotDiag.setupCamselector(sources)
         for source in sources:
             self.sourceList.addItem(source[0] + ":" + source[1])
         
@@ -137,7 +144,8 @@ class MainWindow(QWidget):
     def addShotConfirmed(self):
         pos = self.addShotDiag.getShotPos()
         shot = self.addShotDiag.getShot()
-        self.addShotAtPos.emit(shot, self.listPos+1)
+        if shot != False:
+            self.addShotAtPos.emit(shot, pos)
         self.addShotDiag.close()
         
     def delShot(self,listPos):

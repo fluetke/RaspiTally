@@ -184,7 +184,8 @@ class TallyServer(TallyNode):
         self.sendRequest(request)
     
     def addShot(self, source, image, pos):
-        request = "ADD_SHOT:" +source + ":" + image + ":" + str(pos)
+        shotString = json.dumps((source,image))
+        request = "ADD_SHOT:" + shotString + ":" + str(pos)
         self.sendRequest(request)
     
     def delShot(self, pos):
