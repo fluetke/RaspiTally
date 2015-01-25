@@ -7,7 +7,7 @@ Created on 20.01.2015
 # pyqt imports
 from PyQt4.QtCore import qDebug, QObject, pyqtSignal
 # special appleHandling
-from applescript import AppleScript, ScriptError
+#from applescript import AppleScript, ScriptError
 
 
 class WirecastConnector(QObject):
@@ -18,30 +18,35 @@ class WirecastConnector(QObject):
     sourcesReady = pyqtSignal(list)
     sourceSet = pyqtSignal(str, str)
 
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         '''
         Constructor
         '''
-        self.sourceListScript = AppleScript("appleScript/getListOfSources.scpt")
-        self.setStatusScript = AppleScript("appleScript/setShotStatus.scpt")
+        super(WirecastConnector, self).__init__(parent)
+       # self.sourceListScript = AppleScript("appleScript/getListOfSources.scpt")
+       # self.setStatusScript = AppleScript("appleScript/setShotStatus.scpt")
         
     # set source to state using the applescript handler for wirecast
     def setSource(self, source, state):
         #qDebug("SWITCHING " + str(source) + " TO STATE " + str(state))
-        try:
-            self.setStatusScript.call("setStatus", source, state)
-        except ScriptError:
-            qDebug("An error occured: ScriptError")
-            return False
-        finally:
-            self.sourceSet.emit(source, state)
+        #try:
+         #   pass
+            #self.setStatusScript.call("setStatus", source, state)
+        #except ScriptError:
+        #    qDebug("An error occured: ScriptError")
+         #   return False
+        #finally:
+         #   self.sourceSet.emit(source, state)
         return True
     
     # grab the sources from wirecast and return them as list to the caller object
     def getSources(self):
         try:
-            sources = self.sourceListScript.run()
+            #sources = self.sourceListScript.run()
+            sources = {"CAM1", "CAM2", "CAM3", "CAM4"}
             self.sourcesReady.emit(sources)
-        except ScriptError:
-            qDebug("Grabbing SourcesList returned an error: ScriptError")
+#         except ScriptError:
+#             qDebug("Grabbing SourcesList returned an error: ScriptError")
+#             return False
+        except:
             return False

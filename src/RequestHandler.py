@@ -16,7 +16,7 @@ class RequestHandler(QObject):
     #TODO: Add more specific typedefs
     #signals
     dataProcessed = pyqtSignal()
-    regClient = pyqtSignal(object,object,object)
+    regClient = pyqtSignal(str,object,str)
     deregClient = pyqtSignal(object)
     configStart = pyqtSignal()
     configEnd = pyqtSignal(object)
@@ -63,7 +63,7 @@ class RequestHandler(QObject):
             clientAddress = (clientIp, clientPort) #pack client network address tuple
             qDebug("REQUEST_HNDL::EMITTING SIGNAL REGCLIENT")
             # emit new client signal containing all information needed by the clientregistration method
-            self.regClient.emit(clientId, clientType, clientAddress)
+            self.regClient.emit(clientType, clientAddress, clientId)
             
         elif data_ordered[0] == "DEREGISTER":
             qDebug("CLIENT DEREGISTERING")

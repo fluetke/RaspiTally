@@ -20,7 +20,7 @@ from Wirecast import WirecastConnector
 
 
 #Globals
-SERVER_IP = "192.168.178.32"
+SERVER_IP = "127.0.0.1"
 SERVER_PORT = 3771
 SWITCHER_PORT = 3117
 streamUrl = "rtsp://192.168.178.29/tallytest.sdp"

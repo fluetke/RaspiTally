@@ -11,6 +11,8 @@ from PyQt4.QtCore import qDebug, pyqtSignal
 from RequestHandler import RequestHandler
 from nodes import TallySwitcher, TallyClient
 from storage import Container
+from DataWrangler import ListData
+from ConfigHandler import ConfigHandler
 
 
 ## YES I KNOW GLOBAL VARS ARE BAD AND EVIL 
@@ -19,15 +21,12 @@ from storage import Container
 
 #lists of things
 threadList = list()
-clientList = list()
-shotList = list()
-sourceList = Container()
 
 streamUrl = Container()
 
-#vars for configuration
-configMode = Container()
-configWaitinglist = list()
+# data lists
+clients = ListData()
+shots = ListData()
 
 def initHandling():
     qDebug("Threadlist size is: " + str(len(threadList)))
@@ -39,221 +38,100 @@ def initHandling():
     
 def connectSignals():
     qDebug("MAIN:: CONNECTING SIGNALS AND SLOTS")
-    rqstHandler.regClient.connect(registerClient) #connect client registration procedure
-    rqstHandler.configStart.connect(setConfigMode)
-    rqstHandler.configEnd.connect(unsetConfigMode)
+    rqstHandler.regClient.connect(clientSetup.registerClient) #connect client registration procedure
+    rqstHandler.configEnd.connect(clientSetup.finalizeConfiguration)
     rqstHandler.stateRequest.connect(switchSource)
-    rqstHandler.newSourcelist.connect(storeSourcelist)
+    rqstHandler.newSourcelist.connect(clientSetup.sources.updateData)
     rqstHandler.tallyRequest.connect(switchTally)
-    #rqstHandler.newShotlist.connect(updateRemoteShotlists())
-    rqstHandler.newShot.connect(addShot)
-    rqstHandler.movShot.connect(moveShot)
-    rqstHandler.delShot.connect(delShot)
-    rqstHandler.streamAnswer.connect(saveStreamUrl)
-    rqstHandler.deregClient.connect(deregisterClient)
+    rqstHandler.newShot.connect(shots.addItem)
+    rqstHandler.movShot.connect(shots.movItem)
+    rqstHandler.delShot.connect(shots.remItem)
+    #rqstHandler.streamAnswer.connect(saveStreamUrl)
+    #rqstHandler.deregClient.connect(deregisterClient)
     rqstHandler.nextShotRequest.connect(continueWithNext)
-    qDebug("MAIN:: DONE CONNECTING SIGNALS AND SLOTS")
-
+    clientSetup.clientReady.connect(storeClient)
+    clientSetup.directorReady.connect(storeDirector)
+    clientSetup.switcherReady.connect(storeSwitcher)
+    clientSetup.clientRemoved.connect(deregisterClient)
+#     clientSetup.confActive.connect(rqstHandler.setIpFilter)
+#     clientSetup.confInactive.connect(rqstHandler.clearIpFilter)
+    
 def continueWithNext():
-    if not configMode.load():
-        if len(shotList) > 1:
-            switchSource(shotList[1][0], "LIVE")
+    if not clientSetup.configMode:
+        if len(shots) > 1:
+            switchSource(shots[1][0], "LIVE") 
     
-#registers a client with the server
-def registerClient(clientId, clientType, clientAddress):
-    # take the clientAddress, which should be delivered as qByteArray and turn it into string and int respectively
-    ipAddress = clientAddress[0]#.data().decode('UTF-8')
-    port = int(clientAddress[1])
+def storeClient(client):
+    '''adds a client to the client list '''
     
-    if clientType == "videoMixer":
-        qDebug("SERVER::REGISTERING VIDEO_MIXER_OUTPUT - VIDEO MIXER IS CURRENTLY: " + str(videoSwitcher.isEmpty()))
-        if videoSwitcher.isEmpty():
-            tempSwitcher = TallySwitcher(ipAddress, port)
-            tempSwitcher.id = "TVID130"
-            tempSwitcher.openConnection()
-            tempSwitcher.getStreamUrl()
-            tempSwitcher.getSourceList()
-            videoSwitcher.store(tempSwitcher)
-            qDebug("SERVER::STORED VIDEOSWITCHER IN MEMORY - AWAITING STREAMURL")
-        else:
-            qDebug("VIDEOSWITCHER ALREADY PRESENT, PLEASE DEREGISTER BEFORE ADDING NEW VIDEO SWITCHER")
-    
-    elif clientType == "director": 
-        qDebug("SERVER::REGISTERING DIRECTOR_CONSOLE")
-        if directorNode.isEmpty():
-            dirNode = TallyClient(ipAddress, port)
-            dirNode.id = "DIRECTOR" 
-            dirNode.c_type = clientType
-            dirNode.endConfigurationMode(dirNode.id)
-            directorNode.store(dirNode)
-            return
-        else:
-            qDebug("DIRECTOR ALREADY PRESENT - PLEASE DEREGISTER FIRST")
-                
-    else: #if client is not videoswitcher
-        qDebug("SERVER::REGISTERING TALLY_DEVICE")
-        if clientId != "":
-            for client in clientList: #check if client is already known
-                if client.id == clientId:
-                    client.ip = ipAddress
-                    client.port = port
-                    client.setTally("OFF")
-                    client.updateClientList(clientList)
-                    client.updateShotList(shotList)
-                    return #all is done for an existing client, safe to exit here
-            
-        #if the client is not yet known to the system, create a new one and add it
-        newClient = TallyClient(clientAddress[0], clientAddress[1])
-        newClient.id = "CAMERA_" + str(len(clientList)+1) #FIXME: if client registration requests pile up, the id for all clients will be the same, as the listlength does not change
-        qDebug("STORING NEW CLIENT WITH ID " + str(newClient.id)) 
-        #poke client to start configuration, but only if its a camera, as the director has no video input
-        #if configClient.isEmpty(): #if configuration is not already preparing a client
-        newClient.openConnection()
-        newClient.setStreamUrl(streamUrl.load())
-        newClient.storeSourceList(generateConfigSourceList())
-        newClient.startConfigurationMode()
-        configClient.store(newClient)
-        #else:
-        #    qDebug("SERVER::CONFIG OF ANOTHER CLIENT IN PROGRESS - ADDING REQUEST TO WAITING LIST")
-        #    configWaitinglist.append(newClient)
+    #connect client to client and shotslist to receive updates
+    client.updateShotList(shots.data)
+    shots.dataChanged.connect(client.updateShotList)
+    clients.dataChanged.connect(client.updateClientList)
+    clients.addItem(client)
         
-        return
-                
-def generateConfigSourceList():
-    configSourceList = list()
-    if not sourceList.isEmpty():
-        for source in sourceList.load():
-            configSourceList.append(source[0])
-        
-        return configSourceList
-    else:
-        return ["TEST1","TEST2"] # return dummy list 
+def storeSwitcher(switcher):
+    ''' stores a videoswitcher announced by the confighandler in memory'''
+    
+    switcher._id = "TVID130"
+    switcher.openConnection()
+    # switcher.getStreamUrl()
+    switcher.getSourceList()
+    videoSwitcher.store(switcher)
+    print("TallyServer::VideoSwitcher stored in memory")
+     
+def storeDirector(director):
+    '''stores a new director node in memory, overwriting the old one'''
+    
+    director._id = "DIRECTOR" 
+    director.endConfigurationMode(director._id)
+    directorNode.store(director)
+    print("TallyServer::DirectorConsole stored in memory")
 
-# updates clients in list and sends the new clientList    
-def updateClients():
-    tempClientList = list()
-    for client in clientList:
-        tempClientList.append((client.id,client.status))
-    for client in clientList:
-        client.updateClientList(tempClientList)
-                                
-def setConfigMode():
-    qDebug("Setting config mode to True")
-    configMode.store(True) # set configmode, so no tally request from other clients are accepted)
-    
-    
-def unsetConfigMode(clientId):
-    if not configClient.isEmpty():
-        tempConfCli = configClient.load()
-        tempConfCli.endConfigurationMode(tempConfCli.id)
-        tempConfCli.updateShotList(shotList)
-        clientList.append(tempConfCli)
-        updateClients() # finally notify the others that new client update can be send now #FIXME: replace with proper signal
-    if len(configWaitinglist) > 0:
-        configClient.store(configWaitinglist.pop())
-        configClient.load().startConfigurationMode(streamUrl, generateConfigSourceList())
-    else:
-        configMode.store(False)
-        
-# instruct videoswitcher to switch videosource to status
 def switchSource(clientId, status):
-    assert videoSwitcher.isEmpty() == False # the videoswitcher should not be empty at this point
-    assert configMode.isEmpty() == False # config mode should contain something right now
-    qDebug("CONFIG MODE IS " + str(configMode.load()))
+    ''' instruct the VideoSwitcher(in this case Wirecast) 
+        to set source assigned to clientID to status '''
     
-    tempSwitcher = videoSwitcher.load()
-    if configMode.load():
-        # if config mode is true, it is usually safe to assume that clientid contains a direct source id
-        tempSwitcher.setSourceToStatus(clientId, status)
-        configClient.load().source = clientId # update source of config client each time a source is changed during config
-        return
-    
-    #iterate through list of clients to find the one submitted and hand its source id to the videoswitcher
-    for client in clientList:
-        if client.id == clientId:
-            tempSwitcher.setSourceToStatus(client.source, status)
-            if status == "LIVE":
-                if len(shotList) > 1:
-                    shotList.pop(0) 
-                if shotList[0][0] != clientId: # pruefen ob client id die naechste id in sourcelist ist, wenn ja - pop(0) auf der sourcelist
-                    if shotList[0][1] == "UNDEFINED":
-                        shotList.pop(0) 
-                    shotList.insert(0, (clientId, "UNDEFINED"))
-                if len(shotList) > 1:
-                    switchSource(shotList[1][0], "PREVIEW")
-    updateRemoteShotlists()        
-    qDebug("CLIENT NOT FOUND")
-    return
+    source = "732" #id of blank shot here
+    try: 
+        source = clientSetup.idToSource[clientId]
+    except ValueError:
+        source = clientId
+    finally: 
+        videoSwitcher.load().setSourceToStatus(source, status)
+        if status == "LIVE":
+            shots.data.pop(0)
+            if shots.length() == 0 or clientId != shots.itemAt(0)[0]:
+                shots.addItem((clientId, "UNDEFINED"), 0)
+                if shots.length() > 1:
+                    switchSource(shots.itemAt(1)[0], "PREVIEW")        
 
 # instruct client to switch to status and turn tally light on if existent
 def switchTally(sourceId, status):
-    if configMode.load():
-        return # ignore request in config mode as the source is not assigned to a client yet
-    for client in clientList:
+    for client in clients.data:
         if client.status == status and client.source != sourceId:
             client.setTally("OFF")
             
         if client.source == sourceId:
             client.setTally(status)
-            qDebug("CLIENT FOUND - PREPARING TALLY REQUEST")
             
-    updateClients()
-    qDebug("SOURCE NOT FOUND")
-    return
-
-def updateRemoteShotlists(): 
-    for client in clientList:
-        client.updateShotList(shotList)
-        
-def addShot(shot, indx): 
-    shotList.insert(indx, shot)
-    updateRemoteShotlists()
-    
-def delShot(indx):
-    shotList.pop(indx)
-    updateRemoteShotlists()
-
-def moveShot(posa, posb):
-    shotList.insert(posb, shotList.pop(posa))
-    updateRemoteShotlists()
-
-def getStreamUrl():
-    assert videoSwitcher != None
-    videoSwitcher.getStreamUrl()
-    # this should not be called during eval anyways, as the streamurl is piped to the client during configuration
-
-def saveStreamUrl(url):
-    qDebug("SERVER::SAVING STREAM_URL")
-    if not streamUrl.isList():
-        streamUrl.store(url)
-        qDebug("SERVER::STREAMURL STORED AS " + url)
-    else:
-        qDebug("SERVER::STREAMURL IS LIST - SOMETHING IS WRONG HERE")
-        
-def storeSourcelist(srcList):
-    qDebug("STORING SOURCELIST IN MEMORY - " + str(srcList))
-    sourceList.store(srcList) 
-    
+    clients.dataChanged.emit(clients.data) # emit dataChanged signal of client list here to initiate client updates
+      
 def deregisterClient(clientId):#TODO: implement
     pass
-    
-def printData(data):
-    qDebug(data)
-    
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    configMode.store(False) # initially set configmode to false
     
     # packet containers of data, as workaround for pythons bitchyness with globals
     #store the director node info for the old school tally variant 
     directorNode = Container()
     videoSwitcher = Container()
-    configClient = Container()
-    shotList.append(("BLANK","UNDEFINED"))
-    streamUrl.store("localhost")
+    
+    shots.addItem(("BLANK","UNDEFINED"))
         
     rqstHandler = RequestHandler()
-
+    clientSetup = ConfigHandler()
     connectSignals()
 
     server = QTcpServer()
@@ -263,5 +141,4 @@ if __name__ == '__main__':
     else: 
         qDebug("Server listening on port: " + str(server.serverPort()))
     
-    
-    app.exec()
+    app.exec_()

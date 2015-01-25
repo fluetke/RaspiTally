@@ -56,6 +56,7 @@ class MainWindow(QWidget):
         statusLayout = QHBoxLayout()
         previewLayout = QHBoxLayout()
         actionBarLayout = QHBoxLayout()
+        self.shotListOuterLayout = QHBoxLayout()
         self.shotListLayout = QHBoxLayout()
         
         # fill layouts 
@@ -71,9 +72,12 @@ class MainWindow(QWidget):
         actionBarLayout.addWidget(self.nextBtn)
         actionBarLayout.addStretch()
         self.shotListLayout.setSpacing(0)
+        self.shotListOuterLayout.setSpacing(0)
+        self.shotListOuterLayout.addLayout(self.shotListLayout)
+        self.shotListOuterLayout.addStretch()
         mainLayout.addLayout(statusLayout)
         mainLayout.addLayout(previewLayout)
-        mainLayout.addLayout(self.shotListLayout)
+        mainLayout.addLayout(self.shotListOuterLayout)
         mainLayout.addLayout(actionBarLayout)
         
         #set mainlayout for window
@@ -84,7 +88,7 @@ class MainWindow(QWidget):
         self.resize(1024,600)
         self.connectSignals()
         
-        
+    ''' clear and refill the shotlist'''
     def populateShotlist(self, shotList):
         # thanks to this guy: http://stackoverflow.com/a/13103617, last-checked 19.01.2015
         for i in reversed(range(self.shotListLayout.count())):
@@ -107,19 +111,19 @@ class MainWindow(QWidget):
             iteratr += 1
             
     def connectSignals(self):
-        self.quitBtn.clicked.connect(QApplication.quit)
+        self.quitBtn.clicked.connect(QApplication.quit) #TODO add clean shutdown of server, and deregistering here
         self.addShotDiag.newShotAtPos.connect(self.addShotAtPos)
-        
-#     def showAddShotDialog(self, pos):
-#         print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
-#         self.addShotDiag.storePos(pos) #move this to signal generation within add Shot dialog
-#         self.addShotDiag.show()
         
     def updateSourceList(self, sources):
         self.sourceList.clear()
         self.addShotDiag.setupCamselector(sources) # TODO: move this to signal connection
         for source in sources:
             self.sourceList.addItem(source[0] + ":" + source[1])
+        
+#     def showAddShotDialog(self, pos):
+#         print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
+#         self.addShotDiag.storePos(pos) #move this to signal generation within add Shot dialog
+#         self.addShotDiag.show()
         
 #     def movDown(self, listPos):
 #         self.movShotDown.emit(self.listPos)

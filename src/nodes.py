@@ -14,7 +14,7 @@ class TallyNode(QObject):
     '''
 
     #default address vars
-    id = "default"
+    _id = "default"
     ip = ""
     port = 0
     nodeConnection = None
@@ -104,7 +104,7 @@ class TallyNode(QObject):
         
 class TallyClient(TallyNode):
     
-    id = "DEFAULT_CLIENT"
+    _id = "DEFAULT_CLIENT"
     c_type = "camera"
     source = None
     status = "OFF"
@@ -214,6 +214,8 @@ class TallyServer(TallyNode):
         self.sendRequest(request)
     
 class TallySwitcher(TallyNode):
+    
+    c_type = "videoMixer"
     
     def __init__(self, ip_address, port):
         TallyNode.__init__(self, ip_address, port)
