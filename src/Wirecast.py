@@ -41,12 +41,12 @@ class WirecastConnector(QObject):
     
     # grab the sources from wirecast and return them as list to the caller object
     def getSources(self):
-        try:
+        #try:
             #sources = self.sourceListScript.run()
-            sources = {"CAM1", "CAM2", "CAM3", "CAM4"}
-            self.sourcesReady.emit(sources)
+        sources = [["CAM1", "OFF"], ["CAM2", "OFF"], ["CAM3", "OFF"], ["CAM4", "OFF"]]
+        self.sourcesReady.emit(sources)
 #         except ScriptError:
 #             qDebug("Grabbing SourcesList returned an error: ScriptError")
 #             return False
-        except:
-            return False
+        #except:
+         #   return False

@@ -146,6 +146,8 @@ class RequestHandler(QObject):
             
             #emit the new sourcelist signal containing the uptodate sourcelist received from the videomixer           
             self.newSourcelist.emit(sourceList)
+            print("EMITTING NEW SOURCELIST: " + str(sourceList))
+            
             
         elif data_ordered[0] == "GET_SOURCELIST":
             qDebug("SOURCELIST REQUEST FROM SERVER")
