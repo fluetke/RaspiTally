@@ -28,7 +28,7 @@ CLIENT_PORT = 3713
 streamUrl = Container()
 
 def initHandling():
-    connHndl = ConnectionHandlerThread(server.nextPendingConnection())
+    connHndl = ConnectionHandlerThread(server.nextPendingConnection(),server)
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
     connHndl.start()
@@ -78,10 +78,6 @@ def mvShotDwnInServer(shotPos):
     
 def mvShotUpInServer(shotPos):
     serverInterface.load().movShot(shotPos, shotPos-1)
-    
-# def updateShotlist(shotlist):
-#     shotList = shotlist
-#     window.populateShotlist(shotlist)
 
 def addShotInServer(shot,pos):
     serverInterface.load().addShot(shot[0],shot[1],pos)
@@ -107,7 +103,7 @@ def createServerInterface():
     port = settings.value("server/port", type=int)
     qDebug("ServerIP from Config:" + srv_ip)
     qDebug("ServerPort from config: " + str(port))
-    tempSrvInterface = TallyServer(srv_ip, port)
+    tempSrvInterface = TallyServer(srv_ip, port, app)
     tempSrvInterface.openConnection()
     tempSrvInterface.registerClient("", settings.value("client/type"), (ip,CLIENT_PORT))
     serverInterface.store(tempSrvInterface)
@@ -132,12 +128,13 @@ def printData(data):
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    settings = QSettings("TallyClient.ini", QSettings.IniFormat)
-    tallyLight = TallyHandler()
-    configWindow = SettingsDialog(settings)
-    sigAssignWindow = SignalAssignDialog()
+    settings = QSettings("TallyClient.ini", QSettings.IniFormat, app)
+    tallyLight = TallyHandler(app)
+    
     window = MainWindow()
-    rqstHandler = RequestHandler()
+    sigAssignWindow = SignalAssignDialog(window)
+    configWindow = SettingsDialog(settings)
+    rqstHandler = RequestHandler(app)
   
     connectSignals()
     window.show()
@@ -147,7 +144,7 @@ if __name__ == '__main__':
         configWindow.show()
     
     #start tcp server and listen for requests
-    server = QTcpServer()
+    server = QTcpServer(app)
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, CLIENT_PORT)
     

@@ -21,12 +21,7 @@ from ConfigHandler import ConfigHandler
 
 #lists of things
 threadList = list()
-
-streamUrl = Container()
-
-# data lists
-clients = ListData()
-shots = ListData()
+#streamUrl = Container()
 
 def initHandling():
     qDebug("Threadlist size is: " + str(len(threadList)))
@@ -58,8 +53,8 @@ def connectSignals():
     
 def continueWithNext():
     if not clientSetup.configMode:
-        if len(shots) > 1:
-            switchSource(shots[1][0], "LIVE") 
+        if shots.length() > 1:
+            switchSource(shots.itemAt(1)[0], "LIVE") 
     
 def storeClient(client):
     '''adds a client to the client list '''
@@ -95,16 +90,23 @@ def switchSource(clientId, status):
     source = "732" #id of blank shot here
     try: 
         source = clientSetup.idToSource[clientId]
-    except ValueError:
+    except KeyError:
         source = clientId
     finally: 
-        videoSwitcher.load().setSourceToStatus(source, status)
-        if status == "LIVE":
-            shots.data.pop(0)
-            if shots.length() == 0 or clientId != shots.itemAt(0)[0]:
-                shots.addItem((clientId, "UNDEFINED"), 0)
-                if shots.length() > 1:
-                    switchSource(shots.itemAt(1)[0], "PREVIEW")        
+        if source != None:
+            videoSwitcher.load().setSourceToStatus(source, status)
+            clientSetup.updateSelectedSource(source)
+            if status == "LIVE":
+                shots.remItem(0)
+                if shots.length() == 0 or clientId != shots.itemAt(0)[0]:
+                    shots.addItem((clientId, "UNDEFINED"), 0)
+                    if shots.length() > 1:
+                        switchSource(shots.itemAt(1)[0], "PREVIEW")
+            
+        else:
+            qDebug("ERROR --- Source is " + str(source) + " status is " + str(status)) 
+            
+           
 
 # instruct client to switch to status and turn tally light on if existent
 def switchTally(sourceId, status):
@@ -127,14 +129,17 @@ if __name__ == '__main__':
     #store the director node info for the old school tally variant 
     directorNode = Container()
     videoSwitcher = Container()
+    # data lists
+    clients = ListData(app)
+    shots = ListData(app)
     
     shots.addItem(("BLANK","UNDEFINED"))
         
-    rqstHandler = RequestHandler()
-    clientSetup = ConfigHandler()
+    rqstHandler = RequestHandler(app)
+    clientSetup = ConfigHandler(app)
     connectSignals()
 
-    server = QTcpServer()
+    server = QTcpServer(app)
     server.newConnection.connect(initHandling)
     if not server.listen(QHostAddress.Any, 3771):
         qDebug("SERVER FAILED")

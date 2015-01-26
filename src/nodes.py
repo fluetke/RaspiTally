@@ -26,8 +26,8 @@ class TallyNode(QObject):
         super(TallyNode, self).__init__(parent)
         self.ip = ip
         self.port = port
-        self.nodeConnection = QTcpSocket()
-        self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
+        self.nodeConnection = QTcpSocket(self)
+        #self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
@@ -64,7 +64,7 @@ class TallyNode(QObject):
     # default request sending method inherited by all classes in node
     def sendRequest(self, request):
         
-        timeout = 4000
+        timeout = 30000
         block = QByteArray()
         out = QDataStream(block, QIODevice.WriteOnly)
         out.setVersion(QDataStream.Qt_4_0)
@@ -110,8 +110,8 @@ class TallyClient(TallyNode):
     status = "OFF"
     
     #init class and superclass
-    def __init__(self, ip_address, port):
-        TallyNode.__init__(self, ip_address, port)
+    def __init__(self, ip_address, port, parent=None):
+        super(TallyClient, self).__init__(ip_address, port, parent)
         self.ip = ip_address
         self.port = port
         
@@ -135,8 +135,11 @@ class TallyClient(TallyNode):
         self.sendRequest(request)
     
     def updateClientList(self, clientList):
+        sublist = list()
+        for client in clientList:
+            sublist.append((client._id, client.status))
         request = "UPDATE_CLIENTLIST:"
-        request += json.dumps(clientList)
+        request += json.dumps(sublist)
         self.sendRequest(request)
         
     def updateShotList(self, shotList):
@@ -152,8 +155,8 @@ class TallyServer(TallyNode):
     
     stream_Url = "localhost"
     
-    def __init__(self, ip_address, port):
-        TallyNode.__init__(self, ip_address, port)
+    def __init__(self, ip_address, port, parent=None):
+        super(TallyServer, self).__init__(ip_address, port, parent)
         
     #Network Handling code here
     def registerClient(self, clientID, clientType, clientAddress):
@@ -217,8 +220,8 @@ class TallySwitcher(TallyNode):
     
     c_type = "videoMixer"
     
-    def __init__(self, ip_address, port):
-        TallyNode.__init__(self, ip_address, port)
+    def __init__(self, ip_address, port, parent=None):
+        super(TallySwitcher, self).__init__(ip_address, port, parent)
      
     def setSourceToStatus(self, sourceId, status):
         request = "SET_SOURCE:" + sourceId + ":" + status

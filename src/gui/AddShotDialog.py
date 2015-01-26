@@ -15,7 +15,7 @@ class AddShotDialog(QDialog):
     This dialog takes care of the selection of shots to be added to the shotlist
     '''
     
-    newShotAtPos = pyqtSignal(list,int)
+    newShotAtPos = pyqtSignal(tuple,int)
     shotPos=0
     
     def __init__(self, parent=None):
@@ -69,6 +69,7 @@ class AddShotDialog(QDialog):
         print("SELECTED SHOT TYPE: " + str(self.pageTwo.checkableButtonGroup.checkedId()) )
         shotType = self.shotTypes[(self.pageOne.checkableButtonGroup.checkedId()+2)*-1]
         listIndex = (self.pageTwo.checkableButtonGroup.checkedId()+2)*-1
+        print(listIndex)
         if listIndex < len(self.cameras):
             shotCam = self.cameras[listIndex][0]
             print("ShotType: " + shotType + " ShotCam: " + shotCam)

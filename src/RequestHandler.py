@@ -120,7 +120,7 @@ class RequestHandler(QObject):
                 qDebug("jsonD CLIENTLIST CONTAINS MULTIPLE DIVIDER CHARACTERS - JOINING")
                 
             clientList = json.loads(data_ordered[1])
-            
+            qDebug("EMITTING SIGNAL NEWCLIENTLIST")
             #emit the new sourcelist signal containing the uptodate sourcelist received from the videomixer           
             self.newClientlist.emit(clientList)
             

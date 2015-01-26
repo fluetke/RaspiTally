@@ -21,7 +21,7 @@ class MainWindow(QWidget):
     '''
     
     # init signals   
-    addShotAtPos = pyqtSignal(list, int)
+    addShotAtPos = pyqtSignal(tuple, int)
     delShotAtPos = pyqtSignal(int)
     movShotUp = pyqtSignal(int)
     movShotDown = pyqtSignal(int)
@@ -117,7 +117,7 @@ class MainWindow(QWidget):
     def updateSourceList(self, sources):
         self.sourceList.clear()
         self.addShotDiag.setupCamselector(sources) # TODO: move this to signal connection
-        for source in sources:
+        for source in sources: #FIXME: fix setupCamSelector Method
             self.sourceList.addItem(source[0] + ":" + source[1])
         
 #     def showAddShotDialog(self, pos):

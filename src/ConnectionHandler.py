@@ -84,6 +84,8 @@ class ConnectionHandlerThread(QThread):
             except TypeError:
                 # Python v2.
                 pass    
+            except UnicodeError:
+                print("UNICODE ERROR: Could not decode message, please resend")
             
             #qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
             self.dataReceived.emit(data) #emit converted data 

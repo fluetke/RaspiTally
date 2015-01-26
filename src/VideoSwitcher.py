@@ -53,17 +53,18 @@ if __name__ == '__main__':
     
     #init vars for 
     rqstHandler = RequestHandler()
-    serverInterface = TallyServer( SERVER_IP , SERVER_PORT )
+    serverInterface = TallyServer( SERVER_IP , SERVER_PORT, app )
     serverInterface.openConnection()
-    wirecast = WirecastConnector()
+    wirecast = WirecastConnector(app)
     threadList = list()
     
     #connect signals and slots
     connectSignals()
     
-    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
+   # serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
+    serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
     
-    server = QTcpServer()
+    server = QTcpServer(app)
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, 3117)
     
