@@ -19,7 +19,7 @@ class TallyNode(QObject):
     port = 0
     nodeConnection = None
     mutex = None
-    
+    keepAliveTimer = None
     
     
     def __init__(self, ip, port, parent=None):
@@ -27,7 +27,7 @@ class TallyNode(QObject):
         self.ip = ip
         self.port = port
         self.nodeConnection = QTcpSocket(self)
-        #self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
+        self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
@@ -35,25 +35,25 @@ class TallyNode(QObject):
         
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
-        #try:
-        self.nodeConnection.connectToHost(self.ip,self.port)
+        try:
+            self.nodeConnection.connectToHost(self.ip,self.port)
         
-#         except QTcpSocket.HostNotFoundError:
-#             qDebug("Remote Host " + str(self.ip) + ":" + str(self.port) + " not found")
-#         except QTcpSocket.ConnectionRefusedError:
-#             qDebug("Connection refused by Host")
-#         except QTcpSocket.NetworkError:
-#             qDebug("Connection closed: Network error")
-#         except QTcpSocket.RemoteHostClosedError:
-#             qDebug("Connection closed by remote Host")
-#         except QTcpSocket.SocketAccessError:
-#             qDebug("Error could not AccessSocket -> Socket Access Error")
-#         except QTcpSocket.SocketAddressNotAvailableError:
-#             qDebug("ERROR: Socket Address Not Available")
-#         except QTcpSocket.SocketTimeoutError:
-#             qDebug("ERROR: Socket Timed out")
-#         except QTcpSocket.UnfinishedSocketOperationError:
-#             qDebug("Error blocked by unfinished socket operation")
+        except QTcpSocket.HostNotFoundError:
+            qDebug("Remote Host " + str(self.ip) + ":" + str(self.port) + " not found")
+        except QTcpSocket.ConnectionRefusedError:
+            qDebug("Connection refused by Host")
+        except QTcpSocket.NetworkError:
+            qDebug("Connection closed: Network error")
+        except QTcpSocket.RemoteHostClosedError:
+            qDebug("Connection closed by remote Host")
+        except QTcpSocket.SocketAccessError:
+            qDebug("Error could not AccessSocket -> Socket Access Error")
+        except QTcpSocket.SocketAddressNotAvailableError:
+            qDebug("ERROR: Socket Address Not Available")
+        except QTcpSocket.SocketTimeoutError:
+            qDebug("ERROR: Socket Timed out")
+        except QTcpSocket.UnfinishedSocketOperationError:
+            qDebug("Error blocked by unfinished socket operation")
         
         if self.nodeConnection.waitForConnected(4000):
             qDebug("SUCCESS: Connection Established")
@@ -83,7 +83,7 @@ class TallyNode(QObject):
         
         self.mutex.lock()
         self.nodeConnection.write(block) # write stuff to socket
-        
+    
         #FIXME: Determine reason for unexpected error message here and fix it
         if self.nodeConnection.state() is QAbstractSocket.ConnectedState:
             self.nodeConnection.waitForBytesWritten(timeout)
@@ -101,6 +101,10 @@ class TallyNode(QObject):
         self.nodeConnection.disconnectFromHost()
         self.nodeConnection.waitForDisconnected()
         self.nodeConnection.close()
+        
+    def __del__(self):
+        qDebug("TALLY_NODE DELETED")
+        self.keepAliveTimer.stop()
         
 class TallyClient(TallyNode):
     

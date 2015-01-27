@@ -20,7 +20,6 @@ from ConfigHandler import ConfigHandler
 ## FUCK SAFETY AND BEST PRACTICE
 
 #lists of things
-threadList = list()
 #streamUrl = Container()
 
 def initHandling():
@@ -130,6 +129,7 @@ if __name__ == '__main__':
     directorNode = Container()
     videoSwitcher = Container()
     # data lists
+    threadList = list()
     clients = ListData(app)
     shots = ListData(app)
     

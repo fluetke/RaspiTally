@@ -113,6 +113,7 @@ class MainWindow(QWidget):
     def connectSignals(self):
         self.quitBtn.clicked.connect(QApplication.quit) #TODO add clean shutdown of server, and deregistering here
         self.addShotDiag.newShotAtPos.connect(self.addShotAtPos)
+        self.emergencyBtn.clicked.connect(self.fullscreenToggle())
         
     def updateSourceList(self, sources):
         self.sourceList.clear()
@@ -120,32 +121,10 @@ class MainWindow(QWidget):
         for source in sources: #FIXME: fix setupCamSelector Method
             self.sourceList.addItem(source[0] + ":" + source[1])
         
-#     def showAddShotDialog(self, pos):
-#         print("ADD SHOT PRESSED FOR SHOT NR " + str(pos) )
-#         self.addShotDiag.storePos(pos) #move this to signal generation within add Shot dialog
-#         self.addShotDiag.show()
-        
-#     def movDown(self, listPos):
-#         self.movShotDown.emit(self.listPos)
-#     
-#     def movUp(self, listPos):
-#         self.movShotUp.emit(self.listPos)
-        
-#     def addShotConfirmed(self):
-#         pos = self.addShotDiag.getShotPos()
-#         shot = self.addShotDiag.getShot()
-#         if shot != False:
-#             self.addShotAtPos.emit(shot, pos) # TODO: move this within addshotdialog
-#         self.addShotDiag.close()
-        
-#     def delShot(self,listPos):
-#         self.delShotAtPos.emit(self.listPos)
-            
-         
-    # def fullscreenToggle(self):
-        # if self.isFullScreen():
-            # self.showNormal()
-            # btn.setText("NOT FullScreen")
-        # else:
-            # self.showFullScreen()
-            # self.btn.setText("FULLSCREEN")        
+    def fullscreenToggle(self):
+        if self.isFullScreen():
+            self.showNormal()
+            #btn.setText("NOT FullScreen")
+        else:
+            self.showFullScreen()
+            #self.btn.setText("FULLSCREEN")        

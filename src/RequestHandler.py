@@ -6,8 +6,6 @@ Created on 05.01.2015
 from PyQt4.QtCore import pyqtSignal, QObject, qDebug
 import json
 
-
-
 class RequestHandler(QObject):
     '''
     classdocs
@@ -83,8 +81,6 @@ class RequestHandler(QObject):
             
             self.configStart.emit()
             
-            
-            
         elif data_ordered[0] == "CONFIG_DONE":
             clientId = None
             if len(data_ordered) == 2:
@@ -147,7 +143,6 @@ class RequestHandler(QObject):
             #emit the new sourcelist signal containing the uptodate sourcelist received from the videomixer           
             self.newSourcelist.emit(sourceList)
             print("EMITTING NEW SOURCELIST: " + str(sourceList))
-            
             
         elif data_ordered[0] == "GET_SOURCELIST":
             qDebug("SOURCELIST REQUEST FROM SERVER")

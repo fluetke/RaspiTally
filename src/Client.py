@@ -52,7 +52,8 @@ def endConfigMode(newId):
     window.setWindowTitle("TV Tally: " + newId)
 
 def confirmSelectedSource():
-    serverInterface.load().configurationDone()
+    srvInt=serverInterface.load()
+    srvInt.configurationDone()
     
 def storeStreamUrl(url):
     qDebug("CLIENT::Storing streamurl in assign window")
@@ -148,4 +149,4 @@ if __name__ == '__main__':
     server.newConnection.connect(initHandling)
     server.listen(QHostAddress.Any, CLIENT_PORT)
     
-    app.exec()
+    app.exec_()

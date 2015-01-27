@@ -65,7 +65,7 @@ class ConnectionHandlerThread(QThread):
             #qDebug("BLOCKSIZE IS: " + str(blockSize))
             while self.networkSocket.bytesAvailable() < blockSize and not self.quit:
                 #qDebug("WAITING FOR DATA TO ARRIVE")
-                if not self.networkSocket.waitForReadyRead(timeout):
+                if not self.networkSocket.waitForReadyRead():
                     self.error.emit(self.networkSocket.error(), self.networkSocket.errorString())
                     self.networkSocket.close()
                     return
@@ -90,7 +90,7 @@ class ConnectionHandlerThread(QThread):
             #qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
             self.dataReceived.emit(data) #emit converted data 
         
-        #qDebug("DISCONNECTING")
+        qDebug("DISCONNECTING")
         self.networkSocket.disconnectFromHost()
         self.networkSocket.waitForDisconnected()
         #qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL FINISHED")
