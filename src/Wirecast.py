@@ -44,7 +44,7 @@ class WirecastConnector(QObject):
         try:
             sources = self.sourceListScript.run()
             self.sourcesReady.emit(sources)
-         except ScriptError:
+        except ScriptError:
              qDebug("Grabbing SourcesList returned an error: ScriptError")
              return False
         except:

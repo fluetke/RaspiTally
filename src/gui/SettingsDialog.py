@@ -16,8 +16,8 @@ class SettingsDialog(QDialog):
     #2 buttons cancel ok
     # labels for server adress, client type and client id    
     
-    def __init__(self, setting):
-        QDialog.__init__(self)
+    def __init__(self, setting, parent=None):
+        super(SettingsDialog, self).__init__(parent)
         self.settings = setting
                 
         # init widgets
@@ -32,22 +32,22 @@ class SettingsDialog(QDialog):
         self.cliTypeInput = QComboBox()
         
         #init layouts
-        mainLayout = QVBoxLayout()
-        formLayout = QFormLayout()
-        buttonLayout = QHBoxLayout()
+        self.mainLayout = QVBoxLayout()
+        self.formLayout = QFormLayout()
+        self.buttonLayout = QHBoxLayout()
         
         # setting up layouts
-        formLayout.addRow(self.srvIpLbl, self.srvIpInput)
-        formLayout.addRow(self.srvPortLbl, self.srvPortInput)
-        formLayout.addRow(self.cliTypeLbl, self.cliTypeInput)
-        buttonLayout.addWidget(self.okBtn)
-        buttonLayout.addWidget(self.cancelBtn)
-        mainLayout.addWidget(self.titleLbl)
-        mainLayout.addLayout(formLayout)
-        mainLayout.addLayout(buttonLayout)
+        self.formLayout.addRow(self.srvIpLbl, self.srvIpInput)
+        self.formLayout.addRow(self.srvPortLbl, self.srvPortInput)
+        self.formLayout.addRow(self.cliTypeLbl, self.cliTypeInput)
+        self.buttonLayout.addWidget(self.okBtn)
+        self.buttonLayout.addWidget(self.cancelBtn)
+        self.mainLayout.addWidget(self.titleLbl)
+        self.mainLayout.addLayout(self.formLayout)
+        self.mainLayout.addLayout(self.buttonLayout)
         
         #apply layout to main Widget
-        self.setLayout(mainLayout)
+        self.setLayout(self.mainLayout)
         
         #connect signals
         self.connectSignals()

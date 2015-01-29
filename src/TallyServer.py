@@ -26,9 +26,14 @@ def initHandling():
     qDebug("Threadlist size is: " + str(len(threadList)))
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
+    connHndl.error.connect(networkErrorPrinter)
     connHndl.dataReceived.connect(rqstHandler.processData)
+    connHndl.setParent(app)
     connHndl.start()
     threadList.append(connHndl)
+    
+def networkErrorPrinter(sockerr, errmsg):
+    qDebug("SOCKET ERROR(" + str(sockerr) + "): " + str(errmsg))
     
 def connectSignals():
     qDebug("MAIN:: CONNECTING SIGNALS AND SLOTS")
@@ -62,6 +67,7 @@ def storeClient(client):
     client.updateShotList(shots.data)
     shots.dataChanged.connect(client.updateShotList)
     clients.dataChanged.connect(client.updateClientList)
+    client.setParent(app)
     clients.addItem(client)
         
 def storeSwitcher(switcher):
@@ -71,6 +77,7 @@ def storeSwitcher(switcher):
     switcher.openConnection()
     # switcher.getStreamUrl()
     switcher.getSourceList()
+    switcher.setParent(app)
     videoSwitcher.store(switcher)
     print("TallyServer::VideoSwitcher stored in memory")
      
@@ -79,10 +86,12 @@ def storeDirector(director):
     
     director._id = "DIRECTOR" 
     director.endConfigurationMode(director._id)
+    director.setParent(app)
     directorNode.store(director)
     print("TallyServer::DirectorConsole stored in memory")
 
 def switchSource(clientId, status):
+    assert videoSwitcher != None
     ''' instruct the VideoSwitcher(in this case Wirecast) 
         to set source assigned to clientID to status '''
     

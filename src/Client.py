@@ -19,7 +19,7 @@ from time import sleep
 from TallyHandler import TallyHandler
 from gui.AddShotDialog import AddShotDialog
 
-
+# TODO: replace with datawrangler class to profit from qtsignals
 threadList = list()
 clientList = list()
 shotList = list()
@@ -31,6 +31,7 @@ def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection(),server)
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
+    connHndl.setParent(app)
     connHndl.start()
     threadList.append(connHndl)
     

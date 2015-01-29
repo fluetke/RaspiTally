@@ -32,7 +32,11 @@ class TallyNode(QObject):
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
         self.keepAliveTimer.start(25000)
-        
+
+    def disconnectHandler(self):
+        print("CONNECTION CLOSED UNEXPECTEDLY, PERFORMING KAMIKAZE by deleting myself now")
+        self.nodeConnection.deleteLater()
+        self.__del__()
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
         try:
@@ -105,6 +109,8 @@ class TallyNode(QObject):
     def __del__(self):
         qDebug("TALLY_NODE DELETED")
         self.keepAliveTimer.stop()
+        
+        
         
 class TallyClient(TallyNode):
     

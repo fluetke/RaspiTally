@@ -32,9 +32,9 @@ class AddShotDialog(QDialog):
         self.okBtn = QPushButton("OK")
         self.cancelBtn = QPushButton("Cancel")
         
-        tabPane = QTabWidget()
-        tabPane.addTab(self.pageOne, "Shottypes")
-        tabPane.addTab(self.pageTwo, "Videoinputs")
+        self.tabPane = QTabWidget()
+        self.tabPane.addTab(self.pageOne, "Shottypes")
+        self.tabPane.addTab(self.pageTwo, "Videoinputs")
         
         self.buttonLayout = QHBoxLayout()
         self.buttonLayout.addWidget(self.okBtn)
@@ -42,7 +42,7 @@ class AddShotDialog(QDialog):
         self.buttonLayout.addWidget(self.cancelBtn)
         
         self.mainLayout = QVBoxLayout()
-        self.mainLayout.addWidget(tabPane)
+        self.mainLayout.addWidget(self.tabPane)
         self.mainLayout.addLayout(self.buttonLayout)
         
         self.setLayout(self.mainLayout)

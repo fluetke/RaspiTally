@@ -32,12 +32,12 @@ class MainWindow(QWidget):
         
         ##setup all Widgets
         # display area
-        self.tallyState = StatusBarWidget()
-        self.liveMonitor = VideoWidget()
-        self.sourceList = QListWidget()
+        self.tallyState = StatusBarWidget(self)
+        self.liveMonitor = VideoWidget(self)
+        self.sourceList = QListWidget(self)
         self.quitBtn = QPushButton("&Quit")
         # interaction area
-        self.shotlist = QListWidget()
+        #self.shotlist = QListWidget()
         self.emergencyBtn = QPushButton("&EMERGENCY")
         self.goLiveBtn = QPushButton("GO &LIVE")
         self.nextBtn = QPushButton("&NEXT")
@@ -52,36 +52,36 @@ class MainWindow(QWidget):
         self.goLiveBtn.setFixedHeight(64)
         
         #layout definition
-        mainLayout = QVBoxLayout()
-        statusLayout = QHBoxLayout()
-        previewLayout = QHBoxLayout()
-        actionBarLayout = QHBoxLayout()
+        self.mainLayout = QVBoxLayout()
+        self.statusLayout = QHBoxLayout()
+        self.previewLayout = QHBoxLayout()
+        self.actionBarLayout = QHBoxLayout()
         self.shotListOuterLayout = QHBoxLayout()
         self.shotListLayout = QHBoxLayout()
         
         # fill layouts 
-        statusLayout.addStretch(192)
-        statusLayout.addWidget(self.tallyState)
-        statusLayout.addStretch(128)
-        statusLayout.addWidget(self.quitBtn)
-        previewLayout.addWidget(self.liveMonitor)
-        previewLayout.addWidget(self.sourceList)
-        actionBarLayout.addStretch()
-        actionBarLayout.addWidget(self.emergencyBtn)
-        actionBarLayout.addWidget(self.goLiveBtn)
-        actionBarLayout.addWidget(self.nextBtn)
-        actionBarLayout.addStretch()
+        self.statusLayout.addStretch(192)
+        self.statusLayout.addWidget(self.tallyState)
+        self.statusLayout.addStretch(128)
+        self.statusLayout.addWidget(self.quitBtn)
+        self.previewLayout.addWidget(self.liveMonitor)
+        self.previewLayout.addWidget(self.sourceList)
+        self.actionBarLayout.addStretch()
+        self.actionBarLayout.addWidget(self.emergencyBtn)
+        self.actionBarLayout.addWidget(self.goLiveBtn)
+        self.actionBarLayout.addWidget(self.nextBtn)
+        self.actionBarLayout.addStretch()
         self.shotListLayout.setSpacing(0)
         self.shotListOuterLayout.setSpacing(0)
         self.shotListOuterLayout.addLayout(self.shotListLayout)
         self.shotListOuterLayout.addStretch()
-        mainLayout.addLayout(statusLayout)
-        mainLayout.addLayout(previewLayout)
-        mainLayout.addLayout(self.shotListOuterLayout)
-        mainLayout.addLayout(actionBarLayout)
+        self.mainLayout.addLayout(self.statusLayout)
+        self.mainLayout.addLayout(self.previewLayout)
+        self.mainLayout.addLayout(self.shotListOuterLayout)
+        self.mainLayout.addLayout(self.actionBarLayout)
         
         #set mainlayout for window
-        self.setLayout(mainLayout) 
+        self.setLayout(self.mainLayout) 
         
         # setup Window details
         self.setWindowTitle("TV Tally")
@@ -113,7 +113,7 @@ class MainWindow(QWidget):
     def connectSignals(self):
         self.quitBtn.clicked.connect(QApplication.quit) #TODO add clean shutdown of server, and deregistering here
         self.addShotDiag.newShotAtPos.connect(self.addShotAtPos)
-        self.emergencyBtn.clicked.connect(self.fullscreenToggle())
+        self.emergencyBtn.clicked.connect(self.fullscreenToggle)
         
     def updateSourceList(self, sources):
         self.sourceList.clear()

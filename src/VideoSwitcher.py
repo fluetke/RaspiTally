@@ -31,6 +31,7 @@ def initHandling():
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
+    connHndl.setParent(app)
     connHndl.start()
     threadList.append(connHndl)
     

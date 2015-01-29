@@ -35,23 +35,23 @@ class SignalAssignDialog(QDialog):
         
         
         #init layouts
-        mainLayout = QVBoxLayout()
-        feedViewLayout = QHBoxLayout()
-        buttonLayout = QHBoxLayout()
+        self.mainLayout = QVBoxLayout()
+        self.feedViewLayout = QHBoxLayout()
+        self.buttonLayout = QHBoxLayout()
         
         # setting up layouts
-        feedViewLayout.addWidget(self.videoFeedView)
-        feedViewLayout.addWidget(self.processDescLbl)
-        buttonLayout.addWidget(self.okBtn)
-        buttonLayout.addWidget(self.cancelBtn)
-        mainLayout.addWidget(self.titleLbl)
-        mainLayout.addLayout(feedViewLayout)
-        mainLayout.addWidget(self.srcLbl)
-        mainLayout.addWidget(self.sourceListView)
-        mainLayout.addLayout(buttonLayout)
+        self.feedViewLayout.addWidget(self.videoFeedView)
+        self.feedViewLayout.addWidget(self.processDescLbl)
+        self.buttonLayout.addWidget(self.okBtn)
+        self.buttonLayout.addWidget(self.cancelBtn)
+        self.mainLayout.addWidget(self.titleLbl)
+        self.mainLayout.addLayout(self.feedViewLayout)
+        self.mainLayout.addWidget(self.srcLbl)
+        self.mainLayout.addWidget(self.sourceListView)
+        self.mainLayout.addLayout(self.buttonLayout)
         
         #apply layout to main Widget
-        self.setLayout(mainLayout)
+        self.setLayout(self.mainLayout)
         
         #connect signals
         self.connectSignals()

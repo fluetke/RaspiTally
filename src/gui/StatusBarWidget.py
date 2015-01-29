@@ -10,21 +10,21 @@ class StatusBarWidget(QWidget):
     def __init__(self, parent=None):
         super(StatusBarWidget, self).__init__(parent)
         
-        statusLabel = QLabel("UNDEFINED")
+        self.statusLabel = QLabel("UNDEFINED")
         #Generate Pixmap for colored status indicator
-        indicatorSquare = QPixmap(48,48)
-        indicatorSquare.fill(QColor(127,255,255))
-        statusIndicatorL = QLabel()
-        statusIndicatorR = QLabel()
-        statusIndicatorL.setPixmap(indicatorSquare)
-        statusIndicatorR.setPixmap(indicatorSquare)
+        self.indicatorSquare = QPixmap(48,48)
+        self.indicatorSquare.fill(QColor(127,255,255))
+        self.statusIndicatorL = QLabel()
+        self.statusIndicatorR = QLabel()
+        self.statusIndicatorL.setPixmap(self.indicatorSquare)
+        self.statusIndicatorR.setPixmap(self.indicatorSquare)
         
         #add layouts for status widget
-        mainLayout = QHBoxLayout()
-        mainLayout.addWidget(statusIndicatorL)
-        mainLayout.addWidget(statusLabel)
-        mainLayout.addWidget(statusIndicatorR)
-        self.setLayout(mainLayout)
+        self.mainLayout = QHBoxLayout()
+        self.mainLayout.addWidget(self.statusIndicatorL)
+        self.mainLayout.addWidget(self.statusLabel)
+        self.mainLayout.addWidget(self.statusIndicatorR)
+        self.setLayout(self.mainLayout)
         
     # this method acts as a slot for state-changed signals
     # it updates the statusDisplay color and label text
