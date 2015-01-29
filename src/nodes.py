@@ -4,7 +4,7 @@ Created on 06.01.2015
 @author: Florian
 '''
 from PyQt4.QtCore import QObject, qDebug, QMutex, QByteArray, QDataStream,\
-    QIODevice, QTimer
+    QIODevice, QTimer, pyqtSignal
 from PyQt4.QtNetwork import QTcpSocket, QHostAddress, QAbstractSocket
 import json
 
@@ -20,7 +20,7 @@ class TallyNode(QObject):
     nodeConnection = None
     mutex = None
     keepAliveTimer = None
-    
+    connectionError = pyqtSignal()
     
     def __init__(self, ip, port, parent=None):
         super(TallyNode, self).__init__(parent)
@@ -31,13 +31,16 @@ class TallyNode(QObject):
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
-        
 
     def disconnectHandler(self):
         print("CONNECTION CLOSED UNEXPECTEDLY, PERFORMING KAMIKAZE by deleting myself now")
         self.keepAliveTimer.stop()
-        self.nodeConnection.deleteLater()
-        self.__del__()
+        if self.openConnection():
+            print("Nodes::Reconnected with server - continuin operation")
+            self.keepAliveTimer.start(25000)
+        else:
+            qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
+            self.connectionError.emit()
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
         try:
@@ -66,6 +69,9 @@ class TallyNode(QObject):
             return True
         else:
             qDebug("FAIL: Connection could not be established")
+            self.nodeConnection.deleteLater()
+            self.connectionError.emit()
+            return False
     
     # default request sending method inherited by all classes in node
     def sendRequest(self, request):
