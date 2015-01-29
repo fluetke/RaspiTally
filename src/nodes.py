@@ -27,14 +27,15 @@ class TallyNode(QObject):
         self.ip = ip
         self.port = port
         self.nodeConnection = QTcpSocket(self)
-        self.nodeConnection.disconnected.connect(self.nodeConnection.deleteLater)
+        self.nodeConnection.disconnected.connect(self.disconnectHandler)
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
-        self.keepAliveTimer.start(25000)
+        
 
     def disconnectHandler(self):
         print("CONNECTION CLOSED UNEXPECTEDLY, PERFORMING KAMIKAZE by deleting myself now")
+        self.keepAliveTimer.stop()
         self.nodeConnection.deleteLater()
         self.__del__()
     #  connect to remote host and catch as many exceptions as possible
@@ -61,6 +62,7 @@ class TallyNode(QObject):
         
         if self.nodeConnection.waitForConnected(4000):
             qDebug("SUCCESS: Connection Established")
+            self.keepAliveTimer.start(25000)
             return True
         else:
             qDebug("FAIL: Connection could not be established")
