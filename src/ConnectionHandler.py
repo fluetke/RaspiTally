@@ -7,6 +7,7 @@ from PyQt4.QtCore import pyqtSignal, QThread, QByteArray, QDataStream, QIODevice
     qDebug, QMutex
 from PyQt4.QtNetwork import QTcpSocket, QNetworkAddressEntry
 
+
 class ConnectionHandlerThread(QThread):
     '''
     classdocs
@@ -22,8 +23,10 @@ class ConnectionHandlerThread(QThread):
         '''
         super(ConnectionHandlerThread, self).__init__(parent)
         self.networkSocket = connDesc
+        self.networkSocket.setParent(self)
         self.networkMutex = QMutex()
         self.quit = False
+        self.networkSocket.disconnected.connect(self.handleDisconnect)
         
     def __del__(self):
         qDebug("DESTRUCTOR CALLED")
@@ -32,6 +35,11 @@ class ConnectionHandlerThread(QThread):
         self.networkMutex.unlock()
         self.wait()
         
+    def handleDisconnect(self):
+        qDebug("ConnectionHandler::Connection lost, quitting")
+        self.quit = True
+        self.wait()
+    
     def run(self):
         '''
         This handles incoming connections, one at a time 
@@ -89,6 +97,10 @@ class ConnectionHandlerThread(QThread):
             
             #qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
             self.dataReceived.emit(data) #emit converted data 
+            if data.startswith("DEREGISTER"):
+                self.networkMutex.lock()
+                self.quit = True
+                self.networkMutex.unlock()
         
         qDebug("DISCONNECTING")
         self.networkSocket.disconnectFromHost()
