@@ -99,11 +99,12 @@ class ConnectionHandlerThread(QThread):
                 print("UNICODE ERROR: Could not decode message, please resend")
             
             #qDebug("CONNECTION_HANDLER:: EMITTING SIGNAL DATA_RECEIVED")
-            self.dataReceived.emit(data) #emit converted data 
-            if data.startswith("DEREGISTER"):
-                self.networkMutex.lock()
-                self.quit = True
-                self.networkMutex.unlock()
+            self.dataReceived.emit(data) #emit converted data
+            if data != None: 
+                if data.startswith("DEREGISTER"):
+                    self.networkMutex.lock()
+                    self.quit = True
+                    self.networkMutex.unlock()
         
         qDebug("DISCONNECTING")
         self.networkSocket.disconnectFromHost()

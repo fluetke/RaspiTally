@@ -20,7 +20,7 @@ class TallyNode(QObject):
     nodeConnection = None
     mutex = None
     keepAliveTimer = None
-    connectionError = pyqtSignal()
+    nodeFinished = pyqtSignal(object)
     
     def __init__(self, ip, port, parent=None):
         super(TallyNode, self).__init__(parent)
@@ -40,7 +40,8 @@ class TallyNode(QObject):
             self.keepAliveTimer.start(25000)
         else:
             qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
-            self.connectionError.emit()
+            self.nodeFinished.emit(self)
+            
     #  connect to remote host and catch as many exceptions as possible
     def openConnection(self):
         try:
@@ -70,7 +71,7 @@ class TallyNode(QObject):
         else:
             qDebug("FAIL: Connection could not be established")
             self.nodeConnection.deleteLater()
-            self.connectionError.emit()
+            self.nodeFinished.emit(self)
             return False
     
     # default request sending method inherited by all classes in node
@@ -97,7 +98,7 @@ class TallyNode(QObject):
         self.nodeConnection.write(block) # write stuff to socket
     
         #FIXME: Determine reason for unexpected error message here and fix it
-        if self.nodeConnection.state() is QAbstractSocket.ConnectedState:
+        if self.nodeConnection.state() is int(QAbstractSocket.ConnectedState):
             self.nodeConnection.waitForBytesWritten(timeout)
         else:
             qDebug("REMOTE HOST ABRUPTLY CLOSED THE CONNECTION")
@@ -117,7 +118,7 @@ class TallyNode(QObject):
     def __del__(self):
         qDebug("TALLY_NODE DELETED")
         self.keepAliveTimer.stop()
-        
+        self.nodeFinished.emit(self)
         
         
 class TallyClient(TallyNode):

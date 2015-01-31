@@ -67,7 +67,10 @@ class ListData(QObject):
             print("INDEX OUT OF BOUNDS")
             #TODO: emit error signal here
             
-    
+    def remove(self, item):
+        self.data.remove(item)
+        self.dataChanged.emit(self.data)
+        
     def length(self):
         return len(self.data)
     

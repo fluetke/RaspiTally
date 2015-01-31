@@ -26,7 +26,6 @@ def initHandling():
     qDebug("Threadlist size is: " + str(len(threadList)))
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
-   
     connHndl.error.connect(networkErrorPrinter)
     connHndl.dataReceived.connect(rqstHandler.processData)
     connHndl.setParent(app)
@@ -71,6 +70,7 @@ def storeClient(client):
     shots.dataChanged.connect(client.updateShotList)
     clients.dataChanged.connect(client.updateClientList)
     client.setParent(app)
+    client.nodeFinished.connect(clients.remove)
     clients.addItem(client)
         
 def storeSwitcher(switcher):
@@ -82,6 +82,7 @@ def storeSwitcher(switcher):
     switcher.getSourceList()
     switcher.setParent(app)
     videoSwitcher.store(switcher)
+    switcher.nodeFinished.connect(lambda: videoSwitcher.store(None))
     print("TallyServer::VideoSwitcher stored in memory")
      
 def storeDirector(director):
@@ -91,6 +92,7 @@ def storeDirector(director):
     director.endConfigurationMode(director._id)
     director.setParent(app)
     directorNode.store(director)
+    director.nodeFinished.connect(lambda: directorNode.store(None))
     print("TallyServer::DirectorConsole stored in memory")
 
 def switchSource(clientId, status):
@@ -132,6 +134,10 @@ def switchTally(sourceId, status):
       
 def deregisterClient(clientId):#TODO: implement
     pass
+
+def removeNode(node):
+    clients.remove(node)
+    
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
