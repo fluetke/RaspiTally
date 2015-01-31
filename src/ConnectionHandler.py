@@ -29,7 +29,10 @@ class ConnectionHandlerThread(QThread):
         self.networkSocket.disconnected.connect(self.handleDisconnect)
         
     def __del__(self):
-        qDebug("DESTRUCTOR CALLED")
+        qDebug("ConnectionHandler::Destructor")
+        qDebug("ConnectionHandler::NetworkSocket ConnectionState - " + str(self.networkSocket.connected))
+        qDebug("ConnectionHandler::NetworkMutex Locked - " + str(self.networkMutex.locked()))
+        qDebug("ConnectionHandler::Quit Flag - " + str(self.quit))
         self.networkMutex.lock()
         self.quit = True
         self.networkMutex.unlock()

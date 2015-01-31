@@ -26,11 +26,14 @@ def initHandling():
     qDebug("Threadlist size is: " + str(len(threadList)))
     connHndl = ConnectionHandlerThread(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
+   
     connHndl.error.connect(networkErrorPrinter)
     connHndl.dataReceived.connect(rqstHandler.processData)
     connHndl.setParent(app)
     connHndl.start()
     threadList.append(connHndl)
+    
+
     
 def networkErrorPrinter(sockerr, errmsg):
     qDebug("SOCKET ERROR(" + str(sockerr) + "): " + str(errmsg))
