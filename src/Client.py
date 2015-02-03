@@ -5,7 +5,7 @@ Created on 04.01.2015
 '''
 from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
-from ConnectionHandler import ConnectionHandlerThread
+from ConnectionHandler import ConnectionHandler
 from os.path import sys
 from PyQt4.QtCore import qDebug, pyqtSignal, QSettings, QTimer
 from RequestHandler import RequestHandler
@@ -28,7 +28,7 @@ CLIENT_PORT = 3713
 streamUrl = Container()
 
 def initHandling():
-    connHndl = ConnectionHandlerThread(server.nextPendingConnection(),server)
+    connHndl = ConnectionHandler(server.nextPendingConnection(),server)
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
     connHndl.setParent(app)

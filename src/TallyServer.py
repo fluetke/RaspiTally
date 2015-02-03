@@ -5,7 +5,7 @@ Created on 04.01.2015
 '''
 from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
-from ConnectionHandler import ConnectionHandlerThread
+from ConnectionHandler import ConnectionHandler
 from os.path import sys
 from PyQt4.QtCore import qDebug, pyqtSignal
 from RequestHandler import RequestHandler
@@ -13,32 +13,33 @@ from nodes import TallySwitcher, TallyClient
 from storage import Container
 from DataWrangler import ListData
 from ConfigHandler import ConfigHandler
+from ThreadingServer import ThreadingServer
 
 
 ## YES I KNOW GLOBAL VARS ARE BAD AND EVIL 
 ## BUT I DONT CARE FOR KNOW, AS LONG AS IT WORKS DURING EVAL
 ## FUCK SAFETY AND BEST PRACTICE
 
-#lists of things
-#streamUrl = Container()
+#usefull data for server operation
+SERVER_PORT = 3771
 
-def initHandling():
-    qDebug("Threadlist size is: " + str(len(threadList)))
-    connHndl = ConnectionHandlerThread(server.nextPendingConnection())
-    connHndl.finished.connect(connHndl.deleteLater)
-    connHndl.error.connect(networkErrorPrinter)
-    connHndl.dataReceived.connect(rqstHandler.processData)
-    connHndl.setParent(app)
-    connHndl.start()
-    threadList.append(connHndl)
-    
-
-    
-def networkErrorPrinter(sockerr, errmsg):
-    qDebug("SOCKET ERROR(" + str(sockerr) + "): " + str(errmsg))
+# def initHandling():
+#     qDebug("Threadlist size is: " + str(len(threadList)))
+#     connHndl = ConnectionHandler(server.nextPendingConnection())
+#     connHndl.finished.connect(connHndl.deleteLater)
+#     connHndl.error.connect(networkErrorPrinter)
+#     connHndl.dataReceived.connect(rqstHandler.processData)
+#     connHndl.setParent(app)
+#     connHndl.start()
+#     threadList.append(connHndl)
+#     
+# 
+#     
+# def networkErrorPrinter(sockerr, errmsg):
+#     qDebug("SOCKET ERROR(" + str(sockerr) + "): " + str(errmsg))
     
 def connectSignals():
-    qDebug("MAIN:: CONNECTING SIGNALS AND SLOTS")
+    qDebug("TallyServer::Connecting Signals and Slots")
     rqstHandler.regClient.connect(clientSetup.registerClient) #connect client registration procedure
     rqstHandler.configEnd.connect(clientSetup.finalizeConfiguration)
     rqstHandler.stateRequest.connect(switchSource)
@@ -47,15 +48,13 @@ def connectSignals():
     rqstHandler.newShot.connect(shots.addItem)
     rqstHandler.movShot.connect(shots.movItem)
     rqstHandler.delShot.connect(shots.remItem)
-    #rqstHandler.streamAnswer.connect(saveStreamUrl)
     #rqstHandler.deregClient.connect(deregisterClient)
     rqstHandler.nextShotRequest.connect(continueWithNext)
     clientSetup.clientReady.connect(storeClient)
     clientSetup.directorReady.connect(storeDirector)
     clientSetup.switcherReady.connect(storeSwitcher)
     clientSetup.clientRemoved.connect(deregisterClient)
-#     clientSetup.confActive.connect(rqstHandler.setIpFilter)
-#     clientSetup.confInactive.connect(rqstHandler.clearIpFilter)
+    server.dataReceived.connect(rqstHandler.processData)
     
 def continueWithNext():
     if not clientSetup.configMode:
@@ -117,7 +116,7 @@ def switchSource(clientId, status):
                         switchSource(shots.itemAt(1)[0], "PREVIEW")
             
         else:
-            qDebug("ERROR --- Source is " + str(source) + " status is " + str(status)) 
+            qDebug("TallyServer::ERROR --- Source is " + str(source) + " status is " + str(status)) 
             
            
 
@@ -137,7 +136,6 @@ def deregisterClient(clientId):#TODO: implement
 
 def removeNode(node):
     clients.remove(node)
-    
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -147,21 +145,18 @@ if __name__ == '__main__':
     directorNode = Container()
     videoSwitcher = Container()
     # data lists
-    threadList = list()
     clients = ListData(app)
     shots = ListData(app)
     
+    #add initial blank item to shotlist, to prevent layout errors
     shots.addItem(("BLANK","UNDEFINED"))
         
     rqstHandler = RequestHandler(app)
     clientSetup = ConfigHandler(app)
+    server = ThreadingServer(app)
+    
     connectSignals()
-
-    server = QTcpServer(app)
-    server.newConnection.connect(initHandling)
-    if not server.listen(QHostAddress.Any, 3771):
-        qDebug("SERVER FAILED")
-    else: 
-        qDebug("Server listening on port: " + str(server.serverPort()))
+    
+    server.startListening(SERVER_PORT)
     
     app.exec_()

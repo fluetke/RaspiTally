@@ -8,7 +8,7 @@ from PyQt4.QtCore import pyqtSignal, QThread, QByteArray, QDataStream, QIODevice
 from PyQt4.QtNetwork import QTcpSocket, QNetworkAddressEntry
 
 
-class ConnectionHandlerThread(QThread):
+class ConnectionHandler(QThread):
     '''
     classdocs
     '''
@@ -21,7 +21,7 @@ class ConnectionHandlerThread(QThread):
         '''
         Constructor
         '''
-        super(ConnectionHandlerThread, self).__init__(parent)
+        super(ConnectionHandler, self).__init__(parent)
         self.networkSocket = connDesc
         self.networkSocket.setParent(self)
         self.networkMutex = QMutex()
@@ -53,8 +53,8 @@ class ConnectionHandlerThread(QThread):
         '''
         qDebug("CONNECTION_HANDLER:: NEW CONNECTION")
         timeout = 4000
-#         inpStream = QDataStream(self.networkSocket)
-#         inpStream.setVersion(QDataStream.Qt_4_0)
+        inpStream = QDataStream(self.networkSocket)
+        inpStream.setVersion(QDataStream.Qt_4_0)
         # receive data and pack into data_received for further processing
         while not self.quit:
 #

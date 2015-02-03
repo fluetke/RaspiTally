@@ -13,7 +13,7 @@ from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
 
 # project libraries
-from ConnectionHandler import ConnectionHandlerThread
+from ConnectionHandler import ConnectionHandler
 from RequestHandler import RequestHandler
 from nodes import TallyServer
 from Wirecast import WirecastConnector
@@ -28,7 +28,7 @@ streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
 
 # start new thread for each new connection
 def initHandling():
-    connHndl = ConnectionHandlerThread(server.nextPendingConnection())
+    connHndl = ConnectionHandler(server.nextPendingConnection())
     connHndl.finished.connect(connHndl.deleteLater)
     connHndl.dataReceived.connect(rqstHandler.processData)
     connHndl.setParent(app)

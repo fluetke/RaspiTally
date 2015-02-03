@@ -4,7 +4,7 @@ Created on 06.01.2015
 @author: Florian
 '''
 from PyQt4.QtCore import QObject, qDebug, QMutex, QByteArray, QDataStream,\
-    QIODevice, QTimer, pyqtSignal
+    QIODevice, QTimer, pyqtSignal, QMutexLocker
 from PyQt4.QtNetwork import QTcpSocket, QHostAddress, QAbstractSocket
 import json
 
@@ -33,17 +33,17 @@ class TallyNode(QObject):
         self.keepAliveTimer.timeout.connect(self.keepAlive)
 
     def disconnectHandler(self):
-        print("CONNECTION CLOSED UNEXPECTEDLY, PERFORMING KAMIKAZE by deleting myself now")
         self.keepAliveTimer.stop()
         if self.openConnection():
-            print("Nodes::Reconnected with server - continuin operation")
+            print("Nodes::Reconnected with server - continuing operation")
             self.keepAliveTimer.start(25000)
         else:
             qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
             self.nodeFinished.emit(self)
             
     #  connect to remote host and catch as many exceptions as possible
-    def openConnection(self):
+    def openConnection(self, timeout=4000):
+        locker = QMutexLocker(self.mutex)
         try:
             self.nodeConnection.connectToHost(self.ip,self.port)
         
@@ -64,20 +64,22 @@ class TallyNode(QObject):
         except QTcpSocket.UnfinishedSocketOperationError:
             qDebug("Error blocked by unfinished socket operation")
         
-        if self.nodeConnection.waitForConnected(4000):
+        if self.nodeConnection.waitForConnected(timeout):
             qDebug("SUCCESS: Connection Established")
-            self.keepAliveTimer.start(25000)
+            self.keepAliveTimer.start(timeout-1000)
             return True
         else:
             qDebug("FAIL: Connection could not be established")
+            self.nodeConnection.close()
             self.nodeConnection.deleteLater()
             self.nodeFinished.emit(self)
             return False
     
     # default request sending method inherited by all classes in node
     def sendRequest(self, request):
+        locker = QMutexLocker(self.mutex)
+        timeout = 4000
         
-        timeout = 30000
         block = QByteArray()
         out = QDataStream(block, QIODevice.WriteOnly)
         out.setVersion(QDataStream.Qt_4_0)
@@ -94,32 +96,27 @@ class TallyNode(QObject):
         out.device().seek(0)
         out.writeUInt16(block.size() - 2)
         
-        self.mutex.lock()
         self.nodeConnection.write(block) # write stuff to socket
-    
-        #FIXME: Determine reason for unexpected error message here and fix it
-        if self.nodeConnection.state() is int(QAbstractSocket.ConnectedState):
-            self.nodeConnection.waitForBytesWritten(timeout)
-        else:
-            qDebug("REMOTE HOST ABRUPTLY CLOSED THE CONNECTION")
-            qDebug(str(self.nodeConnection.state()))
-        self.mutex.unlock()
         
-        qDebug("NODE::REQUEST SENT TO " + str(self.ip) + ":" + str(self.port))
+        if self.nodeConnection.state() == QAbstractSocket.ConnectedState:
+            if self.nodeConnection.waitForBytesWritten(timeout):
+                qDebug("Node::Request send to " + str(self.ip) + ":" + str(self.port))
+        else:
+            qDebug("Nodes::Remote host abruptly closed the connection")
+        
+
            
     def keepAlive(self):
         self.sendRequest("KEEPALIVE") 
         
     def closeConnection(self):
-        self.nodeConnection.disconnectFromHost()
-        self.nodeConnection.waitForDisconnected()
         self.nodeConnection.close()
+        self.nodeConnection.waitForDisconnected()
         
     def __del__(self):
-        qDebug("TALLY_NODE DELETED")
         self.keepAliveTimer.stop()
         self.nodeFinished.emit(self)
-        
+        qDebug("Nodes::TallyNode deleted")
         
 class TallyClient(TallyNode):
     

@@ -47,9 +47,8 @@ class RequestHandler(QObject):
         #Server methods here
         #register a client
         if data_ordered[0] == "REGISTER":
-            qDebug("CLIENT ASKS FOR REGISTRATION")
             if len(data_ordered) != 5:
-                qDebug("MALFORMED REQUEST")
+                qDebug("RequestHandler::Register request is malformed")
                 return
             
             # structuring data in a more readable manner 
@@ -59,26 +58,27 @@ class RequestHandler(QObject):
             clientIp = data_ordered[3]
             clientPort = int(data_ordered[4])
             clientAddress = (clientIp, clientPort) #pack client network address tuple
-            qDebug("REQUEST_HNDL::EMITTING SIGNAL REGCLIENT")
+            qDebug("RequestHandler::Emitting signal regClient(" + str(clientType) +","+ str(clientAddress) +","+ str(clientId) +")")
             # emit new client signal containing all information needed by the clientregistration method
             self.regClient.emit(clientType, clientAddress, clientId)
             
         elif data_ordered[0] == "DEREGISTER":
-            qDebug("CLIENT DEREGISTERING")
+            
             if len(data_ordered) != 2:
-                qDebug("MALFORMED REQUEST")
+                qDebug("RequestHandler:: Deregister reguest is malformed")
                 #TODO ADD SOMETHING TO NOTIFY CLIENT
                 return
             
             clientId = data_ordered[1]
+            
+            qDebug("RequestHandler::Emitting signal deregClient(" + str(clientId) +")")
              
             # grabbing clientId and emitting signal for deregistration
             self.deregClient.emit(clientId)
             
         elif data_ordered[0] == "CONFIG_STARTED":
-            qDebug("REQUEST_HANDLER::CONFIG STARTED")
-            qDebug("ARGUMENT_LENGTH = " + str(len(data_ordered)))
-            
+            #qDebug("ARGUMENT_LENGTH = " + str(len(data_ordered)))
+            qDebug("RequestHandler::Emitting signal configStart()")
             self.configStart.emit()
             
         elif data_ordered[0] == "CONFIG_DONE":
@@ -86,6 +86,7 @@ class RequestHandler(QObject):
             if len(data_ordered) == 2:
                 clientId = data_ordered[1]
             
+            qDebug("RequestHandler::Emitting signal configEnd()")
             self.configEnd.emit(clientId)
             
         elif data_ordered[0] == "SET_SOURCE":
@@ -96,6 +97,7 @@ class RequestHandler(QObject):
             clientId = data_ordered[1]
             clientStatus = data_ordered[2]
             
+            qDebug("RequestHandler::Emitting signal regClient(" + str(clientId) +","+ str(clientStatus) +")")
             self.stateRequest.emit(clientId, clientStatus)
             
         elif data_ordered[0] == "SET_TALLY":
@@ -117,7 +119,8 @@ class RequestHandler(QObject):
                 
             clientList = json.loads(data_ordered[1])
             qDebug("EMITTING SIGNAL NEWCLIENTLIST")
-            #emit the new sourcelist signal containing the uptodate sourcelist received from the videomixer           
+            #emit the new sourcelist signal containing the uptodate sourcelist received from the videomixer
+            qDebug("RequestHandler::Emitting signal newClientlist")          
             self.newClientlist.emit(clientList)
             
         elif data_ordered[0] == "UPDATE_SHOTLIST":
