@@ -25,6 +25,7 @@ from ThreadingServer import ThreadingServer
 clientList = list()
 shotList = list()
 serverInterface = Container()
+CLIENT_IP = "192.168.178."
 CLIENT_PORT = 3713
 streamUrl = Container()
 
@@ -101,14 +102,13 @@ def addShotInServer(shot,pos):
 #         qDebug("CLIENT::ERROR - SERVER INTERFACE NOT INITIALIZED")
 
 def createServerInterface():
-    ip = socket.gethostbyname(socket.gethostname())
     srv_ip = settings.value("server/ip")
     port = settings.value("server/port", type=int)
     qDebug("ServerIP from Config:" + srv_ip)
     qDebug("ServerPort from config: " + str(port))
     tempSrvInterface = TallyServer(srv_ip, port, app)
     tempSrvInterface.openConnection()
-    tempSrvInterface.registerClient("", settings.value("client/type"), (ip,CLIENT_PORT))
+    tempSrvInterface.registerClient("", settings.value("client/type"), (CLIENT_IP,CLIENT_PORT))
     serverInterface.store(tempSrvInterface)
     
     #connect ServerInterface Signals

@@ -47,9 +47,7 @@ def connectSignals():
 # return streamurl to server 
 def returnStreamUrl():
     serverInterface.setStreamUrl(streamUrl) 
-
-
-
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     
@@ -64,8 +62,8 @@ if __name__ == '__main__':
     #connect signals and slots
     connectSignals()
     
-   # serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
-    serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
+    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
+    #serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
     
 #     server = QTcpServer(app)
 #     server.newConnection.connect(initHandling)
