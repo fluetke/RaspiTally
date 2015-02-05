@@ -73,8 +73,7 @@ def connectSignals():
     rqstHandler.newClientlist.connect(window.updateSourceList)
     rqstHandler.newShotlist.connect(window.populateShotlist) 
     configWindow.okBtn.clicked.connect(createServerInterface)
-    sigAssignWindow.videoSourceSelected.connect(serverInterface.load().setVideoSrcToStatus)
-    sigAssignWindow.okBtn.clicked.connect(serverInterface.load().configurationDone)
+    
     
     
 def mvShotDwnInServer(shotPos):
@@ -119,6 +118,8 @@ def createServerInterface():
     window.movShotUp.connect(mvShotUpInServer)
     window.nextBtn.clicked.connect(serverInterface.load().moveToNextShot)
     window.goLiveBtn.clicked.connect(goLive)
+    sigAssignWindow.videoSourceSelected.connect(serverInterface.load().setVideoSrcToStatus)
+    sigAssignWindow.okBtn.clicked.connect(serverInterface.load().configurationDone)
     
 def goLive():
     myID = settings.value("client/id", None , str)
