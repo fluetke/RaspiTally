@@ -5,7 +5,7 @@ Created on 11.01.2015
 '''
 from PyQt4.QtCore import QObject
 from PyQt4.QtCore import pyqtSignal
-#import RPi.GPIO as GPIO # grab raspberry gpio api
+import RPi.GPIO as GPIO # grab raspberry gpio api
 
 class TallyHandler(QObject):
     '''
