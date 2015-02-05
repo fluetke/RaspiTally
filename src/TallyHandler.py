@@ -25,23 +25,27 @@ class TallyHandler(QObject):
         initialize the gpio board
         '''
         super(TallyHandler, self).__init__(parent)
-        #GPIO.setmode(GPIO.BOARD)
-        #GPIO.setup(self.TALLY_LIVE_PIN, GPIO.OUT)
-        #GPIO.setup(self.TALLY_PREVIEW_PIN, GPIO.OUT)
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.TALLY_LIVE_PIN, GPIO.OUT)
+        GPIO.setup(self.TALLY_PREVIEW_PIN, GPIO.OUT)
     
+    def setState(self, state="OFF"):
+        if state == "PREVIEW":
+            GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
+            GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH)
+        elif state == "LIVE":
+            GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
+            GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
+        elif state == "OFF":
+            GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
+            GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
+        elif state == "EMERGENCY":
+            GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
+            GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH) 
+        self.tallyStateChanged.emit()
+        return True
     
-    def setState(self,state="OFF"):
-        pass
-#         if state == "PREVIEW":
-#             GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
-#             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH)
-#         elif state == "LIVE":
-#             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
-#             GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
-#         elif state == "OFF":
-#             GPIO.output(self.TALLY_LIVE_PIN, GPIO.LOW)
-#             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.LOW)
-#         elif state == "EMERGENCY":
-#             GPIO.output(self.TALLY_LIVE_PIN,GPIO.HIGH)
-#             GPIO.output(self.TALLY_PREVIEW_PIN, GPIO.HIGH) 
-#         return True
+    #TODO: check if this works
+    def __del__(self):
+        GPIO.cleanup()
+        super().__del__(self)

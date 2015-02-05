@@ -36,9 +36,9 @@ streamUrl = Container()
 #     connHndl.start()
 #     threadList.append(connHndl)
     
-def storeSourceList(source):
-    qDebug("CLIENT::Adding Sources to Assign Dialog")
-    sigAssignWindow.addSourcesToDialog(source)
+# def storeSourceList(source):
+#     qDebug("CLIENT::Adding Sources to Assign Dialog")
+#     sigAssignWindow.addSourcesToDialog(source)
 
 def startConfigMode():
     sigAssignWindow.show()
@@ -53,9 +53,9 @@ def endConfigMode(newId):
     settings.sync()
     window.setWindowTitle("TV Tally: " + newId)
 
-def confirmSelectedSource():
-    srvInt=serverInterface.load()
-    srvInt.configurationDone()
+# def confirmSelectedSource():
+#     srvInt=serverInterface.load()
+#     srvInt.configurationDone()
     
 def storeStreamUrl(url):
     qDebug("CLIENT::Storing streamurl in assign window")
@@ -65,16 +65,16 @@ def storeStreamUrl(url):
 def connectSignals():
     server.dataReceived.connect(rqstHandler.processData)
     rqstHandler.configStart.connect(startConfigMode)
-    rqstHandler.newSourcelist.connect(storeSourceList)
+    rqstHandler.newSourcelist.connect(sigAssignWindow.addSourcesToDialog)
     rqstHandler.streamAnswer.connect(storeStreamUrl)
     rqstHandler.configEnd.connect(endConfigMode)
-    rqstHandler.tallyRequest.connect(setTallyState)
-#     rqstHandler.streamAnswer.connect()
+    rqstHandler.changeYourTally.connect(tallyLight.setState)
+    rqstHandler.changeYourTally.connect(window.tallyState.changeStatus)
     rqstHandler.newClientlist.connect(window.updateSourceList)
     rqstHandler.newShotlist.connect(window.populateShotlist) 
     configWindow.okBtn.clicked.connect(createServerInterface)
-    sigAssignWindow.videoSourceSelected.connect(setConfSrcLive)
-    sigAssignWindow.okBtn.clicked.connect(confirmSelectedSource)
+    sigAssignWindow.videoSourceSelected.connect(serverInterface.load().setVideoSrcToStatus)
+    sigAssignWindow.okBtn.clicked.connect(serverInterface.load().configurationDone)
     
     
 def mvShotDwnInServer(shotPos):
@@ -86,20 +86,20 @@ def mvShotUpInServer(shotPos):
 def addShotInServer(shot,pos):
     serverInterface.load().addShot(shot[0],shot[1],pos)
 
-def setTallyState(self, tid, state):
-    qDebug("CLIENT::CHANGING TALLY STATE")
-    if window != None:
-        window.tallyState.changeStatus(state)
-    else:
-        qDebug("MainWindow not initialized ERROR")
-    if tallyLight != None:
-        tallyLight.setState(state)
+# def setTallyState(self, tid, state):
+#     qDebug("CLIENT::CHANGING TALLY STATE")
+#     if window != None:
+#         window.tallyState.changeStatus(state)
+#     else:
+#         qDebug("MainWindow not initialized ERROR")
+#     if tallyLight != None:
+#         tallyLight.setState(tid, state)
 
-def setConfSrcLive(src):
-    if not serverInterface.isEmpty():
-        serverInterface.load().setVideoSrcToStatus(src)
-    else:
-        qDebug("CLIENT::ERROR - SERVER INTERFACE NOT INITIALIZED")
+# def setConfSrcLive(src):
+#     if not serverInterface.isEmpty():
+#         serverInterface.load().setVideoSrcToStatus(src)
+#     else:
+#         qDebug("CLIENT::ERROR - SERVER INTERFACE NOT INITIALIZED")
 
 def createServerInterface():
     ip = socket.gethostbyname(socket.gethostname())
@@ -127,17 +127,16 @@ def goLive():
     else:
         print("SHIT MY ID IS EMPTY")
     
-def printData(data):
-    qDebug(data)
-    
+# def printData(data):
+#     qDebug(data)
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     settings = QSettings("TallyClient.ini", QSettings.IniFormat, app)
     tallyLight = TallyHandler(app)
-    
-    window = MainWindow()
+    window = MainWindow(app)
     sigAssignWindow = SignalAssignDialog(window)
-    configWindow = SettingsDialog(settings)
+    configWindow = SettingsDialog(settings, window)
     rqstHandler = RequestHandler(app)
     server = ThreadingServer(app)
     connectSignals()
@@ -146,11 +145,6 @@ if __name__ == '__main__':
     #check if serverWasFound anywhere, if not show config
     if serverInterface.isEmpty:
         configWindow.show()
-    
-    #start tcp server and listen for requests
-#     server = QTcpServer(app)
-#     server.newConnection.connect(initHandling)
-#     server.listen(QHostAddress.Any, CLIENT_PORT)
     
     server.startListening(CLIENT_PORT)
     

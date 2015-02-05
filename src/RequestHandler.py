@@ -20,6 +20,7 @@ class RequestHandler(QObject):
     configEnd = pyqtSignal(object)
     stateRequest = pyqtSignal(object,object)
     tallyRequest = pyqtSignal(object,object)
+    changeYourTally = pyqtSignal(object)
     newClientlist = pyqtSignal(list)
     newShotlist = pyqtSignal(list)
     newSourcelist = pyqtSignal(list)
@@ -109,6 +110,7 @@ class RequestHandler(QObject):
             tallyStatus = data_ordered[2]
             
             self.tallyRequest.emit(tallyId, tallyStatus)
+            self.changeYourTally.emit(tallyStatus)
             
         elif data_ordered[0] == "UPDATE_CLIENTLIST":
             if len(data_ordered) <2:
