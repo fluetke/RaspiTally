@@ -134,7 +134,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     settings = QSettings("TallyClient.ini", QSettings.IniFormat, app)
     tallyLight = TallyHandler(app)
-    window = MainWindow(app)
+    window = MainWindow()
     sigAssignWindow = SignalAssignDialog(window)
     configWindow = SettingsDialog(settings, window)
     rqstHandler = RequestHandler(app)
