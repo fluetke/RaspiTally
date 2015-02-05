@@ -1,0 +1,1243 @@
+administorsimac:src wirecast$ python3.4 VideoSwitcher.py 
+SUCCESS: Connection Established
+Node::Request send to 127.0.0.1:3771
+ThreadingServer::Listening on port 3117
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: GET_SOURCELIST
+SOURCELIST REQUEST FROM SERVER
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+ConnectionHandler::Received Data from Socket 15: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Node::Request send to 127.0.0.1:3771
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 7
+ConnectionHandler::Receiving socket descriptor 7
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 7 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:2193:LIVE
+RequestHandler::Emitting signal regClient(2193,LIVE)
+SWITCHING 2193 TO STATE LIVE
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:2193:LIVE
+RequestHandler::Emitting signal regClient(2193,LIVE)
+SWITCHING 2193 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+ConnectionHandler::Received Data from Socket 15: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+SWITCHING 3022 TO STATE LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 15
+ConnectionHandler::Receiving socket descriptor 15
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 15 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771
+Node::Request send to 127.0.0.1:3771

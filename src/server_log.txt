@@ -1,0 +1,2487 @@
+python3.4 TallyServer.py 
+Emitting Signal Data changed
+TallyServer::Connecting Signals and Slots
+ThreadingServer::Listening on port 3771
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: REGISTER::videoMixer:192.168.178.29:3117
+RequestHandler::Emitting signal regClient(videoMixer,('192.168.178.29', 3117),)
+SUCCESS: Connection Established
+Node::Request send to 192.168.178.29:3117
+TallyServer::VideoSwitcher stored in memory
+ConnectionHandler::Received Data from Socket 10: UPDATE_SOURCELIST:[["731", "Blank Shot", "preview"]]
+RECEIVING SOURCELIST FROM VIDEOMIXER
+STORING DATA, LOCKING MUTEX
+DATA DATA DATA
+CHECKING REQUIREMENTS: False Q: True
+REQUIREMENTS NOT MET
+EMITTING NEW SOURCELIST: [['731', 'Blank Shot', 'preview']]
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+Node::Request send to 192.168.178.29:3117
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+Node::Request send to 192.168.178.29:3117
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+FAIL: Connection could not be established
+Nodes::Reconnect failed - assuming dead end - goodbye
+ThreadingServer:: Error 1 - The remote host closed the connection
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: REGISTER::videoMixer:192.168.178.29:3117
+RequestHandler::Emitting signal regClient(videoMixer,('192.168.178.29', 3117),)
+SUCCESS: Connection Established
+Node::Request send to 192.168.178.29:3117
+TallyServer::VideoSwitcher stored in memory
+ConnectionHandler::Received Data from Socket 10: UPDATE_SOURCELIST:[["2178", "Blank Shot", "off"], ["2193", "FaceTime HD Camera (Built-in) Video", "preview"], ["3022", "Local Desktop Presenter 0", "off"]]
+RECEIVING SOURCELIST FROM VIDEOMIXER
+STORING DATA, LOCKING MUTEX
+DATA DATA DATA
+CHECKING REQUIREMENTS: False Q: True
+REQUIREMENTS NOT MET
+EMITTING NEW SOURCELIST: [['2178', 'Blank Shot', 'off'], ['2193', 'FaceTime HD Camera (Built-in) Video', 'preview'], ['3022', 'Local Desktop Presenter 0', 'off']]
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+Node::Request send to 192.168.178.29:3117
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 10: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+Emitting Signal Data changed
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 14
+ConnectionHandler::Receiving socket descriptor 14
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 14 for further processing
+Emitting Signal Data changed
+ConnectionHandler::Received Data from Socket 14: REGISTER::camera:192.168.178.27:3713
+RequestHandler::Emitting signal regClient(camera,('192.168.178.27', 3713),)
+TEST_REGOSTER CLINET
+Emitting Signal Data changed
+CHECKING REQUIREMENTS: False Q: False
+CONFIG STARTED, REQUIREMENTS FULLFILLED
+CHECKING REQUIREMENTS: False Q: True
+SOMETHIN WENT WRONG
+SUCCESS: Connection Established
+Node::Request send to 192.168.178.27:3713
+Starting config mode
+Node::Request send to 192.168.178.27:3713
+ADDING TO QUEUE
+ConnectionHandler::Received Data from Socket 14: CONFIG_STARTED
+RequestHandler::Emitting signal configStart()
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:2193:LIVE
+RequestHandler::Emitting signal regClient(2193,LIVE)
+Node::Request send to 192.168.178.29:3117
+Emitting Signal Data changed
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:2193:LIVE
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+Node::Request send to 192.168.178.29:3117
+Emitting Signal Data changed
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:3022:LIVE
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:2193:LIVE
+RequestHandler::Emitting signal regClient(2193,LIVE)
+Node::Request send to 192.168.178.29:3117
+Emitting Signal Data changed
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:2193:LIVE
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:3022:LIVE
+RequestHandler::Emitting signal regClient(3022,LIVE)
+Node::Request send to 192.168.178.29:3117
+Emitting Signal Data changed
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:3022:LIVE
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: CONFIG_DONE
+RequestHandler::Emitting signal configEnd()
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+Adding client to dictonary: ID -CAM_0source ---3022
+CHECKING REQUIREMENTS: False Q: True
+REQUIREMENTS NOT MET
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "ESTABLISHER"]:1
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:1:0
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:0:1
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "CLOSEUP"]:2
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:2:1
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:1:0
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:1:2
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:2:1
+Node::Request send to 192.168.178.27:3713
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:1:2
+Node::Request send to 192.168.178.27:3713
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: DEL_SHOT:2
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:CAM_0:LIVE
+RequestHandler::Emitting signal regClient(CAM_0,LIVE)
+Node::Request send to 192.168.178.29:3117
+Node::Request send to 192.168.178.27:3713
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:3022:LIVE
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: NEXT_SHOT
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "CLOSEUP"]:1
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "TWOSHOT"]:2
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: NEXT_SHOT
+Node::Request send to 192.168.178.29:3117
+Node::Request send to 192.168.178.27:3713
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 10: SET_TALLY:3022:LIVE
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 10
+ConnectionHandler::Receiving socket descriptor 10
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 10 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "OVERTHESHOULDER"]:2
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+Emitting Signal Data changed
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "OVERTHESHOULDER"]:3
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: DEL_SHOT:3
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:1:2
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: MOVE_SHOT:0:1
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: DEL_SHOT:2
+Node::Request send to 192.168.178.27:3713
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: ADD_SHOT:["CAM_0", "OVERTHESHOULDER"]:2
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: NEXT_SHOT
+Node::Request send to 192.168.178.29:3117
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 11: SET_TALLY:3022:LIVE
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+Emitting Signal Data changed
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: NEXT_SHOT
+Node::Request send to 192.168.178.29:3117
+Node::Request send to 192.168.178.27:3713
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 11: SET_TALLY:3022:LIVE
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: NEXT_SHOT
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: SET_SOURCE:CAM_0:LIVE
+RequestHandler::Emitting signal regClient(CAM_0,LIVE)
+Node::Request send to 192.168.178.29:3117
+Node::Request send to 192.168.178.27:3713
+Emitting Signal Data changed
+Node::Request send to 192.168.178.27:3713
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 11: SET_TALLY:3022:LIVE
+Node::Request send to 192.168.178.27:3713
+Node::Request send to 192.168.178.27:3713
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ThreadingServer:: Error 5 - Network operation timed out
+UNKNOWN REQUEST: ['']
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+ConnectionHandler::Received Data from Socket 14: KEEPALIVE
+UNKNOWN REQUEST: ['KEEPALIVE']
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+SUCCESS: Connection Established
+Nodes::Reconnected with server - continuing operation
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 1 - The remote host closed the connection
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 14
+ConnectionHandler::Receiving socket descriptor 14
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 14 for further processing
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+ThreadingServer:: Error 1 - The remote host closed the connection
+UNKNOWN REQUEST: ['']
+ThreadingServer:: Error 5 - Network operation timed out
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+UNKNOWN REQUEST: ['']
+ThreadingServer::Incoming connection on Socket 11
+ConnectionHandler::Receiving socket descriptor 11
+Emitting Signal Data changed
+Emitting Signal Data changed
+ConnectionHandler::Taking over connection on Socket 11 for further processing
+FAIL: Connection could not be established
+QAbstractSocket::waitForDisconnected() is not allowed in UnconnectedState
+
+
