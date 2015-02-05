@@ -18,22 +18,23 @@ from storage import Container
 from time import sleep
 from TallyHandler import TallyHandler
 from gui.AddShotDialog import AddShotDialog
+from ThreadingServer import ThreadingServer
 
 # TODO: replace with datawrangler class to profit from qtsignals
-threadList = list()
+# threadList = list()
 clientList = list()
 shotList = list()
 serverInterface = Container()
 CLIENT_PORT = 3713
 streamUrl = Container()
 
-def initHandling():
-    connHndl = ConnectionHandler(server.nextPendingConnection(),server)
-    connHndl.finished.connect(connHndl.deleteLater)
-    connHndl.dataReceived.connect(rqstHandler.processData)
-    connHndl.setParent(app)
-    connHndl.start()
-    threadList.append(connHndl)
+# def initHandling():
+#     connHndl = ConnectionHandler(server.nextPendingConnection(),server)
+#     connHndl.finished.connect(connHndl.deleteLater)
+#     connHndl.dataReceived.connect(rqstHandler.processData)
+#     connHndl.setParent(app)
+#     connHndl.start()
+#     threadList.append(connHndl)
     
 def storeSourceList(source):
     qDebug("CLIENT::Adding Sources to Assign Dialog")
@@ -62,6 +63,7 @@ def storeStreamUrl(url):
     sigAssignWindow.videoFeedView.setToolTip(streamUrl.load())
 
 def connectSignals():
+    server.dataReceived.connect(rqstHandler.processData)
     rqstHandler.configStart.connect(startConfigMode)
     rqstHandler.newSourcelist.connect(storeSourceList)
     rqstHandler.streamAnswer.connect(storeStreamUrl)
@@ -84,7 +86,7 @@ def mvShotUpInServer(shotPos):
 def addShotInServer(shot,pos):
     serverInterface.load().addShot(shot[0],shot[1],pos)
 
-def setTallyState(self, state):
+def setTallyState(self, tid, state):
     qDebug("CLIENT::CHANGING TALLY STATE")
     if window != None:
         window.tallyState.changeStatus(state)
@@ -137,7 +139,7 @@ if __name__ == '__main__':
     sigAssignWindow = SignalAssignDialog(window)
     configWindow = SettingsDialog(settings)
     rqstHandler = RequestHandler(app)
-  
+    server = ThreadingServer(app)
     connectSignals()
     window.show()
 
@@ -146,8 +148,10 @@ if __name__ == '__main__':
         configWindow.show()
     
     #start tcp server and listen for requests
-    server = QTcpServer(app)
-    server.newConnection.connect(initHandling)
-    server.listen(QHostAddress.Any, CLIENT_PORT)
+#     server = QTcpServer(app)
+#     server.newConnection.connect(initHandling)
+#     server.listen(QHostAddress.Any, CLIENT_PORT)
+    
+    server.startListening(CLIENT_PORT)
     
     app.exec_()
