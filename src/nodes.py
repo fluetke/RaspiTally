@@ -101,7 +101,7 @@ class TallyNode(QObject):
         
         if self.nodeConnection.state() == QAbstractSocket.ConnectedState:
             if self.nodeConnection.waitForBytesWritten(timeout):
-                qDebug("Node::Request send to " + str(self.ip) + ":" + str(self.port))
+                qDebug("Node::Request(" + str(request) +") send to " + str(self.ip) + ":" + str(self.port))
         else:
             qDebug("Nodes::Remote host abruptly closed the connection")
         
@@ -116,6 +116,7 @@ class TallyNode(QObject):
         
     def __del__(self):
         self.keepAliveTimer.stop()
+        self.closeConnection()
         self.nodeFinished.emit(self)
         qDebug("Nodes::TallyNode deleted")
         
@@ -147,7 +148,7 @@ class TallyClient(TallyNode):
         self.sendRequest(request)
             
     def setTally(self, status):
-        request = "SET_TALLY:" + status
+        request = "SET_TALLY:" + str(self._id) + ":" + str(status)
         self.status = status
         self.sendRequest(request)
     

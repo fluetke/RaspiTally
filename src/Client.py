@@ -24,7 +24,7 @@ from ThreadingServer import ThreadingServer
 clientList = list()
 shotList = list()
 serverInterface = Container()
-CLIENT_IP = "192.168.178."
+CLIENT_IP = "127.0.0.1"
 CLIENT_PORT = 3713
 streamUrl = Container()
 
