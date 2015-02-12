@@ -21,25 +21,12 @@ from gui.AddShotDialog import AddShotDialog
 from ThreadingServer import ThreadingServer
 
 # TODO: replace with datawrangler class to profit from qtsignals
-# threadList = list()
 clientList = list()
 shotList = list()
 serverInterface = Container()
 CLIENT_IP = "192.168.178."
 CLIENT_PORT = 3713
 streamUrl = Container()
-
-# def initHandling():
-#     connHndl = ConnectionHandler(server.nextPendingConnection(),server)
-#     connHndl.finished.connect(connHndl.deleteLater)
-#     connHndl.dataReceived.connect(rqstHandler.processData)
-#     connHndl.setParent(app)
-#     connHndl.start()
-#     threadList.append(connHndl)
-    
-# def storeSourceList(source):
-#     qDebug("CLIENT::Adding Sources to Assign Dialog")
-#     sigAssignWindow.addSourcesToDialog(source)
 
 def startConfigMode():
     sigAssignWindow.show()
@@ -53,10 +40,6 @@ def endConfigMode(newId):
     settings.endGroup()
     settings.sync()
     window.setWindowTitle("TV Tally: " + newId)
-
-# def confirmSelectedSource():
-#     srvInt=serverInterface.load()
-#     srvInt.configurationDone()
     
 def storeStreamUrl(url):
     qDebug("CLIENT::Storing streamurl in assign window")
@@ -85,21 +68,6 @@ def mvShotUpInServer(shotPos):
 
 def addShotInServer(shot,pos):
     serverInterface.load().addShot(shot[0],shot[1],pos)
-
-# def setTallyState(self, tid, state):
-#     qDebug("CLIENT::CHANGING TALLY STATE")
-#     if window != None:
-#         window.tallyState.changeStatus(state)
-#     else:
-#         qDebug("MainWindow not initialized ERROR")
-#     if tallyLight != None:
-#         tallyLight.setState(tid, state)
-
-# def setConfSrcLive(src):
-#     if not serverInterface.isEmpty():
-#         serverInterface.load().setVideoSrcToStatus(src)
-#     else:
-#         qDebug("CLIENT::ERROR - SERVER INTERFACE NOT INITIALIZED")
 
 def createServerInterface():
     srv_ip = settings.value("server/ip")

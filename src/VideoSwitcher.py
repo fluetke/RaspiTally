@@ -7,68 +7,61 @@ Created on 04.01.2015
 import socket
 from os.path import sys
 #framework libraries
-#from PyQt4.Qt import QByteArray
-#from PyQt4.QtCore import qDebug
-from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
 
 # project libraries
-from ConnectionHandler import ConnectionHandler
 from RequestHandler import RequestHandler
 from nodes import TallyServer
 from Wirecast import WirecastConnector
 from ThreadingServer import ThreadingServer
+from PyQt4.Qt import qDebug
 
 
 #Globals
 SERVER_IP = "127.0.0.1"
 SERVER_PORT = 3771
+SWITCHER_IP = "127.0.0.1"
 SWITCHER_PORT = 3117
 streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
 
-# # start new thread for each new connection
-# def initHandling():
-#     connHndl = ConnectionHandler(server.nextPendingConnection())
-#     connHndl.finished.connect(connHndl.deleteLater)
-#     connHndl.dataReceived.connect(rqstHandler.processData)
-#     connHndl.setParent(app)
-#     connHndl.start()
-#     threadList.append(connHndl)
-    
 # connect signals to slots
 def connectSignals():
-    server.dataReceived.connect(rqstHandler.processData)
-    rqstHandler.streamRequest.connect(returnStreamUrl)
-    rqstHandler.stateRequest.connect(wirecast.setSource)
-    rqstHandler.sourceListRequest.connect(wirecast.getSources)
-    wirecast.sourcesReady.connect(serverInterface.updateSourceList)
-    wirecast.sourceSet.connect(serverInterface.setTallyToStatus)
+    #check prerequisites
+    if server != None and serverInterface != None and wirecast != None and rqstHandler != None:
+        server.dataReceived.connect(rqstHandler.processData)
+        rqstHandler.streamRequest.connect(lambda: serverInterface.setStreamUrl(streamUrl))
+        wirecast.sourcesReady.connect(serverInterface.updateSourceList)
+        wirecast.sourceSet.connect(serverInterface.setTallyToStatus)
+        rqstHandler.stateRequest.connect(wirecast.setSource)
+        rqstHandler.sourceListRequest.connect(wirecast.getSources)
+    else:
+        qDebug("VideoSwitcher::Signal connection prerequisites not met - one or more vars are None")
+    
 
-# return streamurl to server 
-def returnStreamUrl():
-    serverInterface.setStreamUrl(streamUrl) 
+# # return streamurl to server 
+# def returnStreamUrl():
+#     serverInterface.setStreamUrl(streamUrl) 
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     
-    #init vars for 
+    #init vars
     rqstHandler = RequestHandler()
     serverInterface = TallyServer( SERVER_IP , SERVER_PORT, app )
-    serverInterface.openConnection()
     wirecast = WirecastConnector(app)
-    threadList = list()
     server = ThreadingServer(app)
     
     #connect signals and slots
     connectSignals()
     
-    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117))
-    #serverInterface.registerClient("", "videoMixer", ("127.0.0.1", 3117))
+    #open connection to server
+    serverInterface.openConnection()
     
-#     server = QTcpServer(app)
-#     server.newConnection.connect(initHandling)
-#     server.listen(QHostAddress.Any, 3117)
+    #register with server
+    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117)) # works on mac, doesnt work on linux
     
+    #start listening for commands
     server.startListening(SWITCHER_PORT)
     
+    #run the app
     sys.exit(app.exec_())

@@ -3,13 +3,10 @@ Created on 04.01.2015
 
 @author: Florian
 '''
-from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtGui import QApplication
-from ConnectionHandler import ConnectionHandler
 from os.path import sys
-from PyQt4.QtCore import qDebug, pyqtSignal
+from PyQt4.QtCore import qDebug
 from RequestHandler import RequestHandler
-from nodes import TallySwitcher, TallyClient
 from storage import Container
 from DataWrangler import ListData
 from ConfigHandler import ConfigHandler
@@ -22,21 +19,6 @@ from ThreadingServer import ThreadingServer
 
 #usefull data for server operation
 SERVER_PORT = 3771
-
-# def initHandling():
-#     qDebug("Threadlist size is: " + str(len(threadList)))
-#     connHndl = ConnectionHandler(server.nextPendingConnection())
-#     connHndl.finished.connect(connHndl.deleteLater)
-#     connHndl.error.connect(networkErrorPrinter)
-#     connHndl.dataReceived.connect(rqstHandler.processData)
-#     connHndl.setParent(app)
-#     connHndl.start()
-#     threadList.append(connHndl)
-#     
-# 
-#     
-# def networkErrorPrinter(sockerr, errmsg):
-#     qDebug("SOCKET ERROR(" + str(sockerr) + "): " + str(errmsg))
     
 def connectSignals():
     qDebug("TallyServer::Connecting Signals and Slots")
@@ -77,7 +59,7 @@ def storeSwitcher(switcher):
     
     switcher._id = "TVID130"
     switcher.openConnection()
-    # switcher.getStreamUrl()
+    # switcher.getStreamUrl() #TODO: Fix the handling of wirecast broadcast information in VideoSwitcher
     switcher.getSourceList()
     switcher.setParent(app)
     videoSwitcher.store(switcher)
@@ -134,8 +116,8 @@ def switchTally(sourceId, status):
 def deregisterClient(clientId):#TODO: implement
     pass
 
-def removeNode(node):
-    clients.remove(node)
+# def removeNode(node):
+#     clients.remove(node)
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)

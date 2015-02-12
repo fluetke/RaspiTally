@@ -6,7 +6,7 @@ Created on 08.01.2015
 from PyQt4.QtGui import QDialog, QLabel, QPushButton, QSpinBox, QComboBox,\
     QVBoxLayout, QFormLayout, QHBoxLayout
 from PyQt4.QtCore import pyqtSignal, QSettings
-from PyQt4.Qt import QLineEdit, qDebug
+from PyQt4.Qt import QLineEdit, qDebug, QFont
 
 class SettingsDialog(QDialog):
     #list of needed fields 
@@ -19,11 +19,15 @@ class SettingsDialog(QDialog):
     def __init__(self, setting, parent=None):
         super(SettingsDialog, self).__init__(parent)
         self.settings = setting
+        self.guiFont = QFont("Arial", 24)
+        self.btnFont = QFont("Arial", 12)
                 
         # init widgets
         self.titleLbl = QLabel("Server-Informationen")
         self.okBtn = QPushButton("OK")
+        self.okBtn.setFont(self.btnFont)
         self.cancelBtn = QPushButton("Cancel")
+        self.cancelBtn.setFont(self.btnFont)
         self.srvIpLbl = QLabel("Tally-Server IP")
         self.srvPortLbl = QLabel("Tally-Server Port")
         self.cliTypeLbl = QLabel("Client-Type")
@@ -53,9 +57,19 @@ class SettingsDialog(QDialog):
         self.connectSignals()
                 
         #setup widgets
+        self.okBtn.setFixedHeight(48)
+        self.okBtn.setStyleSheet("background: #555")
+        self.cancelBtn.setFixedHeight(48)
+        self.cancelBtn.setStyleSheet("background: #555")
+        self.srvIpInput.setFixedHeight(64)
+        self.srvIpInput.setFont(self.guiFont)
         self.cliTypeInput.addItem("camera")
         self.cliTypeInput.addItem("director")
+        self.cliTypeInput.setFont(self.guiFont)
+        self.cliTypeInput.setFixedHeight(64)
+        self.srvPortInput.setFixedHeight(64)
         self.srvPortInput.setRange(1,65535)
+        self.srvPortInput.setFont(self.guiFont)
         self.loadSettings()
         
 

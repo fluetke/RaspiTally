@@ -36,7 +36,8 @@ class TallyNode(QObject):
         self.keepAliveTimer.stop()
         if self.openConnection():
             print("Nodes::Reconnected with server - continuing operation")
-            self.keepAliveTimer.start(25000)
+            self.keepAlive()
+            self.keepAliveTimer.start(3000)
         else:
             qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
             self.nodeFinished.emit(self)

@@ -33,8 +33,8 @@ class AddShotDialog(QDialog):
         self.cancelBtn = QPushButton("Cancel")
         
         self.tabPane = QTabWidget()
-        self.tabPane.addTab(self.pageOne, "Shottypes")
-        self.tabPane.addTab(self.pageTwo, "Videoinputs")
+        self.tabPane.addTab(self.pageOne, "Select Type of Shot")
+        self.tabPane.addTab(self.pageTwo, "Select Camera to use")
         
         self.buttonLayout = QHBoxLayout()
         self.buttonLayout.addWidget(self.okBtn)

@@ -98,7 +98,7 @@ class RequestHandler(QObject):
             clientId = data_ordered[1]
             clientStatus = data_ordered[2]
             
-            qDebug("RequestHandler::Emitting signal regClient(" + str(clientId) +","+ str(clientStatus) +")")
+            qDebug("RequestHandler::Emitting signal stateRequest(" + str(clientId) +","+ str(clientStatus) +")")
             self.stateRequest.emit(clientId, clientStatus)
             
         elif data_ordered[0] == "SET_TALLY":
@@ -106,9 +106,11 @@ class RequestHandler(QObject):
                 qDebug("MALFORMED REQUEST - CLIENTID AND/OR STATUS MISSING")
                 return
             
+            
             tallyId = data_ordered[1]
             tallyStatus = data_ordered[2]
             
+            qDebug("RequestHandler::Emitting signals tallyRequest/changeYourTally(" + str(tallyId) +","+ str(tallyStatus) +")")
             self.tallyRequest.emit(tallyId, tallyStatus)
             self.changeYourTally.emit(tallyStatus)
             
