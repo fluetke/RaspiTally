@@ -45,7 +45,7 @@ class MainWindow(QWidget):
         # interaction area
         #self.shotlist = QListWidget()
         self.emergencyBtn = QPushButton("&EMERGENCY")
-        self.emergencyBtn.setDisabled(True)
+        #self.emergencyBtn.setDisabled(True)
         self.goLiveBtn = QPushButton("GO &LIVE")
         self.nextBtn = QPushButton("&NEXT")
         self.addShotDiag = AddShotDialog(self)
