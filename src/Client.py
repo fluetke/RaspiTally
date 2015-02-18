@@ -24,7 +24,7 @@ from ThreadingServer import ThreadingServer
 clientList = list()
 shotList = list()
 serverInterface = Container()
-CLIENT_IP = "127.0.0.1"
+CLIENT_IP = "192.168.178.32"
 CLIENT_PORT = 3713
 streamUrl = Container()
 
@@ -57,7 +57,10 @@ def connectSignals():
     rqstHandler.newClientlist.connect(window.updateSourceList)
     rqstHandler.newShotlist.connect(window.populateShotlist) 
     rqstHandler.controlModeEnabled.connect(window.enableControlMode)
+    #rqstHandler.deregClient.connect(shutdownPart2) #shutdown server and close application
     configWindow.okBtn.clicked.connect(createServerInterface)
+    window.shutdown.connect(shutdownClient)
+    
     
 def mvShotDwnInServer(shotPos):
     serverInterface.load().movShot(shotPos,shotPos+1)
@@ -75,7 +78,7 @@ def createServerInterface():
     qDebug("ServerPort from config: " + str(port))
     tempSrvInterface = TallyServer(srv_ip, port, app)
     tempSrvInterface.openConnection()
-    tempSrvInterface.registerClient("", settings.value("client/type"), (CLIENT_IP,CLIENT_PORT))
+    tempSrvInterface.registerClient("", settings.value("client/type"), (settings.value("client/ip"),settings.value("client/port", type=int)))
     serverInterface.store(tempSrvInterface)
     
     #connect ServerInterface Signals
@@ -95,6 +98,14 @@ def goLive():
     else:
         print("SHIT MY ID IS EMPTY")
     
+def shutdownClient():
+    #kill all remaining threads
+    server.quitting.emit()
+    server.close()
+    if serverInterface != None:
+        serverInterface.load().closeConnection()
+    QApplication.quit()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     settings = QSettings("TallyClient.ini", QSettings.IniFormat, app)

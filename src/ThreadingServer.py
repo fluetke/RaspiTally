@@ -15,9 +15,10 @@ class ThreadingServer(QTcpServer):
     This is the threading TCP-server which will take care of all the communication requests by tally nodes
     '''
     
-    threads = ListData()
-    connections = ListData()
+    threads = list()
+    connections = list()
     dataReceived = pyqtSignal(str)
+    quitting = pyqtSignal()
 
     def __init__(self, parent=None):
         '''
@@ -44,18 +45,19 @@ class ThreadingServer(QTcpServer):
         connectionHandler.moveToThread(thread)
         
         connectionHandler.error.connect(self.handleError)
-        thread.started.connect(connectionHandler.handle, Qt.QueuedConnection)
+        thread.started.connect(connectionHandler.handle)#, Qt.QueuedConnection)
         connectionHandler.finished.connect(thread.quit)
         connectionHandler.finished.connect(connectionHandler.deleteLater)
         connectionHandler.dataReceived.connect(self.dataReceived)
+        self.quitting.connect(connectionHandler.closeConnection)
         thread.finished.connect(thread.deleteLater)
-       # thread.started.connect(lambda: print("THREAD STARTED"))
+        thread.finished.connect(lambda: print("THREAD Finished"))
         
         thread.start()
         
         # add created objects to lists for longterm storage
-        self.threads.addItem(thread) #add thread to list of threads
-        self.connections.addItem(connectionHandler) # add connection to list of connections
+        self.threads.append(thread) #add thread to list of threads
+        self.connections.append(connectionHandler) # add connection to list of connections
         
     def handleError(self, error, errormsg):
         qDebug("ThreadingServer:: Error " + str(error) + " - " + str(errormsg))

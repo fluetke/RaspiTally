@@ -68,8 +68,12 @@ class ListData(QObject):
             #TODO: emit error signal here
             
     def remove(self, item):
-        self.data.remove(item)
-        self.dataChanged.emit(self.data)
+        try:
+            self.data.remove(item)
+        except ValueError:
+            print("Item with ID: " + item._id + " not in List: " + str(self.data))
+        finally:
+            self.dataChanged.emit(self.data)
         
     def length(self):
         return len(self.data)

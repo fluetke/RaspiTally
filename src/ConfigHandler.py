@@ -101,8 +101,9 @@ class ConfigHandler(QObject):
         else:
             print("TEST_REGOSTER CLINET")
             if _id in self.idToSource:
-                self.sources.addItem(self.idToSource.pop(_id))
-                self.clientRemoved.emit(_id)
+                self.deregisterClient(_id)
+#                 self.sources.addItem(self.idToSource.pop(_id))
+#                 self.clientRemoved.emit(_id)
             tmpClient = TallyClient(address[0],address[1], self)
             tmpClient._id = "CAM_" + str(self.clientsHandled)
             self.queue.addItem(tmpClient) # add client to config waiting list
@@ -140,5 +141,16 @@ class ConfigHandler(QObject):
                     qDebug("ConfigHandler::The selected dataset does not exists in self.sources")
                 return
         
-        
+    #deregister a connected client and return the source token to the pool
+    def deregisterClient(self, clientID):
+        source = None
+        try:
+            source = self.idToSource.pop(clientID)
+        except KeyError:
+            qDebug("ConfigHandler::ClientID for deregistration unknown, ignoring")
+        finally:
+            if source != None:
+                self.sources.addItem(source) # remove source from dictionary and re-add it to sourcelist
+            self.clientRemoved.emit(clientID)
             
+        return True

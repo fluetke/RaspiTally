@@ -40,6 +40,7 @@ class ConnectionHandler(QObject):
         locker = QMutexLocker(self.networkMutex)
         
         networkSocket = QTcpSocket(self)
+#         networkSocket.disconnected.connect(self.shutdownThread)
         
         if not networkSocket.setSocketDescriptor(self.socketDescriptor):
             self.error.emit(networkSocket.error(), networkSocket.errorString())
@@ -47,9 +48,9 @@ class ConnectionHandler(QObject):
         
         
         timeout = 10000
-        # set inputStream Version
-        inpStream = QDataStream(networkSocket)
-        inpStream.setVersion(QDataStream.Qt_4_0)
+#         # set inputStream Version
+#         inpStream = QDataStream(networkSocket)
+#         inpStream.setVersion(QDataStream.Qt_4_0)
         
         # receive data and pack into data_received for further processing
         while not self.quit:
@@ -57,21 +58,22 @@ class ConnectionHandler(QObject):
             # wait for the first 2 bytes to arrive
             while networkSocket.bytesAvailable() < 2:
                 if not networkSocket.waitForReadyRead(timeout):
+                    print("ConnectionHandler::Packetsize not received - quitting")
                     self.error.emit(networkSocket.error(), networkSocket.errorString())
                     self.quit = True
                     break 
-#                 
+
             inpStream = QDataStream(networkSocket) #create inputStream from socketConnection
             inpStream.setVersion(QDataStream.Qt_4_0)
             blockSize = inpStream.readUInt16() # read first two bytes where message size is stored
             
             while networkSocket.bytesAvailable() < blockSize and not self.quit:
                 if not self.networkSocket.waitForReadyRead(timeout):
+                    print("ConnectionHandler::Packet Payload not received - quitting")
                     self.error.emit(networkSocket.error(), networkSocket.errorString())
-                    self.quit = True
-                    break
-                    
+                    self.quit = True  
                 
+            #read data from socket inputstream
             data = inpStream.readString()
             
             try:
@@ -84,10 +86,23 @@ class ConnectionHandler(QObject):
             except UnicodeError:
                 qDebug("ConnectionHandler::UNICODE ERROR - Could not decode message, please resend")
             
-            self.dataReceived.emit(data) #emit converted data
+            if not self.quit:
+                self.dataReceived.emit(data) #emit converted data
         
         networkSocket.disconnectFromHost()
-        networkSocket.waitForDisconnected(timeout)
-        networkSocket.close()
+        if not networkSocket.waitForDisconnected(timeout):
+            self.error.emit(networkSocket.error(), networkSocket.errorString())
+            networkSocket.abort()
+        else:
+            networkSocket.close()
         
         self.finished.emit()
+        
+    # set quit flag to true to stop connection handler
+    def closeConnection(self):
+        self.quit = True
+        
+        
+
+        
+        

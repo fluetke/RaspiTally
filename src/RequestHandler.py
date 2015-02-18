@@ -15,7 +15,7 @@ class RequestHandler(QObject):
     #signals
     dataProcessed = pyqtSignal()
     regClient = pyqtSignal(str,object,str)
-    deregClient = pyqtSignal(object)
+    deregClient = pyqtSignal(str)
     configStart = pyqtSignal()
     configEnd = pyqtSignal(object)
     stateRequest = pyqtSignal(object,object)
@@ -32,6 +32,7 @@ class RequestHandler(QObject):
     streamAnswer = pyqtSignal(object)
     nextShotRequest = pyqtSignal()
     controlModeEnabled = pyqtSignal()
+    
 
     def __init__(self, parent=None):
         '''

@@ -26,7 +26,7 @@ class MainWindow(QWidget):
     delShotAtPos = pyqtSignal(int)
     movShotUp = pyqtSignal(int)
     movShotDown = pyqtSignal(int)
-    
+    shutdown = pyqtSignal()
     
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -133,7 +133,7 @@ class MainWindow(QWidget):
             iteratr += 1
             
     def connectSignals(self):
-        self.quitBtn.clicked.connect(QApplication.quit) #TODO add clean shutdown of server, and deregistering here
+        self.quitBtn.clicked.connect(self.shutdown) #TODO add clean shutdown of server, and deregistering here
         self.addShotDiag.newShotAtPos.connect(self.addShotAtPos)
         self.emergencyBtn.clicked.connect(self.fullscreenToggle)
         

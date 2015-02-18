@@ -23,6 +23,7 @@ SERVER_PORT = 3771
 def connectSignals():
     qDebug("TallyServer::Connecting Signals and Slots")
     rqstHandler.regClient.connect(clientSetup.registerClient) #connect client registration procedure
+    rqstHandler.deregClient.connect(clientSetup.deregisterClient)
     rqstHandler.configEnd.connect(clientSetup.finalizeConfiguration)
     rqstHandler.stateRequest.connect(switchSource)
     rqstHandler.newSourcelist.connect(clientSetup.sources.updateData)
@@ -118,7 +119,12 @@ def switchTally(sourceId, status):
     clients.dataChanged.emit(clients.data) # emit dataChanged signal of client list here to initiate client updates
       
 def deregisterClient(clientId):#TODO: implement
-    pass
+    print("TallyServer::Deregistering Client with ID: " + str(clientId))
+    for client in clients.data:
+        print(str(client._id))
+        if client._id == clientId:
+            clients.remove(client)
+            client.goodbye()
 
 # def removeNode(node):
 #     clients.remove(node)

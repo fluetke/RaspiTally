@@ -21,6 +21,7 @@ class TallyNode(QObject):
     mutex = None
     keepAliveTimer = None
     nodeFinished = pyqtSignal(object)
+    closingIntent = False
     
     def __init__(self, ip, port, parent=None):
         super(TallyNode, self).__init__(parent)
@@ -28,22 +29,25 @@ class TallyNode(QObject):
         self.port = port
         self.nodeConnection = QTcpSocket(self)
         self.nodeConnection.disconnected.connect(self.disconnectHandler)
+        self.nodeFinished.connect(lambda: self.deleteLater())
         self.mutex = QMutex()
         self.keepAliveTimer = QTimer(self)
         self.keepAliveTimer.timeout.connect(self.keepAlive)
 
     def disconnectHandler(self):
-        self.keepAliveTimer.stop()
-        if self.openConnection():
-            print("Nodes::Reconnected with server - continuing operation")
-            self.keepAlive()
-            self.keepAliveTimer.start(3000)
-        else:
-            qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
-            self.nodeFinished.emit(self)
+        if not self.closingIntent:
+            self.keepAliveTimer.stop()
+            if self.openConnection():
+                print("Nodes::Reconnected with server - continuing operation")
+                self.keepAlive()
+                self.keepAliveTimer.start(3000)
+            else:
+                qDebug("Nodes::Reconnect failed - assuming dead end - goodbye")
+                #self.nodeFinished.emit(self)
             
     #  connect to remote host and catch as many exceptions as possible
-    def openConnection(self, timeout=4000):
+    def openConnection(self, tmout=4000):
+        timeout = tmout
         locker = QMutexLocker(self.mutex)
         try:
             self.nodeConnection.connectToHost(self.ip,self.port)
@@ -66,11 +70,11 @@ class TallyNode(QObject):
             qDebug("Error blocked by unfinished socket operation")
         
         if self.nodeConnection.waitForConnected(timeout):
-            qDebug("SUCCESS: Connection Established")
+            qDebug("Nodes::SUCCESS: Connection Established")
             self.keepAliveTimer.start(timeout-1000)
             return True
         else:
-            qDebug("FAIL: Connection could not be established")
+            qDebug("Nodes::FAIL: Connection could not be established")
             self.nodeConnection.close()
             self.nodeConnection.deleteLater()
             self.nodeFinished.emit(self)
@@ -104,15 +108,15 @@ class TallyNode(QObject):
                 qDebug("Node::Request(" + str(request) +") send to " + str(self.ip) + ":" + str(self.port))
         else:
             qDebug("Nodes::Remote host abruptly closed the connection")
-        
-
            
     def keepAlive(self):
         self.sendRequest("KEEPALIVE") 
         
     def closeConnection(self):
+        self.closingIntent = True
         self.nodeConnection.close()
         self.nodeConnection.waitForDisconnected()
+        
         
     def __del__(self):
         self.keepAliveTimer.stop()
@@ -173,6 +177,11 @@ class TallyClient(TallyNode):
         request = "SET_CONTROLLED_MODE"
         self.sendRequest(request)
         
+    #say goodbye to server
+    def goodbye(self):
+        request = "DEREGISTER:" + self._id
+        self.sendRequest(request)
+        
 class TallyServer(TallyNode):
     
     stream_Url = "localhost"
@@ -185,7 +194,9 @@ class TallyServer(TallyNode):
         request = "REGISTER:" + str(clientID) + ":" + str(clientType) + ":" + str(clientAddress[0]) + ":" + str(clientAddress[1])
         self.sendRequest(request)
     
-    def deregisterClient(self, clientID):
+    def deregisterClient(self, clientID=None):
+        if clientID == None:
+            clientID = self._id
         request = "DEREGISTER:" + str(clientID)
         self.sendRequest(request)
     
