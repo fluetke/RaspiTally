@@ -3,7 +3,7 @@ Created on 11.01.2015
 
 @author: Florian
 '''
-from PyQt4.Qt import QDialog
+from PyQt4.Qt import QDialog, QFont
 from PyQt4.QtGui import QPushButton, QPixmap, QVBoxLayout, QHBoxLayout, QLabel,\
     QButtonGroup, QTabWidget
 from PyQt4.QtCore import pyqtSignal
@@ -23,6 +23,7 @@ class AddShotDialog(QDialog):
         Constructor
         '''
         super(AddShotDialog, self).__init__(parent)
+        self.guiFont = QFont("Arial", 14)
         self.shotTypes = ["ESTABLISHER", "MASTER", "WIDE", "TWOSHOT", "OVERTHESHOULDER", "MEDIUM", "CLOSEUP", "XTRM_CLOSEUP"]
         self.cameras = list()
         self.pageOne = PageOneWidget(self)
@@ -33,6 +34,8 @@ class AddShotDialog(QDialog):
         self.cancelBtn = QPushButton("Cancel")
         
         self.tabPane = QTabWidget()
+        self.tabPane.setFont(self.guiFont)
+        self.tabPane.setStyleSheet('QTabBar::tab {background-color: #ccc; border: 2px solid #fff; color: #000; margin: 5px}')
         self.tabPane.addTab(self.pageOne, "Select Type of Shot")
         self.tabPane.addTab(self.pageTwo, "Select Camera to use")
         

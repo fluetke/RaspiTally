@@ -52,6 +52,7 @@ def storeClient(client):
     clients.dataChanged.connect(client.updateClientList)
     client.setParent(app)
     client.nodeFinished.connect(clients.remove)
+    clientSetup.directorReady.connect(client.enableControlledMode)
     clients.addItem(client)
         
 def storeSwitcher(switcher):
@@ -71,6 +72,9 @@ def storeDirector(director):
     
     director._id = "DIRECTOR" 
     director.endConfigurationMode(director._id)
+    director.updateShotList(shots.data)
+    shots.dataChanged.connect(director.updateShotList)
+    clients.dataChanged.connect(director.updateClientList)
     director.setParent(app)
     directorNode.store(director)
     director.nodeFinished.connect(lambda: directorNode.store(None))

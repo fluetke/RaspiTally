@@ -54,6 +54,7 @@ class MainWindow(QWidget):
         self.tallyState.setFixedSize(384,64)
         self.quitBtn.setFixedSize(64,64)
         self.sourceList.setFixedHeight(200)
+        self.sourceList.setFont(self.guiFont)
         self.emergencyBtn.setFixedSize(192,64)
         self.emergencyBtn.setFont(self.guiFont)
         self.emergencyBtn.setStyleSheet("background: #555")
@@ -96,12 +97,17 @@ class MainWindow(QWidget):
         
         #set mainlayout for window
         self.setLayout(self.mainLayout) 
-        
+        self.isControlledMode = False
         # setup Window details
         self.setWindowTitle("TV Tally")
         self.resize(1024,600)
         self.setStyleSheet("background: #333; color: #fff") # set interface to night mode
         self.connectSignals()
+        
+    def enableControlMode(self):
+        self.goLiveBtn.setDisabled(True)
+        self.nextBtn.setDisabled(True)
+        self.isControlledMode=True
         
     ''' clear and refill the shotlist'''
     def populateShotlist(self, shotList):
@@ -119,10 +125,11 @@ class MainWindow(QWidget):
             self.shotListLayout.setAlignment(newItem, QtCore.Qt.AlignLeft)
             if  iteratr == len(shotList)-1:
                 newItem.moveToBackBtn.setDisabled(True)
-            newItem.addShotAtPos.connect(self.addShotDiag.showWithPos)
-            newItem.delShotAtPos.connect(self.delShotAtPos)
-            newItem.movShotDown.connect(self.movShotDown)
-            newItem.movShotUp.connect(self.movShotUp)
+            if not self.isControlledMode:
+                newItem.addShotAtPos.connect(self.addShotDiag.showWithPos)
+                newItem.delShotAtPos.connect(self.delShotAtPos)
+                newItem.movShotDown.connect(self.movShotDown)
+                newItem.movShotUp.connect(self.movShotUp)
             iteratr += 1
             
     def connectSignals(self):

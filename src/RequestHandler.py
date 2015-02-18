@@ -31,6 +31,7 @@ class RequestHandler(QObject):
     streamRequest = pyqtSignal(object)
     streamAnswer = pyqtSignal(object)
     nextShotRequest = pyqtSignal()
+    controlModeEnabled = pyqtSignal()
 
     def __init__(self, parent=None):
         '''
@@ -223,6 +224,9 @@ class RequestHandler(QObject):
             
         elif data_ordered[0] == "NEXT_SHOT":
             self.nextShotRequest.emit()
+            
+        elif data_ordered[0] == "SET_CONTROLLED_MODE":   
+            self.controlModeEnabled.emit()
             
         else:
             qDebug("UNKNOWN REQUEST: " + str(data_ordered))

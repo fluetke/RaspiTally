@@ -56,9 +56,8 @@ def connectSignals():
     rqstHandler.changeYourTally.connect(window.tallyState.changeStatus)
     rqstHandler.newClientlist.connect(window.updateSourceList)
     rqstHandler.newShotlist.connect(window.populateShotlist) 
+    rqstHandler.controlModeEnabled.connect(window.enableControlMode)
     configWindow.okBtn.clicked.connect(createServerInterface)
-    
-    
     
 def mvShotDwnInServer(shotPos):
     serverInterface.load().movShot(shotPos,shotPos+1)
@@ -96,9 +95,6 @@ def goLive():
     else:
         print("SHIT MY ID IS EMPTY")
     
-# def printData(data):
-#     qDebug(data)
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     settings = QSettings("TallyClient.ini", QSettings.IniFormat, app)

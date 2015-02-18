@@ -27,15 +27,15 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
      inkscape:cx="326.81187"
-     inkscape:cy="834.75343"
+     inkscape:cy="834.932"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1137"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-x="-32000"
+     inkscape:window-y="-32000"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -56,7 +56,7 @@
        style="opacity:1;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.70866144;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:77.83042145;stroke-opacity:1"
        d="M 212.85742 175.21875 A 32.857143 32.857143 0 0 0 180 208.07617 A 32.857143 32.857143 0 0 0 212.85742 240.93359 A 32.857143 32.857143 0 0 0 245.71484 208.07617 A 32.857143 32.857143 0 0 0 212.85742 175.21875 z M 201.89648 191.76172 L 212.85742 202.72266 L 223.81641 191.76172 L 229.17188 197.11719 L 218.21094 208.07617 L 229.17188 219.03711 L 223.81641 224.39062 L 212.85742 213.43164 L 201.89648 224.39062 L 196.54297 219.03711 L 207.50195 208.07617 L 196.54297 197.11719 L 201.89648 191.76172 z "
        id="path3336"
-       inkscape:export-xdpi="87.651428"
-       inkscape:export-ydpi="87.651428" />
+       inkscape:export-xdpi="175.30286"
+       inkscape:export-ydpi="175.30286" />
   </g>
 </svg>

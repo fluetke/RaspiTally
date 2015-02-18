@@ -94,6 +94,7 @@ class ConfigHandler(QObject):
         elif _type == "director":
             tmpClient = TallyClient(address[0], address[1], self)
             tmpClient.c_type = _type
+            tmpClient.openConnection()
             self.directorReady.emit(tmpClient)
             return
 

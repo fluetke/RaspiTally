@@ -20,16 +20,21 @@ class ShotlistItem(QWidget):
         super(ShotlistItem, self).__init__(parent)
         
         self.listPos = listPos
+        self.guiFont = QFont("Arial", 14)
         #init widgets used in this widget
         self.shotPicto = QPixmap("gui/img/"+shotType+".png")
         self.shotPictoLbl = QLabel("shotPicto")
         self.moveToFrontBtn = QPushButton("<-")
+        self.moveToFrontBtn.setFont(self.guiFont)
         self.moveToFrontBtn.setFixedHeight(48)
         self.moveToBackBtn = QPushButton("->")
+        self.moveToBackBtn.setFont(self.guiFont)
         self.moveToBackBtn.setFixedHeight(48)
         self.addShotBtn = QPushButton("+")
+        self.addShotBtn.setFont(self.guiFont)
         self.addShotBtn.setFixedHeight(48)
         self.delShotBtn = QPushButton("-")
+        self.delShotBtn.setFont(self.guiFont)
         self.delShotBtn.setFixedHeight(48)
         
         #init components
@@ -38,8 +43,11 @@ class ShotlistItem(QWidget):
         #self.shotPictoLbl.setFixedHeight(120)
         self.shotPictoLbl.setFixedSize(self.shotPicto.size())
         if self.listPos == 0:
+            self.setStyleSheet("QWidget {background-color: #f33}")
             self.delShotBtn.setDisabled(True)
+            self.delShotBtn.setStyleSheet("background-color: #ccc")
             self.moveToFrontBtn.setDisabled(True)
+            self.moveToFrontBtn.setStyleSheet("background-color: #ccc")
         #init layouts
         self.meinLayout = QGridLayout()
         

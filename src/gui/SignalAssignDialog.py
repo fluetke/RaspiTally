@@ -5,7 +5,7 @@ Created on 09.01.2015
 '''
 from PyQt4.Qt import QDialog, qDebug
 from PyQt4.QtGui import QLabel, QPushButton, QWidget, QVBoxLayout, QHBoxLayout,\
-    QButtonGroup
+    QButtonGroup, QFont
 from gui.VideoWidget import VideoWidget
 from PyQt4.QtCore import pyqtSignal
 
@@ -21,13 +21,18 @@ class SignalAssignDialog(QDialog):
         Constructor
         '''
         super(SignalAssignDialog, self).__init__(parent)
-                
+        self.guiFont = QFont("Arial", 18)
+        
         # init widgets
         self.titleLbl = QLabel("Auswaehlen der Video-Quelle")
         self.processDescLbl = QLabel("Bitte klicken sie auf die unten gelisteten Quellen, bis das Signal ihrer Kamera im Monitor links erscheint. Bestaetigen Sie dann mit OK")
+        self.processDescLbl.setFont(self.guiFont)
         self.srcLbl = QLabel("Quellen:")
+        self.srcLbl.setFont(self.guiFont)
         self.okBtn = QPushButton("OK")
+        self.okBtn.setFont(self.guiFont)
         self.cancelBtn = QPushButton("Cancel")
+        self.cancelBtn.setFont(self.guiFont)
         self.sourceListView = QWidget()
         self.videoFeedView = VideoWidget()
         self.sourceBtnGrp = QButtonGroup() 
@@ -79,6 +84,7 @@ class SignalAssignDialog(QDialog):
         for source in sources:
             qDebug("ADDING SOURCE: " +str(source) + " TO THE ASSIGN DIALOG")
             sourceBtn = QPushButton(source)
+            sourceBtn.setFont(self.guiFont)
             sourceBtn.setCheckable(True)
             self.sourceBtnGrp.addButton(sourceBtn)
             sourceLayout.addWidget(sourceBtn)

@@ -4,7 +4,7 @@ Created on 19.01.2015
 @author: Florian
 '''
 from PyQt4.QtGui import QGridLayout, QLabel, QPushButton, QPixmap, QIcon,\
-    QButtonGroup, QVBoxLayout, QWidget
+    QButtonGroup, QVBoxLayout, QWidget, QFont
 from PyQt4.Qt import QHBoxLayout, qDebug
 
 class PageTwoWidget(QWidget):
@@ -17,6 +17,8 @@ class PageTwoWidget(QWidget):
         Constructor
         '''
         super(PageTwoWidget, self).__init__(parent)
+        
+        self.guiFont = QFont("Arial", 14)
         self.selectorLayout = QGridLayout()
         self.pageLabel = QLabel("Select Camera")
         self.checkableButtonGroup = QButtonGroup()
@@ -36,7 +38,8 @@ class PageTwoWidget(QWidget):
         for camera in clientList:
             cameraSelector = QPushButton(camera[0])
             cameraSelector.setCheckable(True)
-            
+            cameraSelector.setFont(self.guiFont)
+            cameraSelector.setFixedHeight(64)
             #shotTypeSelectorPikto = QPixmap("img" + shotType + ".png")
             #cameraSelector.setIcon(QIcon(shotTypeSelectorPikto))
             self.checkableButtonGroup.addButton(cameraSelector)

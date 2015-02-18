@@ -169,6 +169,10 @@ class TallyClient(TallyNode):
         request = "SET_STREAM_URL:" + url
         self.sendRequest(request)
         
+    def enableControlledMode(self):
+        request = "SET_CONTROLLED_MODE"
+        self.sendRequest(request)
+        
 class TallyServer(TallyNode):
     
     stream_Url = "localhost"
