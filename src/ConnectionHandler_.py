@@ -46,7 +46,7 @@ class ConnectionHandler(QObject):
             self.quit = True
         
         
-        timeout = 4000
+        timeout = 10000
         # set inputStream Version
         inpStream = QDataStream(networkSocket)
         inpStream.setVersion(QDataStream.Qt_4_0)

@@ -116,7 +116,7 @@ class TallyNode(QObject):
         
     def __del__(self):
         self.keepAliveTimer.stop()
-        self.closeConnection()
+        #self.closeConnection()
         self.nodeFinished.emit(self)
         qDebug("Nodes::TallyNode deleted")
         

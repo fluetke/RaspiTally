@@ -73,11 +73,12 @@ class AddShotDialog(QDialog):
         shotType = self.shotTypes[(self.pageOne.checkableButtonGroup.checkedId()+2)*-1]
         listIndex = (self.pageTwo.checkableButtonGroup.checkedId()+2)*-1
         print(listIndex)
+        
         if listIndex < len(self.cameras):
             shotCam = self.cameras[listIndex][0]
             print("ShotType: " + shotType + " ShotCam: " + shotCam)
             return (shotCam, shotType)
         else:
             print("FEHLER IM SYTEM: DIE KAMERA EXISTIERT NICHT/LIST INDEX OUT OF BOUNDS")
-            return False
+            return ("NULL", shotType)
         

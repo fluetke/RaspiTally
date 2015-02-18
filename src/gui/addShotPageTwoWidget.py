@@ -35,6 +35,11 @@ class PageTwoWidget(QWidget):
     def populateCameras(self, clientList):
         iteratr = 0
         qDebug("populating cameras")
+        for button in self.checkableButtonGroup.buttons():
+            button.setParent(None)
+            self.selectorLayout.removeWidget(button)
+            self.checkableButtonGroup.removeButton(button)
+            
         for camera in clientList:
             cameraSelector = QPushButton(camera[0])
             cameraSelector.setCheckable(True)
@@ -49,6 +54,3 @@ class PageTwoWidget(QWidget):
             iteratr += 1
             
             #self.selectorLayout.addWidget(cameraSelector, 1 if iteratr>4 else 0, iteratr%4)
-                   
-            
-            
