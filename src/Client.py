@@ -9,16 +9,15 @@ from ConnectionHandler import ConnectionHandler
 from os.path import sys
 from PyQt4.QtCore import qDebug, pyqtSignal, QSettings, QTimer
 from RequestHandler import RequestHandler
-from nodes import TallyServer
+from network.nodes import TallyServer
 from gui.MainWindow import MainWindow
 from gui.SettingsDialog import SettingsDialog
 import socket
 from gui.SignalAssignDialog import SignalAssignDialog
 from storage import Container
-from time import sleep
 from TallyHandler import TallyHandler
 from gui.AddShotDialog import AddShotDialog
-from ThreadingServer import ThreadingServer
+#from ThreadingServer import ThreadingServer
 
 # TODO: replace with datawrangler class to profit from qtsignals
 clientList = list()
@@ -47,7 +46,7 @@ def storeStreamUrl(url):
     sigAssignWindow.videoFeedView.setToolTip(streamUrl.load())
 
 def connectSignals():
-    server.dataReceived.connect(rqstHandler.processData)
+    
     rqstHandler.configStart.connect(startConfigMode)
     rqstHandler.newSourcelist.connect(sigAssignWindow.addSourcesToDialog)
     rqstHandler.streamAnswer.connect(storeStreamUrl)
@@ -80,6 +79,7 @@ def createServerInterface():
     tempSrvInterface.openConnection()
     tempSrvInterface.registerClient("", settings.value("client/type"), (settings.value("client/ip"),settings.value("client/port", type=int)))
     serverInterface.store(tempSrvInterface)
+    serverInterface.load().dataReceived.connect(rqstHandler.processData)
     
     #connect ServerInterface Signals
     window.addShotAtPos.connect(addShotInServer)
@@ -100,8 +100,8 @@ def goLive():
     
 def shutdownClient():
     #kill all remaining threads
-    server.quitting.emit()
-    server.close()
+#     server.quitting.emit()
+#     server.close()
     if serverInterface != None:
         serverInterface.load().closeConnection()
     QApplication.quit()
@@ -114,14 +114,11 @@ if __name__ == '__main__':
     sigAssignWindow = SignalAssignDialog(window)
     configWindow = SettingsDialog(settings, window)
     rqstHandler = RequestHandler(app)
-    server = ThreadingServer(app)
     connectSignals()
     window.show()
 
     #check if serverWasFound anywhere, if not show config
     if serverInterface.isEmpty:
         configWindow.show()
-    
-    server.startListening(CLIENT_PORT)
     
     app.exec_()

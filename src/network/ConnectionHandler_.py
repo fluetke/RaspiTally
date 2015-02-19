@@ -46,11 +46,7 @@ class ConnectionHandler(QObject):
             self.error.emit(networkSocket.error(), networkSocket.errorString())
             self.quit = True
         
-        
         timeout = 10000
-#         # set inputStream Version
-#         inpStream = QDataStream(networkSocket)
-#         inpStream.setVersion(QDataStream.Qt_4_0)
         
         # receive data and pack into data_received for further processing
         while not self.quit:
@@ -86,8 +82,7 @@ class ConnectionHandler(QObject):
             except UnicodeError:
                 qDebug("ConnectionHandler::UNICODE ERROR - Could not decode message, please resend")
             
-            if not self.quit:
-                self.dataReceived.emit(data) #emit converted data
+            self.dataReceived.emit(data) #emit converted data
         
         networkSocket.disconnectFromHost()
         if not networkSocket.waitForDisconnected(timeout):
@@ -97,6 +92,8 @@ class ConnectionHandler(QObject):
             networkSocket.close()
         
         self.finished.emit()
+        
+    
         
     # set quit flag to true to stop connection handler
     def closeConnection(self):

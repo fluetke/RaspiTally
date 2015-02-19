@@ -11,11 +11,11 @@ from PyQt4.QtGui import QApplication
 
 # project libraries
 from RequestHandler import RequestHandler
-from nodes import TallyServer
+from network.nodes import TallyServer
 #from Wirecast import WirecastConnector
-from ThreadingServer import ThreadingServer
 from PyQt4.Qt import qDebug
-from asyncio.tasks import sleep
+
+from PyQt4.QtNetwork import QTcpServer
 
 #Globals
 SERVER_IP = "127.0.0.1"
@@ -27,8 +27,8 @@ streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
 # connect signals to slots
 def connectSignals():
     #check prerequisites
-    if server != None and serverInterface != None and rqstHandler != None:
-        server.dataReceived.connect(rqstHandler.processData)
+    if serverInterface != None and rqstHandler != None:
+        serverInterface.dataReceived.connect(rqstHandler.processData)
         rqstHandler.streamRequest.connect(lambda: serverInterface.setStreamUrl(streamUrl))
         rqstHandler.stateRequest.connect(handleStateRequest)
         rqstHandler.sourceListRequest.connect(handleListRequest)
@@ -38,12 +38,13 @@ def connectSignals():
 def handleListRequest():
     sources = [["1", "Camera Schorsch", "OFF"], ["2", "Camera Lisa", "OFF"], ["3", "Camera Bart", "OFF"], ["4", "Selfie Cam", "LIVE"]]
     qDebug("TestVideoSwitcher::Sending Sourcelist: " + str(sources))
-    sleep(100)
+   # sleep(1)
     serverInterface.updateSourceList(sources)
+    qDebug("Sources sent")
         
 def handleStateRequest(sourceId, status):
     qDebug("TestVideoSwitcher::Setting Source " + str(sourceId) + " to status " + str(status))
-    sleep(100)
+    #sleep(1)
     serverInterface.setTallyToStatus(sourceId, status)
     
 if __name__ == '__main__':
@@ -53,19 +54,15 @@ if __name__ == '__main__':
     rqstHandler = RequestHandler()
     serverInterface = TallyServer( SERVER_IP , SERVER_PORT, app )
     #wirecast = WirecastConnector(app)
-    server = ThreadingServer(app)
     
     #connect signals and slots
     connectSignals()
     
     #open connection to server
     serverInterface.openConnection()
-    
+    #sleep(1000)
     #register with server
-    serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117)) # works on mac, doesnt work on linux
-    
-    #start listening for commands
-    server.startListening(SWITCHER_PORT)
-    
+    serverInterface.registerClient("", "videoMixer", (SWITCHER_IP,SWITCHER_PORT)) # works on mac, doesnt work on linux
+
     #run the app
     sys.exit(app.exec_())

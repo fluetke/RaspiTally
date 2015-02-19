@@ -40,7 +40,9 @@ class RequestHandler(QObject):
         '''
         super(RequestHandler, self).__init__(parent)
         
-    def processData(self, data):
+    def processData(self, msg):
+        data = msg.payload
+        
         if data != None:
             data_ordered = data.split(':')
         else: 
@@ -60,7 +62,7 @@ class RequestHandler(QObject):
             clientType = data_ordered[2] #TODO: Replace with type enum to normalize data early on
             clientIp = data_ordered[3]
             clientPort = int(data_ordered[4])
-            clientAddress = (clientIp, clientPort) #pack client network address tuple
+            clientAddress = (clientIp, msg.sender) #pack client network address tuple
             qDebug("RequestHandler::Emitting signal regClient(" + str(clientType) +","+ str(clientAddress) +","+ str(clientId) +")")
             # emit new client signal containing all information needed by the clientregistration method
             self.regClient.emit(clientType, clientAddress, clientId)

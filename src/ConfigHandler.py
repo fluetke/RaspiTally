@@ -6,7 +6,8 @@ Created on 25.01.2015
 from PyQt4.QtCore import QObject, qDebug
 from DataWrangler import ListData
 from PyQt4.Qt import pyqtSignal
-from nodes import TallyClient, TallySwitcher
+from network.nodes import TallyClient, TallySwitcher
+
 
 class ConfigHandler(QObject):
     '''
@@ -20,6 +21,7 @@ class ConfigHandler(QObject):
     clientRemoved = pyqtSignal(str) # str(id)
     directorReady = pyqtSignal(object) #TallyClient(director)
     clientsHandled = 0
+    newRequest = pyqtSignal(object)
 
     def __init__(self, parent=None):
         '''
@@ -69,11 +71,13 @@ class ConfigHandler(QObject):
             self.configMode = True
             #qDebug("SOMETHIN WENT WRONG")
             self.currentCandidate = self.queue.remItem(0)
-            qDebug("SOMETHIN WENT WRONG")
-            self.currentCandidate.openConnection()
+            #qDebug("SOMETHIN WENT WRONG")
+            #self.currentCandidate.openConnection()
             #self.currentCandidate.setStreamUrl(self.videoUrl)
+            self.currentCandidate.sendRequest.connect(self.newRequest)
             self.currentCandidate.storeSourceList(self.sources.getSubitems(0)) #TODO generate sourcelist for this feature
             print("Starting config mode")
+            #sleep(1)
             self.currentCandidate.startConfigurationMode()
             self.confActive.emit(self.currentCandidate)
         elif not self.configMode: 
@@ -87,14 +91,17 @@ class ConfigHandler(QObject):
         * emits signal for the appropriate client type '''
     def registerClient(self, _type, address, _id=None):
         if _type == "videoMixer":
+            print(str(address))
             tmpClient = TallySwitcher(address[0], address[1], self)
+            tmpClient.sendRequest.connect(self.newRequest)
             self.switcherReady.emit(tmpClient)
             return
         
         elif _type == "director":
             tmpClient = TallyClient(address[0], address[1], self)
             tmpClient.c_type = _type
-            tmpClient.openConnection()
+            #tmpClient.openConnection()
+            tmpClient.sendRequest.connect(self.newRequest)
             self.directorReady.emit(tmpClient)
             return
 
@@ -125,6 +132,7 @@ class ConfigHandler(QObject):
     def finalizeConfiguration(self):
         self.currentCandidate.source = self.currentSource
         self.currentCandidate.endConfigurationMode(self.currentCandidate._id)
+        #self.currentCandidate.sendRequest.disconnect(self.newRequest) # disconnect signal forwarding
         self.clientReady.emit(self.currentCandidate)
         print("Adding client to dictonary: ID -" + str(self.currentCandidate._id) + "source ---" + str(self.currentCandidate.source))
         self.idToSource[self.currentCandidate._id] = self.currentCandidate.source #FIXME: try this and see if there are problem with non-existing keys

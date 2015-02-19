@@ -10,7 +10,9 @@ from RequestHandler import RequestHandler
 from storage import Container
 from DataWrangler import ListData
 from ConfigHandler import ConfigHandler
-from ThreadingServer import ThreadingServer
+# from ThreadingServer import ThreadingServer
+from network.EventConnectionHandler import EventConnectionHandler
+from PyQt4.QtNetwork import QTcpServer, QHostAddress
 
 
 ## YES I KNOW GLOBAL VARS ARE BAD AND EVIL 
@@ -37,7 +39,9 @@ def connectSignals():
     clientSetup.directorReady.connect(storeDirector)
     clientSetup.switcherReady.connect(storeSwitcher)
     clientSetup.clientRemoved.connect(deregisterClient)
-    server.dataReceived.connect(rqstHandler.processData)
+    #clientSetup.newRequest.connect()
+   # server.dataReceived.connect(rqstHandler.processData)
+    server.newConnection.connect(handleConnection)
     
 def continueWithNext():
     if not clientSetup.configMode:
@@ -60,7 +64,7 @@ def storeSwitcher(switcher):
     ''' stores a videoswitcher announced by the confighandler in memory'''
     
     switcher._id = "TVID130"
-    switcher.openConnection()
+    #switcher.openConnection()
     # switcher.getStreamUrl() #TODO: Fix the handling of wirecast broadcast information in VideoSwitcher
     switcher.getSourceList()
     switcher.setParent(app)
@@ -129,6 +133,14 @@ def deregisterClient(clientId):#TODO: implement
 # def removeNode(node):
 #     clients.remove(node)
         
+def handleConnection():
+    qDebug("New Connection incoming")
+    socket = server.nextPendingConnection()
+    connectionHdl = EventConnectionHandler(socket, app)
+    clientSetup.newRequest.connect(connectionHdl.handleRequest)
+    connectionHdl.dataReceived.connect(rqstHandler.processData)
+    connections.append(connectionHdl)
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     
@@ -139,16 +151,20 @@ if __name__ == '__main__':
     # data lists
     clients = ListData(app)
     shots = ListData(app)
+    connections = list()
     
     #add initial blank item to shotlist, to prevent layout errors
     shots.addItem(("BLANK","UNDEFINED"))
         
     rqstHandler = RequestHandler(app)
     clientSetup = ConfigHandler(app)
-    server = ThreadingServer(app)
+   # server = ThreadingServer(app)#
+    server = QTcpServer(app)
     
     connectSignals()
     
-    server.startListening(SERVER_PORT)
+    #server.startListening(SERVER_PORT)
+    if server.listen(QHostAddress.Any, SERVER_PORT):
+        qDebug("Server listening on port " + str(SERVER_PORT))
     
     app.exec_()

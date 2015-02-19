@@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QTcpServer, QHostAddress
 from PyQt4.QtCore import qDebug, QThread, pyqtSignal, Qt
 from PyQt4.Qt import qDebug
 from DataWrangler import ListData
-from ConnectionHandler_ import ConnectionHandler
+from network.ConnectionHandler_ import ConnectionHandler
 from PyQt4 import QtCore
 
 class ThreadingServer(QTcpServer):
