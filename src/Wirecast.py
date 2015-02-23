@@ -5,11 +5,11 @@ Created on 20.01.2015
 '''
 
 # pyqt imports
+import sys
 from PyQt4.QtCore import qDebug, QObject, pyqtSignal
 # special appleHandling
 from applescript import AppleScript, ScriptError
-
-
+    
 class WirecastConnector(QObject):
     '''
     This class handles the applescripts needed to run actions in Wirecast,
@@ -45,7 +45,7 @@ class WirecastConnector(QObject):
             sources = self.sourceListScript.run()
             self.sourcesReady.emit(sources)
         except ScriptError:
-             qDebug("Grabbing SourcesList returned an error: ScriptError")
-             return False
+            qDebug("Grabbing SourcesList returned an error: ScriptError")
+            return False
         except:
             return False

@@ -50,7 +50,7 @@ def continueWithNext():
     
 def storeClient(client):
     '''adds a client to the client list '''
-    
+    qDebug("Adding Client to List - Client ID " + str(client._id))
     #connect client to client and shotslist to receive updates
     client.updateShotList(shots.data)
     shots.dataChanged.connect(client.updateShotList)

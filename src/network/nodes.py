@@ -3,9 +3,7 @@ Created on 06.01.2015
 
 @author: Florian
 '''
-from PyQt4.QtCore import QObject, qDebug, QMutex, QByteArray, QDataStream,\
-    QIODevice, QTimer, pyqtSignal, QMutexLocker
-from PyQt4.QtNetwork import QTcpSocket, QHostAddress, QAbstractSocket
+from PyQt4.QtCore import QObject, qDebug, pyqtSignal
 import json
 from network.CommunicationNode import CommunicationNode
 from network.Message import TallyMessage

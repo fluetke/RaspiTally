@@ -4,7 +4,7 @@ Created on 19.02.2015
 @author: Florian
 '''
 from PyQt4.QtCore import QObject, qDebug, QDataStream, QIODevice, pyqtSignal,\
-    QByteArray, QMutex, QMutexLocker
+    QByteArray
 from PyQt4.QtNetwork import QTcpSocket, QAbstractSocket
 from network.Message import TallyMessage
 
@@ -15,16 +15,17 @@ class EventConnectionHandler(QObject):
 
     dataReceived = pyqtSignal(object)
 
+
     def __init__(self, socket, parent = None):
         '''
         Constructor
         '''
         super(EventConnectionHandler, self).__init__(parent)
-        self.mutex = QMutex()
         self.socket = QTcpSocket()
         self.socket = socket
         self.socket.setSocketOption(QAbstractSocket.KeepAliveOption,1)
         self.socket.readyRead.connect(self.receiveData)
+        
         
     def receiveData(self):
         qDebug(str(self.socket.bytesAvailable()) + " Bytes of Data available on Socket " + str(self.socket.socketDescriptor()))
@@ -56,6 +57,7 @@ class EventConnectionHandler(QObject):
             
         self.dataReceived.emit(TallyMessage(self.socket.socketDescriptor(), None, data)) #emit converted data
         
+        
     def sendData(self, data):
         qDebug("sending request to peer")
         block = QByteArray()
@@ -80,6 +82,7 @@ class EventConnectionHandler(QObject):
             qDebug("Error while sending reqeuest")
             self.error.emit(self.socket.error(), self.socket.errorString())
             return
+
 
     def handleRequest(self, msg):
         if msg.recv != self.socket.socketDescriptor():

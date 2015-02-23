@@ -11,24 +11,21 @@ from PyQt4.QtGui import QApplication
 
 # project libraries
 from RequestHandler import RequestHandler
-from nodes import TallyServer
+from network.nodes import TallyServer
 from Wirecast import WirecastConnector
-from ThreadingServer import ThreadingServer
 from PyQt4.Qt import qDebug
 
 
 #Globals
 SERVER_IP = "127.0.0.1"
 SERVER_PORT = 3771
-SWITCHER_IP = "127.0.0.1"
-SWITCHER_PORT = 3117
 streamUrl = "rtsp://192.168.178.29/tallytest.sdp"
 
 # connect signals to slots
 def connectSignals():
     #check prerequisites
-    if server != None and serverInterface != None and wirecast != None and rqstHandler != None:
-        server.dataReceived.connect(rqstHandler.processData)
+    if serverInterface != None and wirecast != None and rqstHandler != None:
+        serverInterface.dataReceived.connect(rqstHandler.processData)
         rqstHandler.streamRequest.connect(lambda: serverInterface.setStreamUrl(streamUrl))
         wirecast.sourcesReady.connect(serverInterface.updateSourceList)
         wirecast.sourceSet.connect(serverInterface.setTallyToStatus)
@@ -49,7 +46,7 @@ if __name__ == '__main__':
     rqstHandler = RequestHandler()
     serverInterface = TallyServer( SERVER_IP , SERVER_PORT, app )
     wirecast = WirecastConnector(app)
-    server = ThreadingServer(app)
+#     server = ThreadingServer(app)
     
     #connect signals and slots
     connectSignals()
@@ -61,7 +58,7 @@ if __name__ == '__main__':
     serverInterface.registerClient("", "videoMixer", (socket.gethostbyname(socket.gethostname()), 3117)) # works on mac, doesnt work on linux
     
     #start listening for commands
-    server.startListening(SWITCHER_PORT)
+#     server.startListening(SWITCHER_PORT)
     
     #run the app
     sys.exit(app.exec_())
