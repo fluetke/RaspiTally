@@ -81,7 +81,9 @@ def storeDirector(director):
     shots.dataChanged.connect(director.updateShotList)
     clients.dataChanged.connect(director.updateClientList)
     director.setParent(app)
+    director.updateClientList(clients.data)
     directorNode.store(director)
+    
     director.nodeFinished.connect(lambda: directorNode.store(None))
     print("TallyServer::DirectorConsole stored in memory")
 
