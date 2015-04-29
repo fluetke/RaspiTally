@@ -13,7 +13,7 @@ from PyQt4 import QtCore
 from gui.StatusBarWidget import StatusBarWidget
 from gui.ShotlistItem import ShotlistItem
 from gui.VideoWidget import VideoWidget
-from gui.AddShotDialog import AddShotDialog
+from gui.ShotDialog import AddShotDialog
 from PyQt4.Qt import QPixmap
 
 class MainWindow(QWidget):
@@ -44,10 +44,10 @@ class MainWindow(QWidget):
         self.quitBtn.setStyleSheet("background: #555")
         # interaction area
         #self.shotlist = QListWidget()
-        self.emergencyBtn = QPushButton("&EMERGENCY")
+        self.emergencyBtn = QPushButton("&Fullscreen")
         #self.emergencyBtn.setDisabled(True)
         self.goLiveBtn = QPushButton("GO &LIVE")
-        self.nextBtn = QPushButton("&NEXT")
+        self.nextBtn = QPushButton("&NEXT SHOT")
         self.addShotDiag = AddShotDialog(self)
         
         # init components
@@ -76,15 +76,18 @@ class MainWindow(QWidget):
         # fill layouts 
         self.statusLayout.addStretch(192)
         self.statusLayout.addWidget(self.tallyState)
-        self.statusLayout.addStretch(128)
-        self.statusLayout.addWidget(self.quitBtn)
+        self.statusLayout.addStretch(192)
+        #self.statusLayout.addWidget(self.quitBtn)
         self.previewLayout.addWidget(self.liveMonitor)
         self.previewLayout.addWidget(self.sourceList)
+        
         self.actionBarLayout.addStretch()
         self.actionBarLayout.addWidget(self.emergencyBtn)
         self.actionBarLayout.addWidget(self.goLiveBtn)
         self.actionBarLayout.addWidget(self.nextBtn)
         self.actionBarLayout.addStretch()
+        
+        
         self.shotListLayout.setSpacing(0)
         self.shotListOuterLayout.setSpacing(0)
         self.shotListOuterLayout.addLayout(self.shotListLayout)
