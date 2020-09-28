@@ -14,11 +14,6 @@ from ConfigHandler import ConfigHandler
 from network.EventConnectionHandler import EventConnectionHandler
 from PyQt4.QtNetwork import QTcpServer, QHostAddress
 
-
-## YES I KNOW GLOBAL VARS ARE BAD AND EVIL 
-## BUT I DONT CARE FOR KNOW, AS LONG AS IT WORKS DURING EVAL
-## FUCK SAFETY AND BEST PRACTICE
-
 #usefull data for server operation
 SERVER_PORT = 3771
     
