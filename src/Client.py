@@ -118,7 +118,7 @@ if __name__ == '__main__':
     window.show()
 
     #check if serverWasFound anywhere, if not show config
-    if serverInterface.isEmpty:
+    if serverInterface.isEmpty():
         configWindow.show()
     
     app.exec_()

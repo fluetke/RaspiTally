@@ -13,14 +13,15 @@ class Container(QObject):
     datenpaket = None
     listMode = False
     storageMutex = QMutex()
-    
+
     def __init__(self, listmode=False):
         '''
         Constructor
         '''
         QObject.__init__(self)
+        self.datenpaket = None
         if listmode:
-            datenpaket = list()
+            self.datenpaket = list()
             self.listMode = True
     
     def store(self, data):
@@ -48,4 +49,4 @@ class Container(QObject):
         return self.listMode
     
     def isEmpty(self):
-        return (self.datenpaket == None)
+        return self.datenpaket is None
